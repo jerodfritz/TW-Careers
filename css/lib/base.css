@@ -1,0 +1,405 @@
+/* -------------------------------------------------------------- 
+   base.css
+   * Custom styles to build on top of base styles
+   
+   * Rokkan CSS Framework
+   * Copyright - 2009.Rokkan
+   * License - MIT or GPL
+-------------------------------------------------------------- */
+
+/* Reset Browser Defaults
+-------------------------------------------------------------- */
+/*
+ *   Tripoli is a generic CSS standard for HTML rendering. 
+ *   Copyright (C) 2007 David Hellsing
+ *   http://devkick.com/lab/tripoli/
+*/
+
+/* RESET */
+* {text-decoration:none; font-size:1em;	outline:none; margin:0; padding:0;}
+code,kbd,samp,pre,tt,var,textarea,input,select,isindex,listing,xmp,plaintext {font:inherit; white-space:normal;}
+a,img,a img,iframe,form,abbr,acronym,object,applet,table,a abbr,a acronym {border-width:0;}
+dfn,i,cite,var,address,em {font-style:normal;}
+th,strong,h1,h2,h3,h4,h5,h6,dt {font-weight:normal;}
+caption,th,td {text-align:left;}
+html {background:white; color:black; line-height:1; font-family:arial, sans-serif; height: 100%;}
+html {font-family:sans-serif;}
+q {quotes:"\201C""\201D""\2018""\2019";}
+ul,ol,dir,menu {list-style:none;}
+sub,sup {vertical-align:baseline;}
+a {color:inherit;}
+
+/* DISABLE DEPRECATED HTML */
+font,basefont {color:inherit; font:inherit; font-size:100%;}
+center,*[align] {text-align:inherit;}
+s,strike,u {text-decoration:inherit;}
+img {border:none;margin:0;}
+ol {list-style-type:decimal;}
+
+body {background-color:transparent;}
+tr,th,td {
+	width:auto; height:auto;
+	background-color:transparent;
+	vertical-align:inherit;
+	border:none;
+}
+table[border],.content table[border] {border-collapse:separate; border-spacing:0;}
+nobr {white-space:normal;}
+marquee {overflow:visible; -moz-binding:none;}
+blink {text-decoration:none;}
+
+/* GENERAL */
+html {font-size:125%;}
+body {font-size:50%;}
+
+a {text-decoration:underline;}
+strong,th,thead td,h1,h2,h3,h4,h5,h6,dt {font-weight:bold;}
+cite,em,dfn {font-style:italic;}
+code,kbd,samp,pre,tt,var,input[type='text'],input[type='password'],textarea {font-size:100%;}
+pre {white-space:pre;}
+pre * {font-size:100%; white-space:pre;}
+del {text-decoration:line-through;}
+ins,dfn {border-bottom:1px solid black;}
+small,sup,sub {font-size:85%;}
+big {font-size:125%; line-height:80%;}
+abbr,acronym {text-transform:uppercase; font-size:85%; letter-spacing:.1em;}
+abbr[title],acronym[title],dfn[title] {cursor:help; border-bottom:1px dotted black;}
+sup {vertical-align:super;}
+sub {vertical-align:sub;}
+blockquote {padding-left:2.2em;}
+input,select,button {cursor:pointer;}
+input[type='text'],input[type='password'] {cursor:text;}
+input[type='hidden'] {display:none;}
+
+
+/* -------------------------------------------------------------- 
+   forms.css
+   * Sets up some default styling for forms
+   * Gives you classes to enhance your forms
+   
+   Usage:
+   * For text fields, use class .title or .text
+   * For inline forms, use .inline (even when using columns)
+   
+   * Rokkan CSS Framework
+   * Copyright - 2009.Rokkan
+   * License - MIT or GPL  
+-------------------------------------------------------------- */
+
+/* Form fields
+-------------------------------------------------------------- */
+label       {font-weight: 700;}
+fieldset    {padding:1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc;}
+legend      {font-weight: bold; font-size:1.2em;}
+
+input[type=text], input[type=password],
+input.text, input.title, 
+textarea, select { 
+  background-color:#fff; 
+  border:1px solid #bbb; 
+}
+input[type=text]:focus, input[type=password]:focus, 
+input.text:focus, input.title:focus, 
+textarea:focus, select:focus { 
+  border-color:#666; 
+}
+input[type=text], input[type=password],
+input.text, input.title,
+textarea, select {
+  margin:1.2em 0;
+}
+
+input.text, input.title   {width: 300px; padding:5px;}
+input.title   {font-size:1.5em;}
+textarea      {width: 300px; height: 150px; padding:5px;}
+
+input[type=checkbox], input[type=radio], input.checkbox, input.radio {position:relative; top:.25em;}
+
+form.inline 	{line-height:3;}
+form.inline p	{margin-bottom:0;}
+
+
+/* Success, notice and error boxes
+-------------------------------------------------------------- */
+.error-box, .notice-box, .success-box    {padding: .8em; margin-bottom: 1em; border: 2px solid #ddd;}
+.error-box      {background: #FBE3E4; color: #8a1f11; border-color: #FBC2C4;}
+.notice-box     {background: #FFF6BF; color: #514721; border-color: #FFD324;}
+.success-box    {background: #E6EFC2; color: #264409; border-color: #C6D880;}
+.error-box a    {color: #8a1f11;}
+.notice-box a   {color: #514721;}
+.success-box a  {color: #264409;}
+
+.checkbox {
+	background: url(../../imgs/icons/checkbox.gif) no-repeat;
+	clear: left; float: left; display: block;
+	margin: 0 6px 0 0; padding: 0;
+	width: 20px; height: 25px;
+}
+.radio {
+	background: url(../../imgs/icons/radio.gif) no-repeat;
+	clear: left; float: left; display: block;
+	margin: 0 6px 0 0; padding: 0;
+	width: 20px; height: 25px;
+}
+.select {
+	border: #111 none;
+	color: #969696;
+	font-weight: 700;
+	font: 12px/21px arial,sans-serif;
+	overflow: hidden;
+	padding: 0 0 0 10px;
+	position: absolute;
+	height: 31px; width: 400px; /* With the padding included, the width is the actual width of the image. */
+}
+
+
+/* Fieldset
+-------------------------------------------------------------- */
+.fieldset {
+	clear: both; float: left; 
+	margin: 5px 0;
+	width: 100%;
+}
+.fieldset label {
+	float: left; 
+	margin-right: 10px;
+	padding: 0;
+	text-align: right; 
+}
+.fieldset input, .fieldset textarea, .fieldset select {
+	color: #222;
+	font-size: 12px;
+	float: left;
+	margin: 0;
+}
+.fieldset input, .fieldset textarea {padding: 3px 4px;}
+
+.fieldset .set {float: left;}
+
+.fieldset.error {background: url(../imgs/form_error_icon.png) no-repeat right center;}
+.fieldset.error input {border: 2px solid #e90000; color: #e90000;}
+
+.fieldset.text-set label {padding: 5px 0 0;}
+.fieldset.radio-set label {padding: 2px 0 0; cursor: pointer;}
+.fieldset.checkbox-set label {padding: 2px 0 0; cursor: pointer;}
+.fieldset.select-set label {padding: 4px 0 0;}
+.fieldset.textarea-set label {padding: 2px 0 0;}
+.fieldset.terms-set label {
+	cursor: pointer;
+	font-weight: 400;
+	margin: 0; 
+	padding: 4px 0 0; 
+	text-align: left; 
+	width: auto;
+}
+.fieldset.terms-set input {margin-right: 10px; padding: 0;}
+.fieldset.radio-set input, .fieldset.checkbox input {padding: 0;}
+.fieldset.checkbox-set input, .fieldset.radio-set input {margin: 0 6px 0 0;}
+
+
+/* Form-Btns
+-------------------------------------------------------------- */
+.btn {
+    float:left;
+    overflow:hidden;
+    text-indent:-9999em;
+}
+.form-btns {clear: both; float: left; width: 100%;}
+.form-btns a:link, .form-btns a.btn, .form-btns input.btn {
+	background: #666;
+	border: #fff none;
+	color: #fff;
+	display: block; float: left;
+	font-size: 12px;
+	height: 25px; width: auto;
+	margin: 0 10px 0 0; padding: 0;
+	text-align: center;
+	text-decoration: none;
+	/* Uncomment when using img
+	background: url(../imgs/btns.gif) no-repeat 0 0;
+	overflow: hidden;
+	text-indent: -9999em;
+	*/
+}
+.form-btns input.btn {
+	padding: 0 10px 2px;
+	font-family: arial, sans-serif;
+}
+.form-btns a.btn {
+	color: #fff;
+	line-height: 2.1em;
+	padding: 0 10px;
+}
+.form-btns a:visited.btn {color: #fff;}
+.form-btns a:hover.btn, .form-btns input:hover.btn {
+	text-decoration: underline;
+}
+
+
+
+/* -------------------------------------------------------------- 
+   typography.css
+   * Sets up some default typography styles
+   
+   * Rokkan CSS Framework
+   * Copyright - 2009.Rokkan
+   * License - MIT or GPL 
+-------------------------------------------------------------- */
+
+
+/* Basic Settings
+-------------------------------------------------------------- */
+/* Default font settings. 
+   The font-size percentage is of 10px. (0.625 * 10px = 12px) */
+body { 
+	background: #fff;
+	color: #222; 
+	font-size: 62.5%;
+	font-family: Arial, Helvetica, sans-serif;
+	float: left;
+}
+
+
+/* Headings
+-------------------------------------------------------------- */
+h1,h2,h3,h4,h5,h6 {color: #111;}
+h1 {font-size: 3em; line-height: 1;}
+h2 {font-size: 2em;}
+h3 {font-size: 1.5em; line-height: 1;}
+h4 {font-size: 1.2em; line-height: 1.25;}
+h5 {font-size: 1em; font-weight: 700;}
+h6 {font-size: 1em; font-weight: 700;}
+
+
+/* Text elements
+-------------------------------------------------------------- */
+p {clear: both; font-size: 13px; line-height: 1.2em;}
+p img.left  {float: left; margin: 1.5em 1.5em 1.5em 0; padding: 0;}
+p img.right {float: right; margin: 1.5em 0 1.5em 1.5em;}
+
+a:link {color:#fff;}
+a:visited {color:#fff;}
+a:hover,code,pre {color:#fff;}
+a:active,.a:focus {color:#fff;}
+
+blockquote  {color: #666; font-style: italic;}
+blockquote *:first-child:before {content: "\201C"; font-size: 1.2em; color: #666;}
+blockquote *:first-child:after {content: "\201D"; font-size: inherit; color: #666;}
+strong      {font-weight: 700;}
+em,dfn      {font-style: italic;}
+dfn         {font-weight: 700;}
+sup, sub    {line-height: 0;}
+
+abbr, acronym {border-bottom: 1px dotted #666;}
+address {margin: 0 0 1.5em; font-style: italic;}
+del {color:#666;}
+
+pre {margin: 1.5em 0; white-space: pre;}
+pre,code,tt { font: 1em 'andale mono', 'lucida console', monospace; line-height: 1.5;}
+
+
+/* Lists
+-------------------------------------------------------------- */
+li ul, li ol {margin:0 1.5em;}
+ul, ol {margin: 0 1.5em 1.5em 1.5em;}
+ul li, ol li {font-size: 13px; line-height: 1.2em;}
+
+ul {list-style-type: disc;}
+ol {list-style-type: decimal;}
+
+dl {margin: 0 0 1.5em 0;}
+dl dt {font-weight: 700;}
+dd {margin-left: 1.5em;}
+
+
+/* Tables
+-------------------------------------------------------------- */
+table       {width:100%; border-collapse:collapse;}
+th          {font-weight: 700;}
+thead th 	{background: #e5ecf9;}
+th,td,caption {padding: 4px 10px 4px 5px;}
+tr.odd td  	{background: #f0f0f0;}
+tr.even td  {background: #d0dafd;}
+tfoot       {background: #e5ecf9;}
+caption     {background: #fff;}
+table .alt 	{background: #d0dafd;}
+tr:hover, td:hover	{background: #eff2ff;}
+
+
+
+/* Misc classes
+-------------------------------------------------------------- */
+.hide, .hidden {display: none;}
+.hasJS .offscreen {position: absolute; left: -9999em; overflow: hidden;}
+
+.quiet      {color: #666;}
+.loud       {color: #000;}
+.highlight  {background:#ff0;}
+.added      {background:#060; color: #fff;}
+.removed    {background:#900; color: #fff;}
+
+.first      {margin-left:0; padding-left:0;}
+.last       {margin-right:0; padding-right:0;}
+.top        {margin-top:0; padding-top:0;}
+.bottom     {margin-bottom:0; padding-bottom:0;}
+
+.loading {
+	background: url(../../imgs/icons/ajax-loader.gif) no-repeat center center;
+	clear: both; display: block;
+	margin: 0 auto;
+	text-align: center;
+	width: 24px; height: 24px;
+	padding: 20px;
+}
+.ajax-loader {
+	clear: both; display: block;
+	margin: 0 auto;
+	text-align: center;
+	width: 24px; height: 24px;
+	padding: 20px;
+}
+
+
+/* Use a .box to create a padded box inside a column/content area */ 
+.box {padding: 1.5em; margin-bottom: 1.5em; background: #E5ECF9;}
+
+/* Use this to create a horizontal ruler across a column. */
+div.hr hr {
+  display: none;
+}
+
+div.hr {
+  clear:both;
+  height: 1px;
+  margin: 6px 0;
+}
+div.hr {
+  background: url(../../imgs/global/footer/hr.gif) no-repeat 0 0;
+}
+
+/* Clearing floats without extra markup
+-------------------------------------------------------------- */
+.clearfix:after, .container:after {
+	content: "\0020"; 
+	display: block; 
+	height: 0; 
+	clear: both; 
+	visibility: hidden;
+	overflow:hidden; 
+}
+.clearfix, .container {display: block;}
+/* Regular clearing apply to column that should drop below previous ones. */
+.clear {clear:both;}
+
+
+/* Content */
+.content {font-size:1.2em; line-height:1.6em;}
+.content h1 {font-size:1.6em; line-height:1; margin:1em 0 .5em;}
+.content h2 {font-size:1.5em; line-height:1; margin:1.07em 0 .535em;}
+.content h3 {font-size:1.4em; line-height:1; margin:1.14em 0 .57em;}
+.content h4 {font-size:1.3em; line-height:1; margin:1.23em 0 .615em;}
+.content h5 {font-size:1.2em; line-height:1; margin:1.33em 0 .67em;}
+.content h6 {font-size:1em;	line-height:1; margin:1.6em 0 .8em;}
+
+
+/* End CSS */

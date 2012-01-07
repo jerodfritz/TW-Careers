@@ -1,0 +1,25 @@
+/*
+ *   Tripoli is a generic CSS standard for HTML rendering.
+ *   Copyright (C) 2007-2008 David Hellsing
+ *
+ *   http://devkick.com/lab/tripoli/
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+**
+_______________________________
+
+
+
+
+* html {background: url(../js/pngfix/x.gif) no-repeat; background-attachment: fixed;} /* Keeps the globalmenu from jittering when scrolling */
+
+* html #container {margin-top: 0;}
+
+.form-btns input.btn {padding: 0 4px 2px;}
+
+* html .tab-nav ul.tab-list li a {height: 22px;}
+ul.main-content {width: 100%}
+#sticky-footer .footer-content {
+	padding-top: 20px;
+}

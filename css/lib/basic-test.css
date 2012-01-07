@@ -1,0 +1,54 @@
+
+/* ------------------------------------------------------------------------------------------------------------------------------------*/
+#wrapper {}
+#container {}
+
+#global-hat {} /* Always fixed at top of page */
+#branding {}
+#main-search {}
+
+#global-menu {} /* Common menu across site */
+#global-nav {} /* Common navigation across site */
+#main-nav {}
+#sub-nav {}
+#side-nav {}
+
+#content {}
+/* Name content sub-sections as: */
+	/* Allows for most flexibility - content can go right/left without markup change and classes still make sense semantically */
+	#content-main {} /* Main content area - could be left/right from page to page and still make sense semantically */
+	#content-extra {} /* Extra content space - could be top/bottom/right/left */
+	#content-side {} /* Area for side content - left/right on page */
+	#content-cta {} /* CTA=Call To Action - content area for featured content */
+	/* or */
+	#content-lft {}
+	#content-mid {}
+	#content-rt {}
+	/* or */
+	#col-lft {}
+	#col-mid {}
+	#col-rt {}
+	
+
+#global-footer {} /* Common footer across site */
+#footer {}
+#footer-legal {}
+
+
+/* Classes */
+.content-holder {}
+
+.section-holder {}
+.section {}
+.section-content {}
+
+.module-holder {}
+.module {}
+.module-content {}
+	
+.footer-holder {}
+.footer-content {}
+
+.contet-footer {} /* Footer in content/modules - mostly used for pagination purpose */
+
+.pagination {}

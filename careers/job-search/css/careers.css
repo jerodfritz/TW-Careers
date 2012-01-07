@@ -1,0 +1,29 @@
+#careers-advanced-search {
+    color: #333;
+}
+#careers-advanced-search h3 {
+	font-size: 16px;
+	color: #900;
+}
+#careers-advanced-search label {
+	width: 120px;
+	display: inline-block;
+	text-align: right;
+	padding-right: 10px;
+	margin-bottom: 5px;
+}
+#careers-advanced-search #ajax-loader {
+	display: none;
+	position: fixed;
+	left: 50%;
+	top: 64px;
+}
+#careers-advanced-search .loc-select {
+	width: 120px;
+}
+#careers-advanced-search #location-selects {
+	background-color: #eee;
+	padding: 0px 10px 10px 10px;
+	border: 1px solid;
+	margin-bottom: 20px;
+} 

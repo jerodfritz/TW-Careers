@@ -1,0 +1,13 @@
+/**
+ *	Global - Sets vertical rhythm and basic overall typographic face-lift
+ 
+ *	Rokkan CSS Framework
+ *	Version 0.1
+ *	Copyright - 2009.Rokkan
+ *	License - MIT or GPL
+
+*/
+
+/* Apply base theme styles and colors
+----------------------------------------*/
+@import url("lib/base.css");

@@ -1,0 +1,8 @@
+AuthUserFile /home/timewarner/.htpasswd
+AuthGroupFile /dev/null
+AuthName "Dev Environment"
+AuthType Basic
+
+<Limit GET POST>
+require valid-user
+</Limit>

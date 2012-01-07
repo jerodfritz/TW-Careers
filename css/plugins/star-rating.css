@@ -1,0 +1,21 @@
+/* Star Rating: jQuery UI Stars v2.1.1 
+ * http://plugins.jquery.com/project/Star_Rating_widget
+ * Copyright (c) 2009 Orkan
+------------------------------------------------------------------------------------------ */
+.ui-stars-star, .ui-stars-cancel {
+	cursor: pointer;
+	display: block;
+	float: left;
+	overflow: hidden;
+	text-indent: -9999em;
+}
+.ui-stars-star a, .ui-stars-cancel a {
+	background: url(../imgs/icons/ui.stars.gif) no-repeat 0 0;
+	display: block;
+	width: 16px; height: 15px;
+}
+.ui-stars-star a {background-position: 0 -32px;}
+.ui-stars-star-on a {background-position: 0 -48px;}
+.ui-stars-star-hover a {background-position: 0 -64px;}
+.ui-stars-cancel-hover a {background-position: 0 -16px;}
+.ui-stars-star-disabled, .ui-stars-star-disabled a, .ui-stars-cancel-disabled a {cursor: default !important;}

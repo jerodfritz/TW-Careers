@@ -1,0 +1,116 @@
+/*
+ *   Tripoli is a generic CSS standard for HTML rendering.
+ *   Copyright (C) 2007-2008 David Hellsing
+ *
+ *   http://devkick.com/lab/tripoli/
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+**
+_______________________________
+
+
+
+
+* html {background: url(../js/pngfix/x.gif) no-repeat; background-attachment: fixed;} /* Keeps the globalmenu from jittering when scrolling */
+
+* html #container {margin-top: 0;}
+
+.form-btns input.btn {padding: 0 4px 2px;}
+
+* html .tab-nav ul.tab-list li a {height: 22px;}
+
+div.hr {
+    margin:0 0 7px 0;
+}
+#header {
+    /*background: url(../imgs/global/main_nav_bg_ie6.jpg) repeat-x 0 0;*/
+}
+#main-nav ul.main-content li a.main-link, #main-nav ul.ancilary-nav li a.main-link {
+	/*background: url(../imgs/global/nav/main_nav_ie6.gif) no-repeat 0 0;*/
+}
+#header h1 a {
+    height: 24px;/*from 20*/
+    width: 170px;/*from 136*/
+}
+ul.social li a {float: left}
+ul.main-content {width: 100%}
+
+#dropdown-holder-bg {
+	left: 0;
+}
+
+#main-nav ul.main-content li a.main-link.brands {
+        background-position: 0 0;
+        width: 119px;
+}
+#main-nav ul.main-content li a:hover.main-link.brands, #main-nav ul.main-content li.thispage a.main-link.brands {
+        background-position: 0 -36px;
+}
+#main-nav ul.main-content li a.main-link.innovations {
+        background-position: -119px 0;
+        width: 160px;
+}
+#main-nav ul.main-content li a:hover.main-link.innovations, #main-nav ul.main-content li.thispage a.main-link.innovations  {
+        background-position: -119px -36px;
+}
+#main-nav ul.main-content li a.main-link.company {
+        background-position: -279px 0;
+        width: 130px;
+}
+#main-nav ul.main-content li a:hover.main-link.company, #main-nav ul.main-content li.thispage a.main-link.company {
+        background-position: -279px -36px;
+}
+#main-nav ul.ancilary-nav li a.main-link.twfamily {
+        background-position: -728px 0;
+        width: 128px;
+}
+#main-nav ul.ancilary-nav li a:hover.main-link.twfamily, #main-nav ul.ancilary-nav li a.main-link.twfamily.current {
+        background-position: -728px -36px;
+        width: 128px;
+}
+#main-nav ul.ancilary-nav li a.main-link.ssubscribe {
+        background-position: -856px 0;
+        width: 128px;
+}
+#main-nav ul.ancilary-nav li a:hover.main-link.ssubscribe {
+        background-position: -856px -36px;
+        width: 128px;
+}
+
+#main-nav #main-search input { padding-top: 5px; height: 18px; }
+
+ul.ancilary-nav .dropdown-holder img {
+    top:-3px;
+}
+ul.ancilary-nav .dropdown-holder {
+    top: 30px!important;
+    width: 192px;
+}
+
+ul.ancilary-nav .dropdown-holder ul {
+    top: -6px;
+}
+ul.ancilary-nav .dropdown-holder img.btm {
+    top: -15px;
+}
+
+input.search { top: 2px; }
+
+#content-main { margin-left: 5px; }
+#sticky-footer .footer-content {
+	padding-top: 20px;
+	height: 32px;
+}
+#content-main ol {
+        margin-left: 2em;
+}
+
+.content-holder {
+        margin-bottom: 20px;
+}
+
+#twhomeWrapper {
+        position: relative;
+        top: -20px;
+}

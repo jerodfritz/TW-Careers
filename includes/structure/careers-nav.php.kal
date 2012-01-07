@@ -1,0 +1,9 @@
+<div class="secondary-nav-holder-short">
+	<div id="secondary-nav" class="nav-newsroom">
+		<ul class="secondary-nav" style="margin-top:43px;">
+			<li<?php if (strpos($_SERVER['REQUEST_URI'], 'careers/working-with-us') !== false) echo ' class="thispage"'; ?>><a href="<?php echo $baseUrl; ?>careers/working-with-us/" class="news-updates">Working With Us</a></li>
+			<li<?php if (strpos($_SERVER['REQUEST_URI'], 'careers/areas-of-operation') !== false) echo ' class="thispage"'; ?>><a href="<?php echo $baseUrl; ?>careers/areas-of-operation/" class="press-contacts">Areas of Operation</a></li>
+			<li<?php if (strpos($_SERVER['REQUEST_URI'], 'https://careers.timewarner.com/1033/ASP/TG/cim_home.asp?partnerid=391&siteid=36') !== false) echo ' class="thispage"'; ?>><a href="https://careers.timewarner.com/1033/ASP/TG/cim_home.asp?partnerid=391&siteid=36" class="news-updates">Search for Jobs</a></li>
+		</ul>
+	</div>
+</div>

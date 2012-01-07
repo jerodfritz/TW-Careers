@@ -1,0 +1,50 @@
+/* Pagination
+------------------------------------------------------------------------------------------ */
+.pagination-holder {
+	clear: both; float: left;
+	width: 70%;
+}
+.pagination {
+	clear: both; float: left;
+	margin: 0;
+	width: 100%;
+}
+.pagination li {
+	border: 0; 
+	margin: 0; padding: 0;
+	font-size: 11px;
+	list-style: none;
+}
+.pagination a {
+	border: 1px solid #ddd;
+	margin-right: 2px;
+}
+.pagination .previous-off, .pagination .next-off {
+	color: #666;
+	display: block;
+	float: left;
+	font-weight: 700;
+	padding: 3px 4px;
+}
+.pagination .link-next a, .pagination .link-previous a {
+	font-weight: 700;
+	border: 1px solid #fff;
+}
+.pagination .current {
+	color: #ff0084;
+	font-weight: 700;
+	display: block;
+	float: left;
+	padding: 4px 6px;
+}
+.pagination a:link, .pagination a:visited {
+	color: #0063e3;
+	display: block;
+	float: left;
+	padding: 3px 6px;
+	text-decoration: none;
+}
+.pagination a:hover {
+	border: solid 1px #666;
+}
+

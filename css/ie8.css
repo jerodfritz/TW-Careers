@@ -1,0 +1,30 @@
+
+div.hr {
+    margin:0 0 7px 0;
+}
+
+
+#header h1 a {
+    height: 20px;
+    width: 136px;
+}
+ul.social li a {float: left}
+ul.main-content {width: 100%}
+
+#dropdown-holder-bg {
+        left: 0;
+}
+#main-nav ul.ancilary-nav {
+    top: 10px;
+}
+ul.ancilary-nav .dropdown-holder img {
+    top:-3px;
+}
+ul.ancilary-nav .dropdown-holder {
+    top: 30px!important;
+    width: 192px;
+}
+
+ul.ancilary-nav .dropdown-holder ul {
+    top: -6px;
+}

@@ -1,0 +1,168 @@
+/*
+General
+*/
+.content-holder h1 {
+	color: #e8e8e8;
+	display: block;
+    width: 980px;
+    margin: 0 auto;
+	font-size: 17px;
+	text-transform: uppercase;
+	font-weight: normal;
+	letter-spacing: .1em;
+	position: relative;
+	top: -360px;
+}
+
+#breadcrumb {
+  width: 980px;
+  margin: 12px auto 0
+}
+.content-holder {
+	width:100%;
+	background:url('../carousel/images/bg_carousel.jpg') repeat-x center 28px #fff;
+	position:relative;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
+}
+.content-width {
+  width: 980px;
+  margin: 0 auto;
+}
+/*
+Boxes
+*/
+.search-and-login {
+  background: url(../images/bg_search_login.jpg) no-repeat 0 0 transparent;
+  width: 980px;
+  height: 63px;
+  margin-top:13px;
+  position: relative;
+    font-size: 12px;
+}
+.search-form {
+  position: relative;
+  float: left;
+  margin-right: 15px;
+}
+.search-form label {
+  position:absolute; top:0; left:0;
+  font-weight: normal;
+  color: #b6b6b6;
+  line-height: 24px;
+  padding-left: 10px;
+  font-size: 12px;
+
+}
+.search-form input {
+  margin: 0;
+  height:22px;
+  padding-left: 8px;
+  width:200px;
+  font-size: 12px;
+  margin-right: 15px;
+}
+.search-and-login .search {
+  width: 692px;
+  height: 50px;
+  float:left;
+  margin-top: 7px;
+  border-right: 1px solid #cfcfcf;
+}
+.search-and-login .search .inner {
+  height: 30px;
+  padding-left: 230px;
+  margin-top:12px;
+}
+.search-and-login .login {
+  float: left;
+  width:285px;
+  margin-top: 7px;
+  color: #777777;
+}
+.search-and-login .login a,
+.search-and-login .login a:visited,
+.search-and-login .login a:active {
+  color: #0056b4;
+}
+.search-and-login .login button {
+  float: left;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+.search-and-login .login .inner {
+  margin-top: 12px;
+  height: 30px;
+}
+.third-width-box {
+  background: url(../images/bg_third_box.jpg) no-repeat 0 0 transparent;
+  width: 317px;
+  height: 130px;
+  margin: 26px 7px 15px;
+  float: left;
+}
+.third-width-box-first {
+  margin-left: 0;
+}
+.third-width-box-last {
+  margin-right: 0;
+}
+
+/*
+Buttons
+*/
+button { 
+	position: relative;
+	border: 0; 
+	cursor: pointer;
+	overflow: visible; /* removes extra side padding in IE */
+	padding: 0 15px 0 0; 
+	font-size:2em; 
+	text-align: center;
+	background-position: right -46px;	
+	background-color: transparent; 
+}
+
+button::-moz-focus-inner {
+	border: none;  /* overrides extra padding in Firefox */
+}
+
+button span { 
+	position: relative;
+	display: block; 
+	white-space: nowrap;	
+	padding: 0px 0 0 15px; 
+	height:23px; 
+	font-size: 12px;
+	line-height: 22px; 
+	background-position: left top;
+}
+button:hover, button.hover {
+	background-position: right -69px !important; 
+}
+	
+button:hover span, button.hover span {
+	background-position: 0 -23px !important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	/* Safari and Google Chrome only - fix margins */
+	button span {
+		margin-top: -1px;
+	}
+}
+
+
+button.blue { background-image: url(../images/buttons/blue.png); }
+button.blue span { background-image: url(../images/buttons/blue.png); color:#e8e8e8; }
+button.blue a, button.blue a:hover, button.blue a:visited { color:#e8e8e8 !important; text-decoration: none; } 
+button.black { background-image: url(../images/buttons/black.png); }
+button.black span { background-image: url(../images/buttons/black.png); color:#e8e8e8; }
+button.grey { background-image: url(../images/buttons/grey.png); }
+button.grey span { background-image: url(../images/buttons/grey.png); color:#333; }
+	
+	
+

@@ -1,0 +1,20 @@
+/* Sticky Footer
+------------------------------------------------------------------------------------------ */
+.push {
+	clear: both; float: left;
+	height: 80px; width: 100%;
+}
+#sticky-footer {
+	background: #e0e0e0;
+	clear: both; float: left;
+	height: 80px; width: 100%;
+}
+#sticky-footer ul {
+	list-style: none;
+	margin: 0; padding: 0;
+}
+#sticky-footer ul li {
+	float: left;
+	margin: 0 10px 0 0;
+}
+

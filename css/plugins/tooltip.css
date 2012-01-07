@@ -1,0 +1,36 @@
+/* Custom Tooltip
+------------------------------------------------------------------------------------------ */
+.tooltip {cursor:pointer; line-height: 1.4em;}
+p span.tooltip {
+	border-bottom: 1px dotted #900; 
+	color:#900; 
+	cursor:pointer;
+}
+#tt {
+	background:url(../imgs/tooltip/tt_left.gif) top left no-repeat;
+	display:block;
+	position:absolute;
+	z-index: 100;
+}
+#tttop {
+	background:url(../imgs/tooltip/tt_top.gif) top right no-repeat;
+	display:block; 
+	height:5px; 
+	margin-left:5px;  
+	overflow:hidden;
+}
+#ttcont {
+	background:#666; 
+	color:#fff; 
+	display:block; 
+	line-height: 1.4em;
+	margin-left:5px;
+	padding:2px 12px 3px 7px; 
+}
+#ttbot {
+	background:url(../imgs/tooltip/tt_bottom.gif) top right no-repeat;
+	display:block; 
+	height:5px; 
+	margin-left:5px;
+	overflow:hidden;
+}

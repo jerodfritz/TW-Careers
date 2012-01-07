@@ -1,0 +1,218 @@
+/* -------------------------------------------------------------- 
+   forms.css
+   * Sets up some default styling for forms
+   * Gives you classes to enhance your forms
+   
+   Usage:
+   * For text fields, use class .title or .text
+   * For inline forms, use .inline (even when using columns)
+   
+   * Rokkan CSS Framework
+   * Copyright - 2009.Rokkan
+   * License - MIT or GPL  
+-------------------------------------------------------------- */
+
+/* Form fields
+-------------------------------------------------------------- */
+label       {font-weight: 700;}
+fieldset    {padding:1.4em; margin: 0 0 1.5em 0; border: 1px solid #ccc;}
+legend      {font-weight: bold; font-size:1.2em;}
+
+input[type=text], input[type=password],
+input.text, input.title, 
+textarea, select { 
+  background-color:#fff; 
+  border:1px solid #c9c9c9; 
+}
+input[type=text]:focus, input[type=password]:focus, 
+input.text:focus, input.title:focus, 
+textarea:focus, select:focus { 
+  border-color:#666; 
+}
+input[type=text], input[type=password],
+input.text, input.title,
+textarea, select {
+  margin:0.5em 0;
+  /*padding:3px 3px 3px 5px; border:1px solid #c9c9c9; */line-height: 20px;
+}
+select option {
+	padding-right: 15px;
+}
+.news-search-label {
+	clear: both; display: block; float: left; line-height: 25px; width: 75px;
+}
+select {
+	font-size: 13px;
+}
+
+.customStyleSelectBox {
+	padding:3px 3px 3px 5px; border:1px solid #c9c9c9; line-height: 20px;
+}
+#company-dropdown {
+	width: 220px;
+}
+
+.customStyleSelectBox.changed {
+/* You can use this if you want a different style after user has made a selection */
+}
+
+/* on the next line we add a down arrow on the right to indicate that it is a select box */
+.customStyleSelectBoxInner {
+	background:url(../../imgs/global/btn_select_arrow.png) no-repeat center right;
+	height: 20px;
+	min-width: 36px;
+}
+
+input.reset {
+	background: transparent url(../../imgs/global/btn_clear.png) no-repeat top left;
+	width: 83px;
+	height: 30px;
+	text-indent: -9999px;
+	border: 0 none;
+	font-size: 0; line-height: 0; display: block; float: left; /* IE7 fix */
+}
+input.reset:hover { background-position: 0 -30px; }
+input.submit {
+	background: transparent url(../../imgs/global/btn_submit_search.gif) no-repeat top left;
+	width: 83px;
+	height: 30px;
+	text-indent: -9999px;
+	border: 0 none;
+	font-size: 0; line-height: 0; display: block; float: left; /* IE7 fix */
+}
+input.submit:hover { background-position: 0 -30px; }
+input.search {
+	background: transparent url(../../imgs/global/btn_search.png) no-repeat top left;
+	width: 112px;
+	height: 44px;
+	text-indent: -9999px;
+	border: 0 none;
+	position: relative;
+	top: -2px;
+	font-size: 0; line-height: 0; display: inline; /* IE7 fix */
+}
+input.search:hover { background-position: 0 -46px; }
+input.search-keywords {
+	 margin-top:0;
+	 padding:3px 3px 3px 5px;
+	 height:31px;
+	 width:500px;
+	 font-size: 17px;
+	 font-weight: bold;
+	 color: #323232;
+	 * padding-top:7px; /*ie only hack*/
+	 * padding-bottom:0px; /*ie only hack*/
+}
+
+input.text, input.title   {width: 300px; padding:5px;}
+input.title   {font-size:1.5em;}
+textarea      {width: 390px; height: 250px; padding:5px;}
+
+input[type=checkbox], input[type=radio], input.checkbox, input.radio {position:relative; top:.25em;}
+
+form.inline 	{line-height:3;}
+form.inline p	{margin-bottom:0;}
+
+
+/* Success, notice and error boxes
+-------------------------------------------------------------- */
+.error-box, .notice-box, .success-box    {padding: .8em; margin-bottom: 1em; border: 2px solid #ddd;}
+.error-box      {background: #FBE3E4; color: #8a1f11; border-color: #FBC2C4;}
+.notice-box     {background: #FFF6BF; color: #514721; border-color: #FFD324;}
+.success-box    {background: #E6EFC2; color: #264409; border-color: #C6D880;}
+.error-box a    {color: #8a1f11;}
+.notice-box a   {color: #514721;}
+.success-box a  {color: #264409;}
+
+.checkbox {
+	width: 15px; height: 15px;
+	margin: 0 6px 0 0; padding: 0;
+	background: url(../../html/imgs/icons/checkbox.gif) no-repeat;
+	display: block;
+	clear: left; float: left;
+}
+.radio {
+	width: 15px; height: 15px;
+	margin: 0 6px 0 0; padding: 0;
+	background: url(../../html/imgs/icons/radio.gif) no-repeat;
+	display: block;
+	clear: left; float: left;
+}
+.select {
+	position: absolute;
+	border: #111 none;
+	width: 400px; /* With the padding included, the width is the actual width of the image. */
+	height: 31px;
+	padding: 0 0 0 10px;
+	color: #969696;
+	font-weight: 700;
+	font: 12px/21px arial,sans-serif;
+	background: url() no-repeat 0 0;
+	overflow: hidden;
+}
+
+
+/* Fieldset
+-------------------------------------------------------------- */
+.fieldset 	{
+	clear: both; float: left; 
+	margin: 5px 0;
+	width: 100%;
+}
+.fieldset label {
+	float: left; 
+	margin-right: 10px;
+	padding: 0;
+	text-align: right; 
+	width: 10%;
+}
+.fieldset input, .fieldset textarea, .fieldset select {
+	color: #222;
+	font-size: 12px;
+	float: left;
+	margin: 0;
+}
+.fieldset input, .fieldset textarea {padding: 3px 4px;}
+
+.fieldset.error {background: url(../imgs/form_error_icon.png) no-repeat right center;}
+.fieldset.error input {border: 2px solid #e90000; color: #e90000;}
+
+.fieldset.text-set label {padding: 5px 0 0;}
+.fieldset.radio-set label {padding: 2px 0 0;}
+.fieldset.checkbox-set label {padding: 2px 0 0;}
+.fieldset.select-set label {padding: 4px 0 0;}
+.fieldset.textarea-set label {padding: 2px 0 0;}
+.fieldset.terms-set label {
+	font-weight: 400;
+	margin: 0; 
+	padding: 4px 0 0; 
+	text-align: left; 
+	width: auto;
+}
+.fieldset.terms-set input {margin-right: 10px; padding: 0;}
+.fieldset.radio-set input, .fieldset.checkbox input {padding: 0;}
+
+
+/* Form-Btns
+-------------------------------------------------------------- */
+.form-btns {clear: both; float: left;}
+.form-btns a.btn, .form-btns input {
+	background: none;
+	color: #3366CC;
+	display: block;
+	border: #fff none;
+	font-size: 12px;
+	float: left;
+	margin: 0; padding: 0;
+	text-align: center;
+	text-decoration: none;
+	/* Uncomment when using img
+	background: url(../imgs/btns.gif) no-repeat 0 0;
+	overflow: hidden;
+	text-indent: -9999em;
+	*/
+}
+.form-btns a:hover.btn, .form-btns input:hover {
+	color: #c33;
+	text-decoration: underline;
+}
