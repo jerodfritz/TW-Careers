@@ -63,12 +63,28 @@ include '../includes/head.php';
                    </div>
                  </div>
                  <div class="content-width">
-                   <div class="third-width-box third-width-box-first">
-                   </div>
-                   <div class="third-width-box">
-                   </div>
-                   <div class="third-width-box third-width-box-last">
-                   </div>
+                   <button class="third-width-box third-width-box-first">
+                     <div class="inner">
+                       <div class="blue-highlight">Content. Company. Innovations.</div>
+                       Learn more about why Time Warner is an<br/>
+                       employer of choice.
+                     </div>
+                   </button>
+                   <button class="third-width-box third-width-box-center">
+                     <div class="inner">
+                       Stay up to date on the latest recruitment<br/>
+                       activitied and featured job opportunities.
+                     </div>
+                   </button>
+                   <button class="third-width-box third-width-box-last">
+                     <div class="inner">
+                       <img src="<?php print $dir ?>images/buttons/arrow.png" class="connect-button" title="Stay Connected Bullet Arrow" alt="Stay Connected Bullet Arrow" />
+                       <a href="http://www.facebook.com/TimeWarner" target="_blank" title="Connect Facebook" ><img src="<?php print $dir ?>images/buttons/facebook.png" class="connect-button" title="Connect Facebook" alt="Connect Facebook" /></a>
+                       <a href="http://www.youtube.com/user/TimeWarnerCable" target="_blank" title="Connect YouTube" ><img src="<?php print $dir ?>images/buttons/youtube.png" class="connect-button" title="Connect YouTube" alt="Connect YouTube" /></a>
+                       <a href="https://twitter.com/twxcorp" target="_blank" title="Connect Twitter" ><img src="<?php print $dir ?>images/buttons/twitter.png" class="connect-button" title="Connect Twitter" alt="Connect Twitter" /></a>
+                       <a href="http://www.linkedin.com/company/time-warner-inc." target="_blank" title="Connect LinkedIn" ><img src="<?php print $dir ?>images/buttons/linkedin.png" class="connect-button" title="Connect LinkedIn" alt="Connect LinkedIn" /></a>
+                     </div>
+                   </button>
                  </div>
             </div>
         </div>
