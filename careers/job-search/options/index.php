@@ -1,4 +1,5 @@
 <?
+header ("Content-Type:text/xml");
 include_once('./classes/simple_html_dom.php');
 
 $cookie_jar = tempnam('/tmp','cookie');
@@ -42,13 +43,10 @@ addOption($form,$doc,$root,'Industries','Industry','23702__FORMTEXT7',23702);
 addOption($form,$doc,$root,'Interests','Interest','11524__FormText3',11524);
 addOption($form,$doc,$root,'Types','Type','11512__FormText2',11512);
 
-$xml = print $doc->saveXml();
+$xml = $doc->saveXml();
 $f = "options.xml";
 $fh = fopen($f, 'w');
 fwrite($fh, $xml);
 // remove the cookie jar
 unlink($cookie_jar) or die("Can't unlink $cookie_jar");
-header ("Content-Type:text/xml");  
 print $xml;
-
-
