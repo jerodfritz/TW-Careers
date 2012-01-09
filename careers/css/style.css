@@ -16,11 +16,15 @@ General
 
 #breadcrumb {
   width: 980px;
-  margin: 12px auto 0
+  margin: 12px auto 0;
+  height: 26px;
 }
-.content-holder {
+.content-holder{
+  width: 100%;
+}
+#carousel-bg {
 	width:100%;
-	background:url('../carousel/images/bg_carousel.jpg') repeat-x center 28px #fff;
+	background:url('../carousel/images/bg_carousel.jpg') no-repeat center 0px #000;
 	position:relative;
 	-webkit-user-select: none;
 	-khtml-user-select: none;
