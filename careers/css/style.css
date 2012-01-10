@@ -101,10 +101,15 @@ Boxes
   margin-top: 12px;
   height: 30px;
 }
+.bottom-boxes {
+  margin-top: 26px;
+  height: 145px;
+  
+}
 .third-width-box {
   width: 317px;
   height: 130px;
-  margin: 26px 7px 15px;
+  margin: 0 7px;
   float: left;
 	position: relative;
 	border: 0; 
@@ -112,25 +117,37 @@ Boxes
 	overflow: visible; /* removes extra side padding in IE */
 }
 .third-width-box-first {
-  background: url(../images/bg_why_tw.jpg) no-repeat 0 0 transparent;
+  background: url(../images/whytw.jpg) no-repeat 0 0 transparent;
   margin-left: 0;
 }
+#third-width-box-first.hover {
+  background-position: 0 -130px;
+}
 .third-width-box-center {
-  background: url(../images/bg_job_spotlight.jpg) no-repeat 0 0 transparent;
+  background: url(../images/spotlight.jpg) no-repeat 0 0 transparent;
+}
+#third-width-box-center.hover {
+  background-position: 0 -130px;
 }
 .third-width-box-last {
-  background: url(../images/bg_stay_connected.jpg) no-repeat 0 0 transparent;
+  background: url(../images/stayconnected.jpg) no-repeat 0 0 transparent;
   margin-right: 0;
 }
-.third-width-box .inner {
+#third-width-box-last.hover {
+  background-position: 0 -130px;
+}
+.third-width-box .wrapper {
   text-align: left;
-  padding: 50px 20px 0;
+  padding: 0px 25px;
   font-size: 13px;
   color: #656565;
   height: 130px;
   line-height: 1.6em;
 }
-.third-width-box-first .inner {
+.third-width-box .wrapper .inner {
+  padding-top: 50px;
+}
+.third-width-box-first .wrapper .inner {
   padding-top: 41px;
 }
 .third-width-box .blue-highlight {

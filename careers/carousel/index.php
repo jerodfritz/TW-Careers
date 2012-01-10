@@ -30,7 +30,7 @@
                 width:720px;
                 margin-left:auto;
                 margin-right:auto;
-                position:relative;
+                position:absolute;
                 height:388px;
                
             }

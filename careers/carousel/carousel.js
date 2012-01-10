@@ -748,6 +748,7 @@ var loadImage = function ($image, src, callback) {
                     });
                     self.caro.stopped();
                 });
+                return false;
             })
         }
     });

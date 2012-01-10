@@ -46,12 +46,12 @@ include '../includes/head.php';
                    <div class="search-and-login">
                      <div class="search">
                        <div class="inner">
-                         <form class="search-form" action="job-search/" method="get">
+                         <form class="search-form" action="job-search/" id="keyword-search-form" method="get">
                             <label for="search-keywords">Keywords</label>
                             <input type="text" name="questions[kq_1158]" value="" id="search-keywords">
-                            <button value="submit" class="black"><span>Submit</span></button>
+                            <button value="submit" class="black" onclick='$("#keyword-search-form").submit()'><span>Submit</span></button>
                          </form>
-                         <button value="Advanced Search" class="grey"><span>Advanced Search</span></button>
+                         <button value="Advanced Search" href="job-search" class="grey"><span>Advanced Search</span></button>
                        </div>
                      </div>
                      <div class="login">
@@ -62,31 +62,31 @@ include '../includes/head.php';
                      </div>
                    </div>
                  </div>
-                 <div class="content-width">
-                   <button class="third-width-box third-width-box-first">
-                     <div class="inner">
+                 <div class="content-width"><div class="bottom-boxes"> <!-- begin boxes -->
+                   <button id="third-width-box-first" class="third-width-box third-width-box-first" href="http://www.timewarner.com/careers/working-with-us/why-time-warner/">
+                     <div class="wrapper"><div class="inner">
                        <div class="blue-highlight">Content. Company. Innovations.</div>
                        Learn more about why Time Warner is an<br/>
                        employer of choice.
-                     </div>
+                     </div></div>
                    </button>
-                   <button class="third-width-box third-width-box-center">
-                     <div class="inner">
+                   <button id="third-width-box-center" class="third-width-box third-width-box-center" href="http://www.timewarner.com/careers/working-with-us/stay-connected/">
+                     <div class="wrapper"><div class="inner">
                        Stay up to date on the latest recruitment<br/>
                        activitied and featured job opportunities.
-                     </div>
+                     </div></div>
                    </button>
-                   <button class="third-width-box third-width-box-last">
-                     <div class="inner">
+                   <button id="third-width-box-last" class="third-width-box third-width-box-last">
+                     <div class="wrapper"><div class="inner">
                        <img src="<?php print $dir ?>images/buttons/arrow.png" class="connect-button" title="Stay Connected Bullet Arrow" alt="Stay Connected Bullet Arrow" />
                        <a href="http://www.facebook.com/TimeWarner" target="_blank" title="Connect Facebook" ><img src="<?php print $dir ?>images/buttons/facebook.png" class="connect-button" title="Connect Facebook" alt="Connect Facebook" /></a>
                        <a href="http://www.youtube.com/user/TimeWarnerCable" target="_blank" title="Connect YouTube" ><img src="<?php print $dir ?>images/buttons/youtube.png" class="connect-button" title="Connect YouTube" alt="Connect YouTube" /></a>
                        <a href="https://twitter.com/twxcorp" target="_blank" title="Connect Twitter" ><img src="<?php print $dir ?>images/buttons/twitter.png" class="connect-button" title="Connect Twitter" alt="Connect Twitter" /></a>
                        <a href="http://www.linkedin.com/company/time-warner-inc." target="_blank" title="Connect LinkedIn" ><img src="<?php print $dir ?>images/buttons/linkedin.png" class="connect-button" title="Connect LinkedIn" alt="Connect LinkedIn" /></a>
-                     </div>
+                     </div></div>
                    </button>
                  </div>
-            </div>
+            </div></div> <!-- end boxes -->
         </div>
          <?php include $basePath . 'includes/structure/sticky-footer-careers.php'; ?>
     </div>
