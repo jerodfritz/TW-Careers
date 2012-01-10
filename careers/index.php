@@ -48,7 +48,7 @@ include '../includes/head.php';
                        <div class="inner">
                          <form class="search-form" action="job-search/" method="get">
                             <label for="search-keywords">Keywords</label>
-                            <input type="text" name="search-keywords" value="" id="search-keywords">
+                            <input type="text" name="questions[kq_1158]" value="" id="search-keywords">
                             <button value="submit" class="black"><span>Submit</span></button>
                          </form>
                          <button value="Advanced Search" class="grey"><span>Advanced Search</span></button>

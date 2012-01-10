@@ -9,7 +9,7 @@ $dir = '/careers/job-search/';
 
 $stylesheets = array(
   $dir.'css/jquery.multiselect.css', 
-  'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/themes/flick/jquery-ui.css',
+  'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css',
   $dir.'css/job-search.css', );
 
 $javascripts = array(
@@ -20,14 +20,13 @@ $javascripts = array(
   
 require_once ('../../includes/head.php');
 require_once ("classes/KenexaSearch.class.php");
-
 $ks = new KenexaSearch();
 
 // Do we have any question inputs?
 if (isset($_REQUEST['questions'])) {
     // Add each one to the search.
     foreach ($_REQUEST['questions'] as $key => $value) {
-        if ($value !== "") {
+        if ($value !== "" ) {	// Ignore empty fields (should not have received any).
             $qId = substr($key, strpos($key, '_') + 1);    // Get the number part of the input name (the questionId).            
             $ks->addQuestion($qId, $value);
         }
@@ -45,9 +44,15 @@ ob_start();
 if (!$isAjax) {
     // Create a bunch of inputs based on the big XML file.
     echo "<form id='searchForm' action = 'index.php' method='POST'>";
+    echo '<div id="location-selects">'.
+            '<p>Select desired location:</p>'.
+            '<select id="country-select" ></select>'.
+            '<select id="state-select" class="loc-select" size="6" multiple="multiple"></select>'.
+            '<select id="city-select" class="loc-select" size="6" multiple="multiple"></select>'.
+        '</div>';    
     $fields = $ks->getFields();
     foreach ($fields as $key => $field) {
-        $keyId = 'kenexaq' . '_' . $key;
+        $keyId = 'kq' . '_' . $key;
         $label = "<label class='kenexa-label' for='$keyId'>" . $field['Name'] . "</label>";
         $type = strtolower($field['Type']);
         switch ($type) {
@@ -60,7 +65,7 @@ if (!$isAjax) {
                     echo "<input type=\"hidden\" class='kenexa-question' id=\"$keyId\"  name='questions[$keyId]'></input><br/>";
                 }else {
                     echo "$label<select class='kenexa-question' id=\"$keyId\"  name='questions[$keyId]' >";
-                    echo "<option value='*'>Any</option>";
+                    echo "<option value=''>Any</option>";
                     foreach ($field['options'] as $option) {
                         echo "<option>{$option['Code']}</option>";
                     }
@@ -91,7 +96,7 @@ if (!$isAjax) {
       }
      */
     echo "<input id ='ajaxSubmit' type='button' value='Search Jobs'></form>";
-
+	echo "<div id='search-history'><strong>Previous searches:</strong><br/></div>";
     echo "<div id='results'>";
 }
 
@@ -162,8 +167,7 @@ ob_end_clean();
 		<div id="content">
 			<div class="content-width">
 				<?php include $basePath . 'includes/structure/breadcrumb.php'; ?>
-				<div id="">
-                    <h1>Careers</h1>				
+                <h1>Careers</h1>				
 				<div id="careers-advanced-search">
 					<div id="ajax-loader"><img src="<?php print $dir; ?>images/ajax-loader.gif"/></div>
 					<?php echo $content; ?>		

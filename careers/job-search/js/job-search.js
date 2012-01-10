@@ -1,14 +1,14 @@
 $(function() {
-      var $locationWidget = $(
+/*
+var $locationWidget = $(
         '<div id="location-selects">'+
             '<p>Select desired location:</p>'+
             '<select id="country-select" ></select>'+
             '<select id="state-select" class="loc-select" size="6" multiple="multiple"></select>'+
             '<select id="city-select" class="loc-select" size="6" multiple="multiple"></select>'+
         '</div>');
-        $locationWidget.insertAfter('#kenexaq_1140');
-        
-       // alert($('#kenexaq_1140').length);
+        $locationWidget.insertAfter('#kq_1140');
+*/        
         var createLocationSelects = function() {
             // Current selected country.
             var currentCountry,
@@ -25,7 +25,13 @@ $(function() {
                 }
                 $('#state-select').html(str);
                 $('#state-select').val("All");  // Select the first.
-                $('#state-select').multiselect("destroy").multiselect({header:false,selectedText:'States'});
+                $('#state-select').multiselect("destroy").multiselect({header:false,selectedText:function(numChecked, numTotal, checkedItem){
+			if(numChecked>1){
+        return numChecked + ' of ' + numTotal + ' checked';
+      } else { 
+        return $(checkedItem).attr("title");
+      }
+		}});
             },
             
             // Fills the cities widged based on states.
@@ -49,7 +55,13 @@ $(function() {
                 }
                 $('#city-select').html(str);
                 $('#city-select').val("All");   // Select the first.
-                $('#city-select').multiselect("destroy").multiselect({header:false,selectedText:'Cities'});
+                $('#city-select').multiselect("destroy").multiselect({header:false,selectedText:function(numChecked, numTotal, checkedItem){
+			if(numChecked>1){
+        return numChecked + ' of ' + numTotal + ' checked';
+      } else { 
+        return $(checkedItem).attr("title");
+      }
+		}});
             },
             // Setup initial widgets, defaulting to 1st country.		
             str="";
@@ -75,7 +87,13 @@ $(function() {
                 // Default to all states if nothing selected.
                 if (!$(evt.target).val()) {
                     $(evt.target).val("All");
-                    $('#state-select').multiselect("destroy").multiselect({header:false,selectedList:1,selectedText:"States"});
+                    $('#state-select').multiselect("destroy").multiselect({header:false,selectedText:function(numChecked, numTotal, checkedItem){
+			if(numChecked>1){
+        return numChecked + ' of ' + numTotal + ' checked';
+      } else { 
+        return $(checkedItem).attr("title");
+      }
+		}});
                 }
                 fillCities(currentCountry,$(evt.target).val());	
             });
@@ -83,12 +101,18 @@ $(function() {
                 // Default to all cities if nothing selected.
                 if (!$(evt.target).val()) {
                     $(evt.target).val("All");
-                    $('#city-select').multiselect("destroy").multiselect({header:false,selectedText:"Cities"});
+                    $('#city-select').multiselect("destroy").multiselect({header:false,selectedText:function(numChecked, numTotal, checkedItem){
+			if(numChecked>1){
+        return numChecked + ' of ' + numTotal + ' checked';
+      } else { 
+        return $(checkedItem).attr("title");
+      }
+		}});
                 }
             });	
         }();
         
-        $('#country-select').multiselect({multiple:false,header:false,selectedList:1});
+        $('#country-select').multiselect({multiple:false,header:false,selectedList:1,selectedText:"Country"});
 
         // Creates a search string based on the location inputs,
         // in CSV format for the Kenexa query value.
@@ -111,17 +135,27 @@ $(function() {
         
 				
         var ajaxBusy = false;
+		var numSearches = 0;
         $('#ajaxSubmit').bind('click',function(){
             // Fill in the location input from the value of the special location widgets.
-            $('#kenexaq_1140').val(createLocSearchCSV());
-            var   params = "";
+           
             if(ajaxBusy) {
                 return;
             }
+			
+            var   params = "";
+			$('#kq_1140').val(createLocSearchCSV());
             ajaxBusy = true;
+			
             $('.kenexa-question',$('#searchForm')).each(function(){
-                params += $(this).attr('name') +'=' + $(this).val() + "&";
+				// Only bother with inputs that have a value.
+				if ($(this).val() != "" )
+					params += $(this).attr('name') +'=' + $(this).val() + "&";
             });
+			
+            numSearches++;
+            $('#search-history').append("<a target='_blank' href='" + window.location +"?" +params +"'>Search #" + numSearches + "</a><br/>");
+			
             $('#ajax-loader').css('display','block');
             $('#results').html("<hr/>");
             $.ajax({
