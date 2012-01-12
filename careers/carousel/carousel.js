@@ -227,6 +227,18 @@
             $('.caro-shadow').css({display:'block'}).animate({opacity:1},{queue:false,duration:1500});
              
         },
+        deleteReflections:function() {
+            $('.reflection').remove();
+        },
+        createReflections:function() {
+            this.$caroImages.each(
+                function(){
+                    var c = DomObj.getThis($(this));
+                    c.createReflection();
+                    //$('.reflection',c.$obj).css('opacity',0.25);
+                }
+            );
+        },
         // Called when carousel stops.
         stopped: function(){
             var self = this;
@@ -375,10 +387,12 @@
             //console.log(this.animYOffset);
         },
         hide: function() {
-            this.$obj.animate({opacity:0},{duration:250,queue:false});
+            //this.$obj.animate({opacity:0},{duration:250,queue:false});
+            this.$obj.css('display','none');
         },
         show: function() {
-            this.$obj.animate({opacity:1},{duration:250,queue:false});
+            //this.$obj.animate({opacity:1},{duration:250,queue:false});
+            this.$obj.css('display','block');
         }
     });  
 
@@ -396,14 +410,20 @@ function Reflection(img, reflHeight, opacity) {
         //this.element = reflection = parent.append().find(':last')[0];
     if (!reflection.getContext && $.browser.msie) {
        
-        $reflection = $("<img class='reflection' style='position:absolute'/>");
+        $reflection = $("<img class='reflection' style='position:absolute;'/>");
         reflection = $reflection[0];
         $reflection.attr('src',img.src);
+        //opacity=1;
         reflection.style.filter = "flipv progid:DXImageTransform.Microsoft.Alpha(opacity=" + 
             (opacity * 100) + ", style=1, finishOpacity=0, startx=0, starty=0, finishx=0, finishy=" +
             (8) + ")";
                 
         $parent.append($reflection);
+        $reflection.css({
+                width: imageWidth //,
+        //        //height: reflHeight
+        });
+
 
     } else {
         
@@ -471,12 +491,14 @@ var loadImage = function ($image, src, callback) {
 
 
     var CaroImage = function($par, t,slideData,caro) {
+    // '<img class="caro-shadow" style="position:absolute;" src="images/shadow.png" />' +
         var $obj = $('<div class="caro-image" style="position:absolute;">'+ 
                         '<div class="caro-shadow" style="position:absolute"  />' +
                         '<img class="caro-img" style="position:absolute" src="' + slideData.image + '"/>' +
+                        //'<img class="caro-dim" style="position:absolute;" src="images/dim-overlay.png?x=1" />' +
                         '</div>');
         var self = this;
-        if(!caro.isTouch) $obj.append('<img class="caro-dim" style="position:absolute;" src="carousel/images/dim-overlay.png?x=1" />');
+        if(!caro.isTouch) $obj.append('<img class="caro-dim" style="position:absolute;" src="/careers/carousel/images/dim-overlay3.png?x=3" />');
         DomObj.call(this, $obj); 
         //c.setScale(1-size);
         this.caro = caro;
@@ -500,7 +522,8 @@ var loadImage = function ($image, src, callback) {
            // console.log(self.orgWidth + " "+self.orgHeight + " " +self.t);
             self.imageLoaded = true;
             self.update(0);
-            self.$reflection = Reflection(self.$image[0],32,0.25);
+           // self.$reflection = Reflection(self.$image[0],32,0.25);
+            self.createReflection();
          });
         // Bring to front? 
         $obj.bind('click',function(){
@@ -519,18 +542,25 @@ var loadImage = function ($image, src, callback) {
     };
     CaroImage.prototype = extend(DomObj, {
         
+        createReflection: function() {
+            var self = this;
+            self.$reflection = Reflection(self.$image[0],32,0.25);
+            self.$reflection.css('top',self.$obj.height());
+            
+        },
         bindEvents: function() {
             
             var self = this;
             this.$obj.unbind('mouseover mousemove mouseout');
             this.$obj.bind('mouseover mousemove mouseout',{c:this},function(event){  
                if(self.caro.isTouch) return;
+               // Only interested if over actual image, not reflection.
                if ($(event.target).hasClass('reflection')) return false; 
                if (self.hasHover) return false;   
                if (event.type=='mouseover' ) {
                     //self.$image.trigger(evt.type);
                     // Fade dim back in on other tiles.
-                   $('.caro-dim',self.caro.$obj).not(self.$obj).animate({opacity:1},{queue:false,duration:100});
+                   $('.caro-dim',self.caro.$obj).not(self.$obj).animate({opacity:0.5},{queue:false,duration:100});
                    // Fade out dim on this tile.
                    self.$dim.animate({opacity:0},{queue:false,duration:100});
                 }else
@@ -541,7 +571,7 @@ var loadImage = function ($image, src, callback) {
                 }
                 // If front item, init hover menu.
                 if ( !self.caro.interval && self.isFront() ) {
-                    // Only interested if over actual image, not reflection.
+                    
                    
                     var c=event.data.c;
                     if (c.caro.hidden) return false;
@@ -627,7 +657,7 @@ var loadImage = function ($image, src, callback) {
         //alert('xx');
       //  if($('.caro-hover-menu',caroImage.$obj.parent()).length) return;
         var $obj = 
-            $('<div class = "caro-hover-menu" style="background-image:url(carousel/images/blank.png);">'+
+            $('<div class = "caro-hover-menu" style="background-image:url(images/blank.png);">'+
             '</div>');
         DomObj.call(this, $obj);
         this.setup(caroImage,caro);
@@ -672,8 +702,9 @@ var loadImage = function ($image, src, callback) {
             
             this.$obj.bind('click', function(){
                self.caro.hidden = true;
+               self.caro.deleteReflections();
                new CaroClickMenu(caroImage,self.caro);
-               caroImage.$obj.trigger('mouseout'); // remove dims.
+               caroImage.$obj.trigger('mouseout'); // remove dims.               
                //console.lof(self.caro.$caroImages.length);
                self.caro.$caroImages.animate({opacity:0},500);               
                // removal of hover menu handled by delegated mousedown event handler in Caro              
@@ -705,8 +736,8 @@ var loadImage = function ($image, src, callback) {
             caro.wheel.hide();
             this.caroImage = caroImage;  
             this.$shadow = $('.shadow',this.$obj);
-            this.$reflection = Reflection($('img',this.$obj)[0],32,0.25);
-            this.$reflection.css('left','0px');
+            //this.$reflection = Reflection($('img',this.$obj)[0],32,0.25);
+            //this.$reflection.css({left:0,top:300});
             this.caro = caro;
             var self = this,
                 $obj;
@@ -715,6 +746,9 @@ var loadImage = function ($image, src, callback) {
             var left = parseInt(caroImage.$obj.css('left'));
             var width = parseInt(caroImage.$obj.css('width'));
             this.$shadow.css({width:width,height:parseInt($('img',this.$obj).css('height'))-11});
+            this.$reflection = Reflection($('img',this.$obj)[0],32,0.25);
+            this.$reflection.css({left:0,top:parseInt($('img',this.$obj).css('height'))});
+            
             this.$obj.css({
                 left: left,
                 top: caroImage.$obj.css('top')
@@ -725,7 +759,7 @@ var loadImage = function ($image, src, callback) {
                 caroImage.slideData.mainHTML +
                 '</div>');
             $('.text-hider',this.$obj).append($obj);
-            this.$button = $('<div class="button" style="position:absolute;top:58px;left:-129px;"><a href="#"><  Go Back</a></div>');
+            this.$button = $('<div class="button" style="position:absolute;top:58px;left:-100px;"><a href="#"><  Go Back</a></div>');
             $obj.css({left: width-$obj.outerWidth()}).delay(1000).animate({left:width},500,
                  function(){
                     self.$obj.parent().append(self.$button);
@@ -740,11 +774,19 @@ var loadImage = function ($image, src, callback) {
                 
                 $('.click-menu-text',self.$obj).animate({left:width-$obj.outerWidth()},500);    // hide text.
                 self.$obj.animate({left:left},500,function(){           // Move to centre again.
-                    caro.$caroImages.animate({opacity:1},500,function(){    // fade carousel back in.
-                        self.caro.hidden = false;
-                        self.caro.stopped();
-                        self.caro.wheel.show();
-                        self.destroy();
+                    var called = false;
+                    caro.$caroImages.animate({opacity:1},500,function()
+                    {    // fade carousel back in.
+                        $(this).css('filter','');
+                        if(!called) {
+                            
+                            self.caro.hidden = false;
+                            self.caro.stopped();
+                            self.caro.wheel.show();
+                            self.caro.createReflections();
+                            self.destroy();
+                            called = true;
+                        }
                     });
                     self.caro.stopped();
                 });
@@ -797,4 +839,4 @@ var loadImage = function ($image, src, callback) {
             });
         }
     });  
-    */ 
+    */
