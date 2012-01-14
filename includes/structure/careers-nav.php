@@ -4,11 +4,13 @@
 			<li<?php if (strpos($_SERVER['REQUEST_URI'], 'careers/working-with-us/') !== false) echo ' class="thispage"'; ?>><a href="<?php echo $baseUrl; ?>careers/working-with-us/" class="careers">Working With Us</a>
 					<div class="ancilary-nav hidden">
                     		<ul class="ancilary-nav-black" style="margin-top:4px;">
+							<li><a href="<?php echo $baseUrl; ?>careers/working-with-us/why-time-warner/">Why Time Warner</a></li>
 							<li><a href="<?php echo $baseUrl; ?>careers/working-with-us/benefits/">Benefits</a></li>
 							<li><a href="<?php echo $baseUrl; ?>careers/working-with-us/career-development/" >Career Development</a></li>
 							<li><a href="<?php echo $baseUrl; ?>careers/working-with-us/diversity/" >Diversity</a></li>
 							<li><a href="<?php echo $baseUrl; ?>careers/working-with-us/going-green/" >Going Green</a></li>
 							<li><a href="<?php echo $baseUrl; ?>careers/working-with-us/our-stories/" >Our Stories</a></li>
+                            <li><a href="<?php echo $baseUrl; ?>careers/working-with-us/stay-connected/" >Stay Connected</a></li>
 						</ul>
 					</div>
 			</li>
@@ -16,8 +18,11 @@
             <div class="ancilary-nav hidden">
 						<ul class="ancilary-nav-black" style="margin-top:4px;">
 							<li><a href="<?php echo $baseUrl; ?>careers/areas-of-operation/our-divisions/">Our Divisions</a></li>
+							<li><a href="<?php echo $baseUrl; ?>careers/areas-of-operation/job-spotlight/">Job Spotlight</a></li>
 							<li><a href="<?php echo $baseUrl; ?>careers/areas-of-operation/industries/" >Industries</a></li>
 							<li><a href="<?php echo $baseUrl; ?>careers/areas-of-operation/interests/" >Interests</a></li>
+							<li><a href="<?php echo $baseUrl; ?>careers/areas-of-operation/internships/">Internships</a></li>
+							<li><a href="<?php echo $baseUrl; ?>careers/areas-of-operation/locations/">Locations</a></li>
 						</ul>
 					</div>
             </li>

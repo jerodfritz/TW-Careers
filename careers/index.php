@@ -13,6 +13,7 @@ $stylesheets = array (
 
 $javascripts = array (
   'http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js',
+  '/js/global.js',
   $dir . 'js/jquery.infieldlabel.min.js',
   $dir . 'carousel/carousel.js',
   $dir . 'js/script.js',
@@ -73,7 +74,7 @@ include '../includes/head.php';
                    <button id="third-width-box-center" class="third-width-box third-width-box-center" href="http://www.timewarner.com/careers/working-with-us/stay-connected/">
                      <div class="wrapper"><div class="inner">
                        Stay up to date on the latest recruitment<br/>
-                       activitied and featured job opportunities.
+                       activities and featured job opportunities.
                      </div></div>
                    </button>
                    <button id="third-width-box-last" class="third-width-box third-width-box-last">
@@ -90,5 +91,6 @@ include '../includes/head.php';
         </div>
          <?php include $basePath . 'includes/structure/sticky-footer-careers.php'; ?>
     </div>
+<?php include $basePath . 'includes/careers-scripts.php'; ?>
 </body>
 </html>

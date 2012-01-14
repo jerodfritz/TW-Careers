@@ -1,5 +1,7 @@
 					<h4>Related Articles</h4>
 					<ul class="related-articles">
+                    <li><span class="date">September 11, 2011</span><br />
+							<a class="article-title" href="http://www.nytimes.com/2011/09/12/business/media/campaign-trains-viewers-for-tv-everywhere.html?_r=1&scp=1&sq=Campaign%20Trains%20Viewers%20for%20TV%20Everywhere&st=Search" target="_blank">Campaign Trains Viewers for 'TV Everywhere'</a></li>
                     <li><span class="date">August 3, 2011</span><br />
 							<a class="article-title" href="http://www.wired.com/epicenter/2011/08/time-warner-platform-push/" target="_blank">Time Warner Bringing Digital Magazines, HBO to More Platforms</a></li>
                     <li><span class="date">June 7, 2011</span><br />

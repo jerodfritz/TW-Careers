@@ -6,12 +6,12 @@
                     
                     
 <h1>70</h1> <h2>Million</h2>
-					<p>The TV Everywhere initiative, spearheaded by Time Warner, is now available in about 70 million homes</p>
+					<p>The TV Everywhere initiative, spearheaded by Time Warner, is now available in about 70 million homes, and we expect to reach about 80 million by the end of the year.</p>
 					
 					
 					
 <h1>30</h1> <h2>%</h2>
 					<p>Time Warner has a large international presence which contributes about 30% of our overall revenue</p>
-                    <p><i>(As of May 2011)</i></p>
+                    <p><i>(As of November 2011)</i></p>
 					
 					

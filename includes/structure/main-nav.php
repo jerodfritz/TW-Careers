@@ -83,12 +83,15 @@
 						<div class="dropdown-holder hidden"><div class="tertiary-nav">
 							<img src="<?php echo $baseUrl; ?>imgs/global/nav/dropdown_top.gif" class="" alt="" border="0" />
 							<ul class="ancilary-nav">
-								<li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/leading-responsibly" >Leading Responsibly</a></li> 
-                                <li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/telling-the-worlds-stories" >Telling the World's Stories</a></li>                            
-								<li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/greening-our-business" >Greening Our Business</a></li>
-								<li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/supporting-our-workforce" >Supporting Our Workforce</a></li>
+								<li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/diversity" >Diversity</a></li>
+								<li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/content-responsibility" >Content Responsibility</a></li>
 
-								<li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/investing-in-our-communities" >Investing In Our Communities</a></li>
+								<li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/ethics" >Ethics</a></li>
+								<li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/political-activities" >Political Activities</a></li>
+								<li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/global-supply-chain" >Global Supply Chain</a></li>
+                                <li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/sustainability" >Sustainability</a></li>
+								<li><a href="<?php echo $baseUrl; ?>our-company/corporate-responsibility/in-the-community" >In The Community</a></li>
+                                
 							</ul>
 							<img src="<?php echo $baseUrl; ?>imgs/global/nav/dropdown_btm.gif" class="btm" alt="" border="0" />
 						</div></div>

@@ -3,7 +3,7 @@
 <br/>
                         <br/>
                         <h2>&nbsp;Approx.</h2> <h1>85</h1><h2>&nbsp;Million</h2>
-						<p>HBO and Cinemax premium pay and basic cable subscribers worldwide (includes unconsolidated joint ventures) as of May 2011</p>
+						<p>HBO and Cinemax premium pay and basic cable subscribers worldwide (includes unconsolidated joint ventures) (2011)</p>
 						
 						<h1>19</h1>
 						<p>63rd Annual Primetime Emmy Awards (2011)</p>

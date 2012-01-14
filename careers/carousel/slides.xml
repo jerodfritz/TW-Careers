@@ -1,10 +1,33 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <slides>
+    <slide>
+        <image>carousel/images/hbo.png</image>
+        <hoverHTML><![CDATA[
+            Learn more about working at HBO
+        ]]></hoverHTML>
+        <mainHTML><![CDATA[
+            <h2>HOME BOX OFFICE</h2>
+            <p>Just as HBO is a company noted for its commitment to excellence in the products and services it delivers to consumers, it makes the extra effort to create a work environment in which fairness, equity, trust, and individual responsibility are valued. The Company believes that talented, dedicated and enthusiastic employees are by far HBO's most valuable asset.</p>
+            <div class='button with-separator'><a href='http://www.timewarner.com/careers/areas-of-operation/our-divisions/hbo/' target="_blank">More Info</a></div><div class='button with-separator'><a href='https://careers.timewarner.com/1033/ASP/TG/cim_searchresults.asp?PartnerId=391&SiteId=36&Function=LinkQuery&LinkId=365' target="_blank">Jobs</a></div>
+        ]]></mainHTML>
+    </slide>
 
+    
+    <slide>
+        <image>carousel/images/time.png</image>
+        <hoverHTML><![CDATA[
+            Learn more about working at Time Inc
+        ]]></hoverHTML>
+        <mainHTML><![CDATA[
+            <h2>TIME INC.</h2>
+            <p>Talent is the cornerstone of Time Inc.'s success and its future. Are you a top performer in search of a culture of excellence and integrity, where the best is expected of you every day and the company gives its best back to you? If the answer is yes, we'd like to know you better.</p>
+            <div class='button with-separator'><a href='http://www.timewarner.com/careers/areas-of-operation/our-divisions/time-inc/' target="_blank">More Info</a></div><div class='button with-separator'><a href='https://careers.timewarner.com/1033/ASP/TG/cim_searchresults.asp?PartnerId=391&SiteId=36&Function=LinkQuery&LinkId=366' target="_blank">Jobs</a></div>
+        ]]></mainHTML>
+    </slide>
     <slide>
         <image>carousel/images/tw.png</image>
         <hoverHTML><![CDATA[
-            Learn more about available careers with Time Warner.
+            Learn more about working at Time Warner Corporate
         ]]></hoverHTML>
         <mainHTML><![CDATA[
             <h2>TIME WARNER COPRORATE</h2>
@@ -14,20 +37,9 @@
     </slide>
 
     <slide>
-        <image>carousel/images/hbo.png</image>
-        <hoverHTML><![CDATA[
-            Learn more about available careers with HBO.
-        ]]></hoverHTML>
-        <mainHTML><![CDATA[
-            <h2>HOME BOX OFFICE</h2>
-            <p>Just as HBO is a company noted for its commitment to excellence in the products and services it delivers to consumers, it makes the extra effort to create a work environment in which fairness, equity, trust, and individual responsibility are valued. The Company believes that talented, dedicated and enthusiastic employees are by far HBO's most valuable asset.</p>
-            <div class='button with-separator'><a href='http://www.timewarner.com/careers/areas-of-operation/our-divisions/hbo/' target="_blank">More Info</a></div><div class='button with-separator'><a href='https://careers.timewarner.com/1033/ASP/TG/cim_searchresults.asp?PartnerId=391&SiteId=36&Function=LinkQuery&LinkId=365' target="_blank">Jobs</a></div>
-        ]]></mainHTML>
-    </slide>
-    <slide>
         <image>carousel/images/turner.png</image>
         <hoverHTML><![CDATA[
-            Learn more about available careers with Turner.
+            Learn more about working at Turner
         ]]></hoverHTML>
         <mainHTML><![CDATA[
             <h2>TURNER BROADCASTING SYSTEM, INC.</h2>
@@ -35,23 +47,11 @@
             <div class='button with-separator'><a href='http://timewarner.com/careers/areas-of-operation/our-divisions/turner-broadcasting-system/' target="_blank">More Info</a></div><div class='button with-separator'><a href='https://careers.timewarner.com/1033/ASP/TG/cim_searchresults.asp?PartnerId=391&SiteId=36&Function=LinkQuery&LinkId=368' target="_blank">Jobs</a></div>
         ]]></mainHTML>
     </slide>
-    
-    <slide>
-        <image>carousel/images/time.png</image>
-        <hoverHTML><![CDATA[
-            Learn more about available careers with Time Inc.
-        ]]></hoverHTML>
-        <mainHTML><![CDATA[
-            <h2>TIME INC.</h2>
-            <p>Talent is the cornerstone of Time Inc.'s success and its future. Are you a top performer in search of a culture of excellence and integrity, where the best is expected of you every day and the company gives its best back to you? If the answer is yes, we'd like to know you better.</p>
-            <div class='button with-separator'><a href='http://www.timewarner.com/careers/areas-of-operation/our-divisions/time-inc/' target="_blank">More Info</a></div><div class='button with-separator'><a href='https://careers.timewarner.com/1033/ASP/TG/cim_searchresults.asp?PartnerId=391&SiteId=36&Function=LinkQuery&LinkId=366' target="_blank">Jobs</a></div>
-        ]]></mainHTML>
-    </slide>
 
     <slide>
         <image>carousel/images/wb.png</image>
         <hoverHTML><![CDATA[
-            Learn more about available careers with Warner Brothers.
+            Learn more about working at Warner Bros.
         ]]></hoverHTML>
         <mainHTML><![CDATA[
             <h2>WARNER BROS. ENTERTAINMENT</h2>

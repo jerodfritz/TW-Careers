@@ -273,7 +273,7 @@ function pageNav($pages, $resultEnd) {
 	} else {
 		$resultString = $resultString . "</div>";
 	}
-	$resultString = $resultString . "<div style=\"font-weight:normal; font-style:italic; font-size:10pt;\">Please note: search returns a maximum of $generalSearchLimit results. Adjust your criteria to see different groups of results.  Search hints: To search for a specific phrase, please use quotation marks.</div>";
+	$resultString = $resultString . "<div style=\"font-weight:normal; font-style:italic; font-size:10pt;\">Please note: search returns a maximum of $generalSearchLimit results. Adjust your criteria to see different groups of results.  Search hints: To search for a specific phrase, please use quotation marks. </div>";
 	
 	print($resultString);
 	if ($pages) {
