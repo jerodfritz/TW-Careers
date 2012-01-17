@@ -22,16 +22,23 @@ require_once ('../../includes/head.php');
 require_once ("classes/KenexaSearch.class.php");
 $ks = new KenexaSearch();
 
-// Do we have any question inputs?
-if (isset($_REQUEST['questions'])) {
-    // Add each one to the search.
-    foreach ($_REQUEST['questions'] as $key => $value) {
-        if ($value !== "" ) {	// Ignore empty fields (should not have received any).
-            $qId = substr($key, strpos($key, '_') + 1);    // Get the number part of the input name (the questionId).            
-            $ks->addQuestion($qId, $value);
-        }
-    }
-  //$ks->addQuestion(KenexaJobQuestions::LOCATION,"Paris - France");
+$questionHash = array(
+    "division" => KenexaJobQuestions::DIVISION,
+    "description" => KenexaJobQuestions::DESCRIPTION,
+    "location" => KenexaJobQuestions::LOCATION,
+    "title" => KenexaJobQuestions::TITLE,
+    "area_of_interest" =>  KenexaJobQuestions::AREA_OF_INTEREST,
+    "industry" => KenexaJobQuestions::INDUSTRY,
+    "position" => KenexaJobQuestions::POSITION_TYPE,
+    "keyword" => KenexaJobQuestions::KEYWORD,
+    "business_unit" => KenexaJobQuestions::BUSINESS_UNIT
+);
+
+
+foreach ($_REQUEST as $key => $value) {
+	if (isset($questionHash[$key])) {		     
+         $ks->addQuestion($questionHash[$key], $value);
+	}
 }
 $isAjax = false;
 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&

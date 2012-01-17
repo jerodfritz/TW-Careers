@@ -231,6 +231,7 @@ Class KenexaJobQuestions {
     const INDUSTRY = 23702;         // Multi select
     const POSITION_TYPE = 11512;    // Single select
     const KEYWORD = 1158;           // Text
+    const BUSINESS_UNIT = 12234;    //
 
 }
 
