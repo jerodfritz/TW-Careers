@@ -498,7 +498,7 @@ var loadImage = function ($image, src, callback) {
                         //'<img class="caro-dim" style="position:absolute;" src="images/dim-overlay.png?x=1" />' +
                         '</div>');
         var self = this;
-        if(!caro.isTouch) $obj.append('<img class="caro-dim" style="position:absolute;" src="/careers/carousel/images/dim-overlay3.png?x=3" />');
+        if(!caro.isTouch) $obj.append('<img class="caro-dim" style="position:absolute;" src="/careers/carousel/images/dim-overlay.png?x=3" />');
         DomObj.call(this, $obj); 
         //c.setScale(1-size);
         this.caro = caro;

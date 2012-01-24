@@ -49,7 +49,7 @@ include '../includes/head.php';
                        <div class="inner">
                          <form class="search-form" action="job-search/" id="keyword-search-form" method="get">
                             <label for="search-keywords">Keywords</label>
-                            <input type="text" name="questions[kq_1158]" value="" id="search-keywords">
+                            <input type="text" name="keywords" value="" id="search-keywords">
                             <button value="submit" class="black" onclick='$("#keyword-search-form").submit()'><span>Submit</span></button>
                          </form>
                          <button value="Advanced Search" href="job-search" class="grey"><span>Advanced Search</span></button>
@@ -57,8 +57,8 @@ include '../includes/head.php';
                      </div>
                      <div class="login">
                        <div class="inner">
-                         <button value="Login" class="blue"><span><a href="https://careers.timewarner.com/1033/ASP/TG/cim_home.asp?partnerid=391&siteid=36" title="Login">Login</a></span></button>
-                         <a href="#">Login</a> to access your profile<br />or <a href="#">create a new account</a>
+                         <button value="Login" class="blue" href="https://careers.timewarner.com/1033/asp/tg/submitnow.asp?partnerid=391&siteid=36&codes=XSNW"><span><a href="https://careers.timewarner.com/1033/asp/tg/submitnow.asp?partnerid=391&siteid=36&codes=XSNW" title="Login">Login</a></span></button>
+                         <a href="https://careers.timewarner.com/1033/asp/tg/submitnow.asp?partnerid=391&siteid=36&codes=XSNW">Login</a> to access your profile<br />or <a href="https://careers.timewarner.com/1033/asp/tg/submitnow.asp?partnerid=391&siteid=36&codes=XSNW">create a new account</a>
                        </div>
                      </div>
                    </div>
