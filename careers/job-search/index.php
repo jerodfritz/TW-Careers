@@ -33,33 +33,22 @@ $questionHash = array(
     "keyword" => KenexaJobQuestions::KEYWORD,
     "business_unit" => KenexaJobQuestions::BUSINESS_UNIT
 );
-
-
-foreach ($_REQUEST as $key => $value) {
-	if (isset($questionHash[$key])) {		     
-         $ks->addQuestion($questionHash[$key], $value);
-	}
-}
-$isAjax = false;
-if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-        strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-    $isAjax = true;
-}
-
-ob_start();
-
-if (!$isAjax) {
+   
+function basicInputs($ks,$questionHash) {    
+    
     // Create a bunch of inputs based on the big XML file.
     echo "<form id='searchForm' action = 'index.php' method='POST'>";
-    echo '<div id="location-selects">'.
-            '<p>Select desired location:</p>'.
-            '<select id="country-select" ></select>'.
-            '<select id="state-select" class="loc-select" size="6" multiple="multiple"></select>'.
-            '<select id="city-select" class="loc-select" size="6" multiple="multiple"></select>'.
-        '</div>';    
     $fields = $ks->getFields();
     foreach ($fields as $key => $field) {
-        $keyId = 'kq' . '_' . $key;
+        $keyId = "";
+        foreach ($questionHash as $qName => $qId) {
+            if ($qId == $key) {
+                $keyId = $qName;
+                break;
+            }                      
+        }
+        // echo " $qId " ;             
+        //$keyId = 'kq' . '_' . $key;
         $label = "<label class='kenexa-label' for='$keyId'>" . $field['Name'] . "</label>";
         $type = strtolower($field['Type']);
         switch ($type) {
@@ -69,9 +58,14 @@ if (!$isAjax) {
                 // If it is the location input, put a hidden one in there,
                 // as this will be change via the special location widget.
                 if($key == KenexaJobQuestions::LOCATION) {
-                    echo "<input type=\"hidden\" class='kenexa-question' id=\"$keyId\"  name='questions[$keyId]'></input><br/>";
+                    echo "<input type=\"hidden\" class='kenexa-question' id=\"$keyId\"  name='$keyId'></input><br/>";
+				    echo '<div id="location-selects">'.
+				            '<select id="country-select" ></select>'.
+				            '<select id="state-select" class="loc-select" size="6" multiple="multiple"></select>'.
+				            '<select id="city-select" class="loc-select" size="6" multiple="multiple"></select>'.
+				        '</div>';                  
                 }else {
-                    echo "$label<select class='kenexa-question' id=\"$keyId\"  name='questions[$keyId]' >";
+                    echo "$label<select class='kenexa-question' id=\"$keyId\"  name='$keyId' >";
                     echo "<option value=''>Any</option>";
                     foreach ($field['options'] as $option) {
                         echo "<option>{$option['Code']}</option>";
@@ -80,17 +74,15 @@ if (!$isAjax) {
                 }
                 break;
             case 'text':
-                echo "$label<input class='kenexa-question' id=\"$keyId\" name='questions[$keyId]'></input><br/>";
+                echo "$label<input class='kenexa-question' id=\"$keyId\" name='$keyId'></input><br/>";
                 break;
             case 'textarea':
-                echo "$label<textarea class='kenexa-question' id=\"$keyId\" name='questions[$keyId]'></textarea><br/>";
+                echo "$label<textarea class='kenexa-question' id=\"$keyId\" name='$keyId'></textarea><br/>";
                 break;
             default:
-                echo "$label<input class='kenexa-question' id=\"$keyId\" name='questions[$keyId]'></input><br/>";
+                echo "$label<input class='kenexa-question' id=\"$keyId\" name='$keyId'></input><br/>";
         }
     }
-
-
     /* 		
       // Create a form and bunch of inputs based on the scraper data.
       $questions = $ks->getOptions();
@@ -107,6 +99,112 @@ if (!$isAjax) {
     echo "<div id='results'>";
 }
 
+function skinInputs($ks,$questionHash) {
+    
+    $inputs = array();
+       // Create a bunch of inputs based on the big XML file.
+    echo "<form id='searchForm' action = 'index.php' method='POST'>";
+    $fields = $ks->getFields();
+    
+    foreach ($fields as $key => $field) {
+        $col="";
+        $keyId = "";
+        foreach ($questionHash as $qName => $qId) {
+            if ($qId == $key) {
+                $keyId = $qName;
+                break;
+            }                      
+        }
+        $type = strtolower($field['Type']);
+        switch ($type) {
+            case 'radio':
+            case 'multi-select':
+            case 'select':
+                // If it is the location input, put a hidden one in there,
+                // as this will be change via the special location widget.
+                if($key == KenexaJobQuestions::LOCATION) {
+                    $col .= "<input type=\"hidden\" class='kenexa-question' id=\"$keyId\"  name='$keyId'></input>";
+				    $col .= '<div id="location-selects">'.
+				            '<select id="country-select" ></select>'.
+				            '<select id="state-select" class="loc-select" size="6" multiple="multiple"></select>'.
+				            '<select id="city-select" class="loc-select" size="6" multiple="multiple"></select>'.
+				        '</div>';                       
+                }else {
+                    $col.= "<select class='kenexa-question' id=\"$keyId\"  name='$keyId' >";
+                    $col .= "<option value=''>Any</option>";
+                    foreach ($field['options'] as $option) {
+                        $col.= "<option>{$option['Code']}</option>";
+                    }
+                    $col.= "</select>";
+                }
+                break;
+            case 'text':
+                $col .= "<input class='kenexa-question' id=\"$keyId\" name='$keyId'></input>";
+                break;
+            case 'textarea':
+                $col .= "<textarea class='kenexa-question' id=\"$keyId\" name='$keyId'></textarea>";
+                break;
+            default:
+                $col .= "<input class='kenexa-question' id=\"$keyId\" name='$keyId'></input>";
+        }
+        $inputs[$key] = $col;
+    }
+    echo "<div id=\"skin-inputs-wrap\">";
+    echo    "<div class=\"skin-inputs-third\">".
+            $inputs[KenexaJobQuestions::DIVISION].
+            $inputs[KenexaJobQuestions::AREA_OF_INTEREST].
+            $inputs[KenexaJobQuestions::KEYWORD].
+            "</div>";
+    echo    "<div class=\"skin-inputs-third\">".
+                $inputs[KenexaJobQuestions::LOCATION].
+                "<input id ='ajaxSubmit' style='float:right;width:100px' type='button' value='Search Jobs'>".
+            "</div>";
+    
+    echo    "<div class=\"skin-inputs-third\">".
+                "<div class=\"inputs-wrap\">".
+                    $inputs[KenexaJobQuestions::INDUSTRY].
+                    $inputs[KenexaJobQuestions::POSITION_TYPE].
+                "</div>".
+            "</div>";
+    echo "</div>";
+    
+    ////////////////////////////////////////
+    echo "</form>";
+    echo "<div id='search-history'><strong>Previous searches:</strong><br/></div>";
+    echo "<div id='results'>";
+}
+
+
+foreach ($_REQUEST as $key => $value) {
+	if (isset($questionHash[$key])) {		     
+         $ks->addQuestion($questionHash[$key], $value);
+	}
+}
+
+/*
+// Do we have any question inputs?
+if (isset($_REQUEST['questions'])) {
+    // Add each one to the search.
+    foreach ($_REQUEST['questions'] as $key => $value) {
+        if ($value !== "" ) {	// Ignore empty fields (should not have received any).
+            $qId = substr($key, strpos($key, '_') + 1);    // Get the number part of the input name (the questionId).            
+            $ks->addQuestion($qId, $value);
+        }
+    }
+}
+ */
+$isAjax = false;
+if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
+        strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
+    $isAjax = true;
+}
+
+ob_start();
+
+
+if (!$isAjax) {
+    skinInputs($ks,$questionHash);
+}
 // Display search results.
 echo "<hr/>";
 
@@ -128,32 +226,11 @@ if ($arr) {
 }
 
 if ($isAjax) {
-    // If ajax, just return the html of the search results.
     ob_end_flush();
     exit();
 }
 // Close the results div.
 echo "</div>";
-
-
-//   ["HotJob"]=>string(2) "No"
-//      ["LastUpdated"]=>
-//      string(11) "22-Dec-2011"
-//      ["JobDescription"]=>
-
-/*
- * ["OtherInformation"]=>
-  object(SimpleXMLElement)#8 (4) {
-  ["TotalRecordsFound"]=>
-  string(2) "32"
-  ["MaxPages"]=>
-  string(1) "1"
-  ["StartDoc"]=>
-  string(1) "1"
-  ["PageNumber"]=>
-  string(1) "1"
-  }
- */
 $content = ob_get_contents();
 ob_end_clean();
 ?>
@@ -180,8 +257,9 @@ ob_end_clean();
 					<?php echo $content; ?>		
 				</div>
 			</div>
-		</div>
-		<?php include $basePath . 'includes/structure/sticky-footer-careers.php'; ?>
-	</div>
+        </div>
+         <?php include $basePath . 'includes/structure/sticky-footer-careers.php'; ?>
+    </div>
+<?php include $basePath . 'includes/careers-scripts.php'; ?>
 </body>
-</html> 
+</html>

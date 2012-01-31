@@ -42,6 +42,75 @@
 	padding:5px;
     border:1px solid #aaa;
 }
+
+#careers-advanced-search #skin-inputs-wrap {
+  width:100%;
+  display:table;
+  padding:0px 30px 0px 30px;
+    background: #bbbbbb; /* Old browsers */
+    background: -moz-linear-gradient(top,  #bbbbbb 0%, #dddddd 99%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bbbbbb), color-stop(99%,#dddddd)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #bbbbbb 0%,#dddddd 99%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #bbbbbb 0%,#dddddd 99%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #bbbbbb 0%,#dddddd 99%); /* IE10+ */
+    background: linear-gradient(top,  #bbbbbb 0%,#dddddd 99%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbbbbb', endColorstr='#dddddd',GradientType=0 ); /* IE6-9 */
+
+}
+/* Set initial width of selects. Will be copied to multiselect. */
+#careers-advanced-search #skin-inputs-wrap select {
+  width:266px;  
+}
+
+#careers-advanced-search .skin-inputs-third {
+  display:table-cell;
+  padding: 10px 10px 10px 10px;
+  text-align: center;
+  vertical-align: top;
+}
+
+/* Multiselect inputs */
+#careers-advanced-search #skin-inputs-wrap input,
+#careers-advanced-search  .ui-multiselect {
+  clear:both;
+  margin-bottom:5px;
+  margin-top:5px;
+  display:block;
+  font-size:11px;
+  border-radius: 15px;
+  padding-left:10px;
+  padding-right:10px;
+  padding-top:4px;
+  padding-bottom:4px;
+  border:1px solid #aaa;
+  /*background-color:#ccc;*/
+  background-image:none;
+
+  background: #dddddd; /* Old browsers */
+
+}
+
+#careers-advanced-search #skin-inputs-wrap .ui-multiselect {
+background: -moz-linear-gradient(top,  #dddddd 1%, #bbbbbb 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#dddddd), color-stop(100%,#bbbbbb)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #dddddd 1%,#bbbbbb 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #dddddd 1%,#bbbbbb 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #dddddd 1%,#bbbbbb 100%); /* IE10+ */
+background: linear-gradient(top,  #dddddd 1%,#bbbbbb 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dddddd', endColorstr='#bbbbbb',GradientType=0 ); /* IE6-9 */
+}
+
+#careers-advanced-search #skin-inputs-wrap input {
+  background-color:#fff;
+  width:224px;
+}
+#careers-advanced-search .ui-multiselect-menu {
+  font-size:11px;
+}
+#careers-advanced-search .inputs-wrap {
+  width:266px;
+}
+
 .content-width {
   width: 980px;
   margin: 0 auto;

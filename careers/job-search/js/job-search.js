@@ -1,5 +1,5 @@
 $(function() {
-       var createLocationSelects = function() {
+var createLocationSelects = function() {
             // Current selected country.
             var currentCountry,
 			
