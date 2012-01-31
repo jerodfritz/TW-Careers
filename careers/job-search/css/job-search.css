@@ -1,6 +1,11 @@
 #careers-advanced-search {
     color: #333;
 }
+
+#careers-advanced-search #results {
+    margin-top:10px;
+}
+
 #careers-advanced-search label.kenexa-label {
 	width:120px;
 	display:inline-block;
@@ -28,33 +33,30 @@
 #careers-advanced-search .loc-select {
 	width: 120px;
 }
-#careers-advanced-search #location-selects {
-	background-color: #eee;
-	padding: 0px 10px 10px 10px;
-	border: 1px solid;
-	margin-bottom: 20px;
-    display:table-cell;
-}
+
 
 #careers-advanced-search #search-history {
-	margin-top:10px;
-	display:table-cell;
-	padding:5px;
+    margin-top:10px;
+    display:table-cell;
+    padding:5px;
     border:1px solid #aaa;
 }
 
 #careers-advanced-search #skin-inputs-wrap {
-  width:100%;
-  display:table;
-  padding:0px 30px 0px 30px;
-    background: #bbbbbb; /* Old browsers */
-    background: -moz-linear-gradient(top,  #bbbbbb 0%, #dddddd 99%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#bbbbbb), color-stop(99%,#dddddd)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #bbbbbb 0%,#dddddd 99%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #bbbbbb 0%,#dddddd 99%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #bbbbbb 0%,#dddddd 99%); /* IE10+ */
-    background: linear-gradient(top,  #bbbbbb 0%,#dddddd 99%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbbbbb', endColorstr='#dddddd',GradientType=0 ); /* IE6-9 */
+    width:920px;
+    display:table;
+    border:2px solid #eee;
+    border-bottom:2px solid #aaa;
+
+    padding: 0px 30px 0px 30px;
+    background: #dfdfdf; /* Old browsers */
+    background: -moz-linear-gradient(top,  #dfdfdf 0%, #f7f7f7 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dfdfdf), color-stop(100%,#f7f7f7)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #dfdfdf 0%,#f7f7f7 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #dfdfdf 0%,#f7f7f7 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #dfdfdf 0%,#f7f7f7 100%); /* IE10+ */
+    background: linear-gradient(top,  #dfdfdf 0%,#f7f7f7 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dfdfdf', endColorstr='#f7f7f7',GradientType=0 ); /* IE6-9 */
 
 }
 /* Set initial width of selects. Will be copied to multiselect. */
@@ -72,44 +74,86 @@
 /* Multiselect inputs */
 #careers-advanced-search #skin-inputs-wrap input,
 #careers-advanced-search  .ui-multiselect {
-  clear:both;
-  margin-bottom:5px;
-  margin-top:5px;
-  display:block;
-  font-size:11px;
-  border-radius: 15px;
-  padding-left:10px;
-  padding-right:10px;
-  padding-top:4px;
-  padding-bottom:4px;
-  border:1px solid #aaa;
-  /*background-color:#ccc;*/
-  background-image:none;
-
-  background: #dddddd; /* Old browsers */
+    clear:both;
+    margin-bottom:15px;
+    margin-top:5px;
+    display:block;
+    font-size:11px;
+    border-radius: 15px;
+    padding-left:10px;
+    padding-right:10px;
+    padding-top:5px;
+    padding-bottom:2px;
+    border:1px solid #aaa;
+    /*background-color:#ccc;*/
+    background-image:none;
 
 }
 
 #careers-advanced-search #skin-inputs-wrap .ui-multiselect {
-background: -moz-linear-gradient(top,  #dddddd 1%, #bbbbbb 100%); /* FF3.6+ */
-background: -webkit-gradient(linear, left top, left bottom, color-stop(1%,#dddddd), color-stop(100%,#bbbbbb)); /* Chrome,Safari4+ */
-background: -webkit-linear-gradient(top,  #dddddd 1%,#bbbbbb 100%); /* Chrome10+,Safari5.1+ */
-background: -o-linear-gradient(top,  #dddddd 1%,#bbbbbb 100%); /* Opera 11.10+ */
-background: -ms-linear-gradient(top,  #dddddd 1%,#bbbbbb 100%); /* IE10+ */
-background: linear-gradient(top,  #dddddd 1%,#bbbbbb 100%); /* W3C */
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#dddddd', endColorstr='#bbbbbb',GradientType=0 ); /* IE6-9 */
+    background: #f7f7f7; /* Old browsers */
+    background: -moz-linear-gradient(top,  #f7f7f7 0%, #dfdfdf 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#dfdfdf)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #f7f7f7 0%,#dfdfdf 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #f7f7f7 0%,#dfdfdf 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #f7f7f7 0%,#dfdfdf 100%); /* IE10+ */
+    background: linear-gradient(top,  #f7f7f7 0%,#dfdfdf 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#dfdfdf',GradientType=0 ); /* IE6-9 */
+
 }
 
 #careers-advanced-search #skin-inputs-wrap input {
   background-color:#fff;
   width:224px;
+  padding-top: 2px;
+  padding-bottom:2px;
+  height:20px;
 }
+#careers-advanced-search .skin-inputs-third #ajaxSubmit {
+    height:24px;
+    float:right;
+    width:76px; 
+    padding-top:0px;
+    font-size:10px;
+    font-weight:bold;
+    background-color:#000;
+    color:#fff;
+    border:none;
+}
+
 #careers-advanced-search .ui-multiselect-menu {
   font-size:11px;
 }
 #careers-advanced-search .inputs-wrap {
   width:266px;
 }
+
+/* CSS for the search results table */
+#careers-advanced-search #results-table {
+        border-collapse: collapse;
+}
+#careers-advanced-search #results-table td {
+        border-right:1px solid #bbb;
+        padding:5px;
+        /* bg colour for even lines  */
+        background-color:#fff;
+}
+#careers-advanced-search #results-table td.last {
+        border-right:none;
+}
+/* bg colour for odd lines  */
+#careers-advanced-search #results table td.odd {
+        background-color:#dcecfb;
+}
+#careers-advanced-search #results-table th {
+        background-color:#eee;
+        padding:10px;
+}
+
+#careers-advanced-search #results-table a {
+        color:#0076E3;
+}
+
 
 .content-width {
   width: 980px;

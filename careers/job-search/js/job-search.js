@@ -1,5 +1,15 @@
-$(function() {
-var createLocationSelects = function() {
+            $(function(){
+               
+        $("select.kenexa-question").multiselect({multiple:false});                
+        var $locationWidget = $(
+        '<div id="location-selects">'+
+            '<select id="country-select" ></select>'+
+            '<select id="state-select" class="loc-select" size="6" multiple="multiple"></select>'+
+            '<select id="city-select" class="loc-select" size="6" multiple="multiple"></select>'+
+        '</div>');
+        $locationWidget.insertAfter('#location');
+        
+        var createLocationSelects = function() {
             // Current selected country.
             var currentCountry,
 			
@@ -146,7 +156,7 @@ var createLocationSelects = function() {
             $('#search-history').append("<a target='_blank' href='" + window.location +"?" +params +"'>Search #" + numSearches + "</a><br/>");
 			
             $('#ajax-loader').css('display','block');
-            $('#results').html("<hr/>");
+            //$('#results').html("<hr/>");
             $.ajax({
                 type: "POST",
                 url: "index.php",
