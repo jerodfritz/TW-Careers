@@ -6,6 +6,8 @@
 
 class KenexaSearch {
 
+
+
     public static $searchUrl = "http://import.brassring.com/WebRouter/WebRouter.asmx?wsdl";
     // Our base request XML.
     public static $soapRequest =
@@ -232,7 +234,20 @@ Class KenexaJobQuestions {
     const POSITION_TYPE = 11512;    // Single select
     const KEYWORD = 1158;           // Text
     const BUSINESS_UNIT = 12234;    //
-
+    
+    public static function getQuestionsHash() {
+     return array(
+        "division" => KenexaJobQuestions::DIVISION,
+        "description" => KenexaJobQuestions::DESCRIPTION,
+        "location" => KenexaJobQuestions::LOCATION,
+        "title" => KenexaJobQuestions::TITLE,
+        "area_of_interest" =>  KenexaJobQuestions::AREA_OF_INTEREST,
+        "industry" => KenexaJobQuestions::INDUSTRY,
+        "position" => KenexaJobQuestions::POSITION_TYPE,
+        "keyword" => KenexaJobQuestions::KEYWORD,
+        "business_unit" => KenexaJobQuestions::BUSINESS_UNIT
+      );
+    }
 }
 
 ?>

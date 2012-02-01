@@ -159,7 +159,7 @@
             //$('#results').html("<hr/>");
             $.ajax({
                 type: "POST",
-                url: "index.php",
+                url: "./ajax-search/",
                 data: params,
                 dataType:"HTML",
                 success: function(data) {
