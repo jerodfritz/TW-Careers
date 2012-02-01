@@ -1,13 +1,33 @@
-            $(function(){
-               
-        $("select.kenexa-question").multiselect({multiple:false});                
-        var $locationWidget = $(
+    $(function(){
+        var sortQuestion = "date";   // Default sort field.    
+        // Setup non-location multi selects.
+		$("select.kenexa-question",$('#careers-advanced-search')).each(function(){
+                    $(this).multiselect(
+                        {
+                            multiple:true,
+                            noneSelectedText:$(this).attr('title'),
+                            selectedText: $(this).attr('title') + ' (# selected)'
+                        });           
+                })     
+        
+		// Setup location multi selects.
+		var $locationWidget = $(
         '<div id="location-selects">'+
             '<select id="country-select" ></select>'+
             '<select id="state-select" class="loc-select" size="6" multiple="multiple"></select>'+
             '<select id="city-select" class="loc-select" size="6" multiple="multiple"></select>'+
         '</div>');
         $locationWidget.insertAfter('#location');
+		
+        // Bind click events to table header for sorting.
+        $('#results-table th.hover-effect').live('click',function(){
+                $('#results-table th').removeClass('sort-on-this');
+                $(this).addClass('sort-on-this');
+                // sort question gets added to the &sortby param on submission.
+                sortQuestion = $(this).attr('id');
+                // Search again with new sort parameter.
+                $('#ajaxSubmit').trigger('click');
+        });
         
         var createLocationSelects = function() {
             // Current selected country.
@@ -129,7 +149,7 @@
         
 				
         var ajaxBusy = false;
-	var numSearches = 0;
+		var numSearches = 0;
         var csv = null;
         $('#ajaxSubmit').bind('click',function(){
             // Fill in the location input from the value of the special location widgets.
@@ -146,11 +166,29 @@
 			$('#location').val(createLocSearchCSV());
             ajaxBusy = true;
 			
+			// Run through inputs and pull out values.
             $('.kenexa-question',$('#searchForm')).each(function(){
-				// Only bother with inputs that have a value.
-				if ($(this).val() != "" )
+				
+				if ($(this).hasClass('multi-select') ) {
+					var arr = $(this).val();
+					var str="";
+					if (arr && arr.length)	{
+						params += $(this).attr('name') +'=';
+						for(var i=0;i<arr.length;i++) {str+=  arr[i] + ',';}
+						str = str.slice(0, -1);
+						params +=str+"&";
+					}else {
+						// If nothing selected in multi-select,
+						// then assume search all - this will ensure the question is still included for sorting.
+					params += $(this).attr('name') + "=TG_SEARCH_ALL&";
+					}
+				}else {
 					params += $(this).attr('name') +'=' + $(this).val() + "&";
+				}
+				
+
             });
+			params += "sortby=" + sortQuestion;
 			
             numSearches++;
             $('#search-history').append("<a target='_blank' href='" + window.location +"?" +params +"'>Search #" + numSearches + "</a><br/>");

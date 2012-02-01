@@ -43,12 +43,12 @@
 }
 
 #careers-advanced-search #skin-inputs-wrap {
-    width:920px;
+    width:100%;
     display:table;
     border:2px solid #eee;
     border-bottom:2px solid #aaa;
 
-    padding: 0px 30px 0px 30px;
+    /*padding: 0px 30px 0px 30px;*/
     background: #dfdfdf; /* Old browsers */
     background: -moz-linear-gradient(top,  #dfdfdf 0%, #f7f7f7 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#dfdfdf), color-stop(100%,#f7f7f7)); /* Chrome,Safari4+ */
@@ -70,6 +70,11 @@
   text-align: center;
   vertical-align: top;
 }
+/* Apply left margin to left-hand inputs block */
+#careers-advanced-search .skin-inputs-third.first {
+    padding-left:30px;
+}
+
 
 /* Multiselect inputs */
 #careers-advanced-search #skin-inputs-wrap input,
@@ -140,6 +145,7 @@
 }
 #careers-advanced-search #results-table td.last {
         border-right:none;
+        white-space:nowrap; /* don't wrap date */
 }
 /* bg colour for odd lines  */
 #careers-advanced-search #results table td.odd {
@@ -154,6 +160,14 @@
         color:#0076E3;
 }
 
+#careers-advanced-search th.sort-on-this {
+    text-decoration:underline;
+
+}
+
+#careers-advanced-search th.hover-effect {
+        cursor:pointer;
+}
 
 .content-width {
   width: 980px;

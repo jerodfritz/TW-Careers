@@ -13,9 +13,12 @@ class TimeWarnerSearch {
   public function __construct() {
     $this->ks = new KenexaSearch();
     $questionHash = KenexaJobQuestions::getQuestionsHash();
-    foreach ($_REQUEST as $key => $value) {
+	$sortBy = @$_REQUEST['sortby'];
+	
+    foreach ($_REQUEST as $key => $value) {	  
 	  if (isset($questionHash[$key])) {		     
-         $this->ks->addQuestion($questionHash[$key], $value);
+         if ($sortBy && $sortBy == $key) $this->ks->addQuestion($questionHash[$key], $value, true);
+		 else $this->ks->addQuestion($questionHash[$key], $value);
 	  }
     }
   } 
@@ -35,6 +38,13 @@ class TimeWarnerSearch {
             }                      
         }
         $type = strtolower($field['Type']);
+        
+        // These are the titles displayed in the multi-selects (not location).
+        $titles = array("division"=>"Division",
+                        "area_of_interest"=>"Area of Interest",
+                        "industry"=>"Industry",
+                        "position"=>"Position Type"
+            );
         switch ($type) {
             case 'radio':
             case 'multi-select':
@@ -43,8 +53,9 @@ class TimeWarnerSearch {
                 if($key == KenexaJobQuestions::LOCATION) {
                     $col .= "<input type=\"hidden\" class='kenexa-question' id=\"$keyId\"  name='$keyId'></input>";
                 }else {
-                    $col.= "<select class='kenexa-question' id=\"$keyId\"  name='$keyId' >";
-                    $col .= "<option value=''>Any</option>";
+                    $title=$titles[$keyId];
+                    $col.= "<select title='$title' class='kenexa-question multi-select'  name='$keyId' multiple='multiple' >";
+                    //$col .= "<option value=''>Any</option>";
                     foreach ($field['options'] as $option) {
                         $col.= "<option>{$option['Code']}</option>";
                     }
@@ -63,7 +74,7 @@ class TimeWarnerSearch {
         $inputs[$key] = $col;
     }
     echo "<div id=\"skin-inputs-wrap\">";
-    echo    "<div class=\"skin-inputs-third\">".
+    echo    "<div class=\"skin-inputs-third first\">".
             $inputs[KenexaJobQuestions::DIVISION].
             $inputs[KenexaJobQuestions::AREA_OF_INTEREST].
             $inputs[KenexaJobQuestions::KEYWORD].
@@ -86,30 +97,50 @@ class TimeWarnerSearch {
 }
 
   function displaySearchResults() {
-	$arr = $this->ks->search();
-	
-	if ($arr) {
-		echo '<table id="results-table" ><tr style="background-color:#ccc"><th>Posting Job Title</th><th>Location</th><th>Division</th><th>Area of Interest</th><th>Type</th><th>Req #</th><th>Date</th></tr>';
-		echo "<p style='margin-bottom:10px'><strong>Total jobs found: " . $arr->OtherInformation->TotalRecordsFound . "</strong></p>";
-		$jobs = $arr->Jobs->Job;
-		$odd = 0;
-		$class="";
-		
-		foreach ($jobs as $job) {			
-			if($odd) $class="odd";
-			else $class="";
-			echo "<tr>";
-			echo "<td class='$class'>". "<a href='{$job->JobDetailLink}'>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
-			echo "<td class='$class'>". $job->Question[KenexaJobData::LOCATION] . "</td>";
-			echo "<td class='$class'>". $job->Question[KenexaJobData::DIVISION] . "</td>";
-			echo "<td class='$class'>". $job->Question[KenexaJobData::INDUSTRY] . "</td>";
-			echo "<td class='$class'>". $job->Question[KenexaJobData::POSITION_TYPE] . "</td>";
-			echo "<td class='$class'>". $job->Question[KenexaJobData::REQUISITION_NO] . "</td>";
-			echo "<td class='$class last'>". $job->LastUpdated . "</td>";
-			echo "<tr/>";
-			$odd ^= 1;
-		}
-		echo "</table>";
-	}
+    $arr = $this->ks->search();
+
+    if ($arr) {
+            $questions = array( "title"=>"Posting Job Title",
+                                "location"=>"Location",
+                                "division"=>"Division",
+                                "area_of_interest"=>"Area of Interest",
+                                "position"=>"Type",
+                                "req"=>"Req #",
+                                "date"=>"Date");
+            $sortBy = "date";
+            if (isset($_REQUEST['sortby'])) $sortBy = $_REQUEST['sortby'];
+            
+            echo '<table id="results-table" ><tr style="background-color:#ccc">';
+            foreach($questions as $question=>$text) {
+                $class="";
+                if ($question != "req") {
+                    $class="hover-effect"; 
+                    if($sortBy == $question) $class.= " sort-on-this";
+                }
+                echo "<th id='$question' class='$class'>$text</th>";
+            }
+            
+            
+            echo "<p style='margin-bottom:10px'><strong>Total jobs found: " . $arr->OtherInformation->TotalRecordsFound . "</strong></p>";
+            $jobs = $arr->Jobs->Job;
+            $odd = 0;
+            $class="";
+            //$qh = KenexaJobQuestions::getQuestionsHash();
+            foreach ($jobs as $job) {			
+                if($odd) $class="odd";
+                else $class="";
+                echo "<tr>";
+                echo "<td class='$class'>". "<a href='{$job->JobDetailLink}'>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
+                echo "<td class='$class'>". $job->Question[KenexaJobData::LOCATION] . "</td>";
+                echo "<td class='$class'>". $job->Question[KenexaJobData::DIVISION] . "</td>";
+                echo "<td class='$class'>". $job->Question[KenexaJobData::INDUSTRY] . "</td>";
+                echo "<td class='$class'>". $job->Question[KenexaJobData::POSITION_TYPE] . "</td>";
+                echo "<td class='$class'>". $job->Question[KenexaJobData::REQUISITION_NO] . "</td>";
+                echo "<td class='$class last'>". $job->LastUpdated . "</td>";
+                echo "<tr/>";
+                $odd ^= 1;
+            }
+            echo "</table>";
+        }
   }
 }

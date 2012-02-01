@@ -184,11 +184,16 @@ XML;
      */
 
     // Adds a question to the search.
-    public function addQuestion($questionId, $searchTerm) {
-        $this->questions .=
-                '<Question Sortorder="ASC" Sort="No">' .
-                "<Id>$questionId</Id>" .
-                "<Value>$searchTerm</Value>" .
+    public function addQuestion($questionId, $searchTerm, $sortFlag=false) {		
+		$sort = 'Sortorder="ASC" Sort="No"';
+		//$sort="";
+		if($sortFlag) {
+			$sort = 'Sortorder="ASC" Sort="Yes"';						
+		}
+		$this->questions .=
+                "<Question $sort>" .
+					"<Id>$questionId</Id>" .
+					"<Value>$searchTerm</Value>" .
                 '</Question>';
     }
 
@@ -248,6 +253,7 @@ Class KenexaJobQuestions {
         "business_unit" => KenexaJobQuestions::BUSINESS_UNIT
       );
     }
+    
 }
 
 ?>
