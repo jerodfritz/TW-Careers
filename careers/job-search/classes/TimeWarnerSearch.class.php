@@ -13,9 +13,15 @@ class TimeWarnerSearch {
   public function __construct() {
     $this->ks = new KenexaSearch();
     $questionHash = KenexaJobQuestions::getQuestionsHash();
-	$sortBy = @$_REQUEST['sortby'];
 	
-    foreach ($_REQUEST as $key => $value) {	  
+	
+	// Set the desired page number.
+	if (isset($_REQUEST['pagenum']) ) $this->ks->pageNumber = $_REQUEST['pagenum'];
+	
+	// Sort column (division, area_of_interest etc.)
+	$sortBy = @$_REQUEST['sortby'];
+    
+	foreach ($_REQUEST as $key => $value) {	  
 	  if (isset($questionHash[$key])) {		     
          if ($sortBy && $sortBy == $key) $this->ks->addQuestion($questionHash[$key], $value, true);
 		 else $this->ks->addQuestion($questionHash[$key], $value);
@@ -110,7 +116,31 @@ class TimeWarnerSearch {
             $sortBy = "date";
             if (isset($_REQUEST['sortby'])) $sortBy = $_REQUEST['sortby'];
             
-            echo '<table id="results-table" ><tr style="background-color:#ccc">';
+			$maxPages = $arr->OtherInformation->MaxPages;
+			
+			echo "<div id='search-stats'>";
+			
+				// Show the search results stats.
+				echo "<div style='float:left'>";			
+				echo "<strong>Found " . $arr->OtherInformation->TotalRecordsFound .
+						" job(s) over $maxPages page(s)</strong>";
+				echo "</div>";
+
+				// If more than one page, show a link for each page.
+				// JS searches for these and adds events to do a paginated search.
+				if($maxPages > 1) {
+					echo "<div style='float:right'>";
+					echo "<strong>Pages: </strong>";
+					for($i=1;$i<=$maxPages;$i++) {
+						$class="";
+						if($i == $this->ks->pageNumber ) $class = " page-link-current";	// additional class for current page.
+						echo "<div class='page-link$class'>[$i] </div>";
+					}
+					echo "</div>";		
+				}
+			echo "</div>";
+			
+            echo '<table id="results-table" style="clear:both" ><tr style="background-color:#ccc">';
             foreach($questions as $question=>$text) {
                 $class="";
                 if ($question != "req") {
@@ -119,9 +149,10 @@ class TimeWarnerSearch {
                 }
                 echo "<th id='$question' class='$class'>$text</th>";
             }
-            
-            
-            echo "<p style='margin-bottom:10px'><strong>Total jobs found: " . $arr->OtherInformation->TotalRecordsFound . "</strong></p>";
+			
+			
+			
+			
             $jobs = $arr->Jobs->Job;
             $odd = 0;
             $class="";

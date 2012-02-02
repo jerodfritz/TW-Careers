@@ -30,7 +30,7 @@ class KenexaSearch {
                 <InputString>
                     <ClientId>391</ClientId>
                     <SiteId>36</SiteId>
-                    <PageNumber>1</PageNumber>
+                    <PageNumber></PageNumber>
                     <OutputXMLFormat>0</OutputXMLFormat>
                     <AuthenticationToken></AuthenticationToken>
                     <HotJobs></HotJobs>
@@ -61,11 +61,21 @@ class KenexaSearch {
             <Interests questionID="11524__FormText3" questionNumber="11524"/>
             <Types questionID="11512__FormText2" questionNumber="11512"/>
         </options>';
-    // String representation of questions XML.
+
+	/**
+	 * The search page number
+	 * @var int
+	 */
+	public $pageNumber = 1;
+
+	// String representation of questions XML.
     // Built up from the addQuestion function.
     protected $questions = "";
 
-    // Returns an array of option names and question numbers.
+    /**	 
+	 * Returns an array of option names and question numbers.
+	 * @return array
+	 */
     public function getOptions() {
         $options = array();
         $xml = simplexml_load_string(self::$scraperOutput);
@@ -139,6 +149,7 @@ XML;
 	 * Output table cross references as follows: countries => states => cities.
 	 * Location data is given to us in the following format (from the Description field):
 	 * "country - state - city" *OR* "country - city" 
+	 * @return array
 	 */
 	public function getXRefLocationData() {
 		// Get the data in a friendly format.
@@ -152,8 +163,8 @@ XML;
 			// If only 2 components, then we only have country and city, so adjust.
 			if (count($components) == 2) {
 				$components[2] = $components[1];
-				// Effectively, we are creating an imaginary state called NOSTATE
-				// that has the city in it.
+				// Effectively, we are creating an imaginary state called NO_STATE
+				// that has the stateless city in it.
 				$components[1] = 'NO_STATE';
 			}
 			// Use country as index to an array.
@@ -207,6 +218,7 @@ XML;
 
         // Insert the questions into the request.
         $soapRequest = str_replace("<Questions>", "<Questions>" . $this->questions, $soapRequest);
+		$soapRequest = str_replace("<PageNumber>", "<PageNumber>" . $this->pageNumber, $soapRequest);
         //  echo "<pre>$soapRequest</pre>";
         $result = $kenexa->route(array('inputXml' => $soapRequest));
         $xml = simplexml_load_string($result->routeResult);

@@ -169,6 +169,27 @@
         cursor:pointer;
 }
 
+/* Search stats row */
+#careers-advanced-search #search-stats {
+	float:left;	/* expands to height of content */
+	width:100%;
+	margin-bottom:10px;
+}
+
+#careers-advanced-search #search-stats .page-link {
+	color: #0076E3;
+	cursor:pointer;
+	display:inline;
+}
+#careers-advanced-search #search-stats .page-link-current {
+	font-weight:bold;
+	font-size:14px;
+	color:#ff000;
+}
+#careers-advanced-search #search-stats .page-link:hover {
+	font-weight:bold;
+}
+
 .content-width {
   width: 980px;
   margin: 0 auto;
