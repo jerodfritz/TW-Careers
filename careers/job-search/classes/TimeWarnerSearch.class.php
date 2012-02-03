@@ -45,6 +45,9 @@ class TimeWarnerSearch {
 	// Set the desired page number.
 	if (isset($_REQUEST['pagenum']) ) $this->ks->pageNumber = $_REQUEST['pagenum'];
 	
+	// Set the search date 
+	if (isset($_REQUEST['date_posted']) ) $this->ks->datePosted = $_REQUEST['date_posted'];
+	
 	// Sort column (division, area_of_interest etc.)
 	$sortBy = @$_REQUEST['sortby'];
     

@@ -43,6 +43,7 @@ class KenexaSearch {
                     <City/>
                     <zipCode/>
                     </ProximitySearch>
+					<DatePosted/>
                     <JobMatchCriteriaText/>
                     <SelectedSearchLocaleId/>
                     <Questions>
@@ -67,6 +68,12 @@ class KenexaSearch {
 	 * @var int
 	 */
 	public $pageNumber = 1;
+	
+	/**
+	 * The date to search from (yyyy-mm-dd)
+	 * @var string
+	 */
+	public $datePosted = "All";
 
 	// String representation of questions XML.
     // Built up from the addQuestion function.
@@ -225,7 +232,10 @@ XML;
         // Insert the questions into the request.
         $soapRequest = str_replace("<Questions>", "<Questions>" . $this->questions, $soapRequest);
 		$soapRequest = str_replace("<PageNumber>", "<PageNumber>" . $this->pageNumber, $soapRequest);
-        //  echo "<pre>$soapRequest</pre>";
+		
+		if($this->datePosted != "All") $soapRequest = str_replace("<DatePosted/>", "<DatePosted><Date>" . $this->datePosted."</Date></DatePosted>", $soapRequest);
+		$soapRequest = str_replace("<DatePosted/>", "" , $soapRequest);
+
         $result = $kenexa->route(array('inputXml' => $soapRequest));
         $xml = simplexml_load_string($result->routeResult);
         return $xml->Unit->Packet->Payload->ResultSet;

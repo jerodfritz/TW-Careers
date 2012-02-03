@@ -7,6 +7,8 @@ $(document).ready(function(){
         var sortQuestion = "date";  // Default sort field.    
         var pageNumber = 1;			// Default search page number
 		var lastSearchParams = "";	// The url params string of the last search performed (exluding pagenum parameter).
+		var performInitialSearch = true;
+		
 		// Setup non-location multi selects.
 		$("select.kenexa-question",$('#careers-advanced-search')).each(function(){
                     $(this).multiselect(
@@ -223,6 +225,23 @@ $(document).ready(function(){
 			// 
 			// There is probably a better way of handling this.
 			
+			
+			// Perform initial search for jobs posted in last seven days.
+			if (performInitialSearch) {
+				performInitialSearch = false;
+				var d = new Date( new Date().getTime()-(7*24*60*60*1000) ),	// current days less 7 days.
+					curr_day = d.getDate().toString(),
+					curr_month = (d.getMonth() + 1).toString(), 
+					curr_year = d.getFullYear();
+				if(curr_day.length<2) curr_day = "0"+curr_day;
+				if(curr_month.length<2) curr_month = "0"+curr_month;
+				//alert(curr_year + "-" + curr_month + "-" + curr_day);
+				params = "date_posted=" + curr_year + "-" + curr_month + "-" + curr_day +
+					"&division=TG_SEARCH_ALL&area_of_interest=TG_SEARCH_ALL&keyword=&location=TG_SEARCH_ALL&industry=TG_SEARCH_ALL&position=TG_SEARCH_ALL&sortby=date&pagenum=1";
+				performInitialSearch = false;
+			}
+			
+			
 			if (lastSearchParams != params) pageNumber =1;
 			lastSearchParams = params;
 			
@@ -251,6 +270,9 @@ $(document).ready(function(){
                 }
             })
         });
+		
+		// Initial search.
+		$('#ajaxSubmit').trigger('click');
         
     });
     
