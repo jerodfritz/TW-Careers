@@ -152,15 +152,29 @@
   border-right:1px solid #bbb;
   padding:20px 10px;
   color: #676767;
+  line-height: 1.2em;
   /* bg colour for even lines  */
   background-color:#fff;
 }
 #careers-advanced-search #results-table td.title {
   width: 300px;
-  padding: 0 15px 0 35px;
+  padding: 0 15px 0 20px;
   xbackground: url(../images/bg_table_rail.jpg) no-repeat 0 0 transparent;
   border-left: 23px solid #fff;
 }
+#careers-advanced-search #results-table td.title a .arrow {
+  background: url(../images/collapse_arrows.png) no-repeat 0 0 transparent;
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  overflow: hidden;
+  float:left;
+  margin-right: 5px;
+}
+#careers-advanced-search #results-table td.title a.expanded .arrow {
+  background-position: 0 -18px;
+}
+
 #careers-advanced-search #results-table td.location {
   padding-right: 25px;
   width: 115px;
@@ -170,7 +184,7 @@
 }
 #careers-advanced-search #results-table td.industry {
   width: 160px;
-  padding-right: 70px;
+  padding-right: 25px;
 }
 #careers-advanced-search #results-table td.type {
   width: 90px;
@@ -232,6 +246,7 @@
   font-size: .95em;
   line-height: 1.3em;
 }
+
 #careers-advanced-search #results-table td.details-cell .view-full {
  margin-top: 15px;
 }

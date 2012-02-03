@@ -1,4 +1,5 @@
 function showDetails(item){
+  $(item).toggleClass('expanded');
   $('#'+$(item).parent().parent().attr('id')+'-details td.details-cell').toggle();
   return false;
 

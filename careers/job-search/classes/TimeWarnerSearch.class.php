@@ -207,7 +207,7 @@ class TimeWarnerSearch {
                 echo "<tr id='result-$num'>";
 
 
-                echo "<td class='$class title'>". "<a href='{$job->JobDetailLink}' onclick='showDetails(this);return false;' class='details-link'>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
+                echo "<td class='$class title'>". "<a href='{$job->JobDetailLink}' onclick='showDetails(this);return false;' class='details-link'><span class='arrow'></span>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
                 echo "<td class='$class location'>". $job->Question[KenexaJobData::LOCATION] . "</td>";
                 echo "<td class='$class division'>". $job->Question[KenexaJobData::DIVISION] . "</td>";
                 echo "<td class='$class industry'>". $job->Question[KenexaJobData::INDUSTRY] . "</td>";
