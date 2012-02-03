@@ -8,7 +8,7 @@ $(document).ready(function(){
         var pageNumber = 1;			// Default search page number
 		var lastSearchParams = "";	// The url params string of the last search performed (exluding pagenum parameter).
 		var performInitialSearch = true;
-		
+
 		// Setup non-location multi selects.
 		$("select.kenexa-question",$('#careers-advanced-search')).each(function(){
                     $(this).multiselect(
@@ -27,7 +27,7 @@ $(document).ready(function(){
             '<select id="city-select" class="loc-select" size="6" multiple="multiple"></select>'+
         '</div>');
         $locationWidget.insertAfter('#location');
-		
+
         // Bind click events to table header for sorting.
         $('#results-table th.hover-effect').live('click',function(){
                 $('#results-table th').removeClass('sort-on-this');
@@ -37,7 +37,7 @@ $(document).ready(function(){
                 // Search again with new sort parameter.
                 $('#ajaxSubmit').trigger('click');
         });
-		
+
 		// Find the page links (if any) for pagination.
 		$('#results div.page-link').live('click', function(){
 			// Get the desired page number from the dom element.
@@ -49,7 +49,7 @@ $(document).ready(function(){
         var createLocationSelects = function() {
             // Current selected country.
             var currentCountry,
-			
+
             // Fills the states widget based on country.
             fillStates = function(country) {
                 var states = locData[country],
@@ -135,14 +135,14 @@ $(document).ready(function(){
             // Fill in starting states and cities.
             fillStates(currentCountry);
             fillCities(currentCountry,$("#state-select").val());
-			
+
             // On country change, fill in states and cities.
             $('#country-select').bind('change',function(evt){
                 currentCountry = $(evt.target).val();
                 fillStates(currentCountry);
                 fillCities(currentCountry,$("#state-select").val());
             });
-					
+
             // On state change, fill in cities.
             $('#state-select').bind('change',function(evt){
                 fillCities(currentCountry,$(evt.target).val());
@@ -154,6 +154,13 @@ $(document).ready(function(){
         $('#country-select').multiselect({multiple:false,header:false,selectedText:function(a,b,c){
                 return $(c[0]).val(); // return value for selected text display.
         }});
+
+		// Default to usa.
+		$('#country-select').val("United States");
+		$('#country-select').trigger("change");
+		$('#country-select').multiselect("refresh");
+
+
 
         // Creates a search string based on the location inputs,
         // in CSV format for the Kenexa query value.
@@ -171,7 +178,7 @@ $(document).ready(function(){
             return query.slice(0, -1);
         }
         
-				
+
         var ajaxBusy = false;
 		var numSearches = 0;
         var csv = null;
@@ -189,10 +196,10 @@ $(document).ready(function(){
             var   params = "";
 			$('#location').val(createLocSearchCSV());
             ajaxBusy = true;
-			
+
 			// Run through inputs and pull out values.
             $('.kenexa-question',$('#searchForm')).each(function(){
-				
+
 				if ($(this).hasClass('multi-select') ) {
 					var arr = $(this).val();
 					var str="";
@@ -209,11 +216,11 @@ $(document).ready(function(){
 				}else {
 					params += $(this).attr('name') +'=' + $(this).val() + "&";
 				}
-				
+
 
             });
 			params += "sortby=" + sortQuestion;
-			
+
 			// If the new search is different to the previous search,
 			// Then we must reset the page number to 1, as the new results
 			// will probably NOT have the same number of search pages.
@@ -224,8 +231,8 @@ $(document).ready(function(){
 			// as the order of pages will change.
 			// 
 			// There is probably a better way of handling this.
-			
-			
+
+
 			// Perform initial search for jobs posted in last seven days.
 			if (performInitialSearch) {
 				performInitialSearch = false;
@@ -237,20 +244,20 @@ $(document).ready(function(){
 				if(curr_month.length<2) curr_month = "0"+curr_month;
 				//alert(curr_year + "-" + curr_month + "-" + curr_day);
 				params = "date_posted=" + curr_year + "-" + curr_month + "-" + curr_day +
-					"&division=TG_SEARCH_ALL&area_of_interest=TG_SEARCH_ALL&keyword=&location=TG_SEARCH_ALL&industry=TG_SEARCH_ALL&position=TG_SEARCH_ALL&sortby=date&pagenum=1";
+					"&division=TG_SEARCH_ALL&area_of_interest=TG_SEARCH_ALL&keyword=&location=united states&industry=TG_SEARCH_ALL&position=TG_SEARCH_ALL&sortby=date&pagenum=1";
 				performInitialSearch = false;
 			}
-			
-			
+
+
 			if (lastSearchParams != params) pageNumber =1;
 			lastSearchParams = params;
-			
+
 			// Add the desired page number.
 			params += "&pagenum=" + pageNumber;
-			
+
             numSearches++;
             $('#search-history').append("<a target='_blank' href='" + window.location +"?" +params +"'>Search #" + numSearches + "</a><br/>");
-			
+
             $('#ajax-loader').css('display','block');
             //$('#results').html("<hr/>");
             $.ajax({
@@ -270,7 +277,7 @@ $(document).ready(function(){
                 }
             })
         });
-		
+
 		// Initial search.
 		$('#ajaxSubmit').trigger('click');
         
