@@ -154,6 +154,13 @@ $(document).ready(function(){
         $('#country-select').multiselect({multiple:false,header:false,selectedText:function(a,b,c){
                 return $(c[0]).val(); // return value for selected text display.
         }});
+	
+		// Default to usa.
+		$('#country-select').val("United States");
+		$('#country-select').trigger("change");
+		$('#country-select').multiselect("refresh");
+		
+
 
 		// Default to usa.
 		$('#country-select').val("United States");
