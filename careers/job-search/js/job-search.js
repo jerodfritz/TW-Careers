@@ -154,6 +154,13 @@ $(document).ready(function(){
         $('#country-select').multiselect({multiple:false,header:false,selectedText:function(a,b,c){
                 return $(c[0]).val(); // return value for selected text display.
         }});
+	
+		// Default to usa.
+		$('#country-select').val("United States");
+		$('#country-select').trigger("change");
+		$('#country-select').multiselect("refresh");
+		
+
 
         // Creates a search string based on the location inputs,
         // in CSV format for the Kenexa query value.
@@ -237,7 +244,7 @@ $(document).ready(function(){
 				if(curr_month.length<2) curr_month = "0"+curr_month;
 				//alert(curr_year + "-" + curr_month + "-" + curr_day);
 				params = "date_posted=" + curr_year + "-" + curr_month + "-" + curr_day +
-					"&division=TG_SEARCH_ALL&area_of_interest=TG_SEARCH_ALL&keyword=&location=TG_SEARCH_ALL&industry=TG_SEARCH_ALL&position=TG_SEARCH_ALL&sortby=date&pagenum=1";
+					"&division=TG_SEARCH_ALL&area_of_interest=TG_SEARCH_ALL&keyword=&location=united states&industry=TG_SEARCH_ALL&position=TG_SEARCH_ALL&sortby=date&pagenum=1";
 				performInitialSearch = false;
 			}
 			
