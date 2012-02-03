@@ -10,19 +10,22 @@ $dir = '/careers/job-search/';
 
 $stylesheets = array(
     $dir.'css/jquery.multiselect.css', 
-    'http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/redmond/jquery-ui.css',
+    $dir.'css/custom-theme/jquery-ui-1.8.17.custom.css',
     $dir.'css/job-search.css' 
   );
 
 $javascripts = array(
     'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', 
     'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', 
+    $dir . '../js/jquery.infieldlabel.min.js',
     $dir.'js/jquery.multiselect.min.js',
     $dir.'js/job-search.js'
   );
 
 require_once ('../../includes/head.php');
+require_once ("classes/krumo/class.krumo.php"); 
 require_once ("classes/TimeWarnerSearch.class.php");
+
 
 $tw = new TimeWarnerSearch();
 ?>
@@ -41,11 +44,12 @@ $tw = new TimeWarnerSearch();
 		</div>
 		<div id="content">
 			<div class="content-width">
-				<?php include $basePath . 'includes/structure/breadcrumb.php'; ?>
+				<?php /*include $basePath . 'includes/structure/breadcrumb.php';*/ ?>
 				<div id="careers-advanced-search">
-					<div id="ajax-loader"><img src="<?php print $dir; ?>images/ajax-loader.gif"/></div>
+				    <h1>Search for Jobs</h1>
 					<?php print $tw->printInputs(); ?>
                     <div id='results'>
+                      <div id="ajax-loader"><img src="<?php print $dir; ?>images/ajax-loader.gif"/></div>
                       <?php print $tw->displaySearchResults(); ?>
                     </div>
 				</div>

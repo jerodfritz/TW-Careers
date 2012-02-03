@@ -9,11 +9,13 @@ class TimeWarnerSearch {
   * @ks KenexaSearch
   */
   public $ks = null;
-
+  private $request = null;
+  
   public function __construct() {
     $this->ks = new KenexaSearch();
     $questionHash = KenexaJobQuestions::getQuestionsHash();
 	
+	$this->request = $_REQUEST;
 	
 	// Set the desired page number.
 	if (isset($_REQUEST['pagenum']) ) $this->ks->pageNumber = $_REQUEST['pagenum'];
@@ -32,6 +34,7 @@ class TimeWarnerSearch {
 
   function printInputs() {
     $inputs = array();
+    
     echo "<form id='searchForm' action = './' method='POST'>";
     $fields = $this->ks->getFields();
     foreach ($fields as $key => $field) {
@@ -43,6 +46,7 @@ class TimeWarnerSearch {
                 break;
             }                      
         }
+        
         $type = strtolower($field['Type']);
         
         // These are the titles displayed in the multi-selects (not location).
@@ -63,13 +67,35 @@ class TimeWarnerSearch {
                     $col.= "<select title='$title' class='kenexa-question multi-select'  name='$keyId' multiple='multiple' >";
                     //$col .= "<option value=''>Any</option>";
                     foreach ($field['options'] as $option) {
-                        $col.= "<option>{$option['Code']}</option>";
+                        $selected = '';
+                        if(isset($this->request[$keyId])){
+                          $params = split(",",$this->request[$keyId]);
+                          foreach($params as $param){
+                            if($option['Code'] == $param){
+                              $selected = "selected";
+                              break;
+                            }
+                          }
+                        }
+                        $col.= "<option $selected>{$option['Code']}</option>";
                     }
                     $col.= "</select>";
                 }
                 break;
             case 'text':
-                $col .= "<input class='kenexa-question' id=\"$keyId\" name='$keyId'></input>";
+                $value = '';
+                if(isset($this->request[$keyId])){
+                  $value = "value='".$this->request[$keyId]."'";
+                }
+                if($keyId == 'keyword'){
+                  $col .=  "<div class='infieldwrap'>";
+                  $col .=  "<label for='keyword' class='infield'>Keyword / Requisition #</label>";
+                  $col .= "<input class='kenexa-question' id=\"$keyId\" placeholder='Keyword / Requisition #' name='$keyId' $value></input>";
+                  $col .= "<a href='#' class='keyword-help-button'><span></span></a>";
+                  $col .=  "</div>";
+                } else {
+                  $col .= "<input class='kenexa-question' id=\"$keyId\" name='$keyId' $value></input>";
+                }
                 break;
             case 'textarea':
                 $col .= "<textarea class='kenexa-question' id=\"$keyId\" name='$keyId'></textarea>";
@@ -116,20 +142,24 @@ class TimeWarnerSearch {
             $sortBy = "date";
             if (isset($_REQUEST['sortby'])) $sortBy = $_REQUEST['sortby'];
             
-			$maxPages = $arr->OtherInformation->MaxPages;
+			$maxPages = intval($arr->OtherInformation->MaxPages);
 			
 			echo "<div id='search-stats'>";
 			
 				// Show the search results stats.
-				echo "<div style='float:left'>";			
-				echo "<strong>Found " . $arr->OtherInformation->TotalRecordsFound .
-						" job(s) over $maxPages page(s)</strong>";
-				echo "</div>";
+
+				$resultsPerPage = "????";
+				$page = intval($arr->OtherInformation->PageNumber) ;
+				$total = intval($arr->OtherInformation->TotalRecordsFound);
+				$to = '#';
+				$from = '#';
+				
+				echo sprintf( '<div class="results-count">Showing %s - %s of %s Results</div>', $from,  $to, $total);				
 
 				// If more than one page, show a link for each page.
 				// JS searches for these and adds events to do a paginated search.
 				if($maxPages > 1) {
-					echo "<div style='float:right'>";
+					echo "<div class='page-info'>";
 					echo "<strong>Pages: </strong>";
 					for($i=1;$i<=$maxPages;$i++) {
 						$class="";
@@ -140,14 +170,14 @@ class TimeWarnerSearch {
 				}
 			echo "</div>";
 			
-            echo '<table id="results-table" style="clear:both" ><tr style="background-color:#ccc">';
+            echo '<table id="results-table" style="clear:both" ><tr class="header">';
             foreach($questions as $question=>$text) {
                 $class="";
                 if ($question != "req") {
                     $class="hover-effect"; 
                     if($sortBy == $question) $class.= " sort-on-this";
                 }
-                echo "<th id='$question' class='$class'>$text</th>";
+                echo "<th id='$question' class='$class'>$text<span class='sort-arrow'></span></th>";
             }
 			
 			
@@ -157,19 +187,21 @@ class TimeWarnerSearch {
             $odd = 0;
             $class="";
             //$qh = KenexaJobQuestions::getQuestionsHash();
+            $num = 1;
             foreach ($jobs as $job) {			
                 if($odd) $class="odd";
                 else $class="";
-                echo "<tr>";
-                echo "<td class='$class'>". "<a href='{$job->JobDetailLink}'>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
-                echo "<td class='$class'>". $job->Question[KenexaJobData::LOCATION] . "</td>";
-                echo "<td class='$class'>". $job->Question[KenexaJobData::DIVISION] . "</td>";
-                echo "<td class='$class'>". $job->Question[KenexaJobData::INDUSTRY] . "</td>";
-                echo "<td class='$class'>". $job->Question[KenexaJobData::POSITION_TYPE] . "</td>";
-                echo "<td class='$class'>". $job->Question[KenexaJobData::REQUISITION_NO] . "</td>";
-                echo "<td class='$class last'>". $job->LastUpdated . "</td>";
+                echo "<tr id='result-$num'>";
+                echo "<td class='$class title'>". "<a href='{$job->JobDetailLink}'>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
+                echo "<td class='$class location'>". $job->Question[KenexaJobData::LOCATION] . "</td>";
+                echo "<td class='$class division'>". $job->Question[KenexaJobData::DIVISION] . "</td>";
+                echo "<td class='$class industry'>". $job->Question[KenexaJobData::INDUSTRY] . "</td>";
+                echo "<td class='$class type'>". $job->Question[KenexaJobData::POSITION_TYPE] . "</td>";
+                echo "<td class='$class req'>". $job->Question[KenexaJobData::REQUISITION_NO] . "</td>";
+                echo "<td class='$class updated last'>". $job->LastUpdated . "</td>";
                 echo "<tr/>";
                 $odd ^= 1;
+                $num ++;
             }
             echo "</table>";
         }

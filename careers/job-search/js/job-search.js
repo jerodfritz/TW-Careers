@@ -1,4 +1,9 @@
+$(document).ready(function(){
+  $("label.infield").inFieldLabels();
+});    
+
     $(function(){
+    
         var sortQuestion = "date";  // Default sort field.    
         var pageNumber = 1;			// Default search page number
 		var lastSearchParams = "";	// The url params string of the last search performed (exluding pagenum parameter).
@@ -87,7 +92,11 @@
                 }
                 var str="",
                 numCities = 0;
+                states = states.sort();
                 for(var i=0;i<states.length;i++) {
+                    if(states.length>1){
+                      str += "<optgroup label='" + states[i] + "'>";
+                    }
                     var cities = locData[country][states[i]];
                     for(var c=0; c<cities.length;c++) {
                         str += "<option value='";
@@ -96,6 +105,9 @@
                             cities[c] + "</option>";
                             numCities++;
                     }
+                    if(states.length>1){
+                      str += "</optgroup>";                    
+                    }                    
                 }
                 $('#city-select').html(str).multiselect("destroy");
                 if(numCities==1) {
@@ -239,4 +251,7 @@
                 }
             })
         });
+        
     });
+    
+    

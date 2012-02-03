@@ -49,7 +49,7 @@ include '../includes/head.php';
                        <div class="inner">
                          <form class="search-form" action="job-search/" id="keyword-search-form" method="get">
                             <label for="search-keywords">Keywords</label>
-                            <input type="text" name="keywords" value="" id="search-keywords">
+                            <input type="text" name="keyword" value="" id="search-keywords">
                             <button value="submit" class="black" onclick='$("#keyword-search-form").submit()'><span>Submit</span></button>
                          </form>
                          <button value="Advanced Search" href="job-search" class="grey"><span>Advanced Search</span></button>
