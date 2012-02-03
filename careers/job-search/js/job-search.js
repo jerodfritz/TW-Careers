@@ -74,7 +74,7 @@ $(document).ready(function(){
                    return;
                 }
                     
-                $('#state-select').multiselect({header:true,selectedText:'States',noneSelectedText:'States'})
+                $('#state-select').multiselect({header:true,selectedText: 'States (# selected)',noneSelectedText:'States'})
                     .multiselect("enable").multiselect("checkAll")
                     
             },
@@ -119,7 +119,7 @@ $(document).ready(function(){
                    }).multiselect("disable");
                    return;
                 }else {
-                    $('#city-select').multiselect({header:true,selectedText:'Cities',noneSelectedText:"Cities"})
+                    $('#city-select').multiselect({header:true,selectedText: 'Cities (# selected)',noneSelectedText:"Cities"})
                         .multiselect("enable").multiselect("checkAll")
                 }
             },
