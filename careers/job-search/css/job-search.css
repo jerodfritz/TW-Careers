@@ -134,6 +134,7 @@
     background-color:#000;
     color:#fff;
     border:none;
+    margin-right: 30px;
 }
 
 #careers-advanced-search .ui-multiselect-menu {
@@ -155,18 +156,19 @@
   background-color:#fff;
 }
 #careers-advanced-search #results-table td.title {
-  width: 100%;
+  width: 300px;
   padding: 0 15px 0 35px;
+  background: url(../images/bg_table_rail.jpg) no-repeat 0 0 transparent;
 }
 #careers-advanced-search #results-table td.location {
   padding-right: 25px;
   width: 115px;
 }
-#careers-advanced-search #results-table td.division
+#careers-advanced-search #results-table td.division {
   width: 90px;
 }
 #careers-advanced-search #results-table td.industry {
-  width: 200px;
+  width: 160px;
   padding-right: 70px;
 }
 #careers-advanced-search #results-table td.type {
@@ -176,11 +178,11 @@
 #careers-advanced-search #results-table td.req {
   width: 80px;
 }
-#careers-advanced-search #results-table td.date {
-  width: 110px;
-}
-
+#careers-advanced-search #results-table td.updated,
 #careers-advanced-search #results-table td.last {
+  width: 110px;
+  background: url(../images/bg_table_rail.jpg) no-repeat right 0 transparent;
+
   border-right:none;
   white-space:nowrap; /* don't wrap date */
 }
@@ -222,6 +224,7 @@
     background-position:-64px 4px;
     width:16px;
     height:16px;
+    display: inline-block;
 }
 
 #careers-advanced-search th.hover-effect {
@@ -234,6 +237,12 @@
 #careers-advanced-search #search-stats .page-info,
 #careers-advanced-search #search-stats .results-count {
 	margin: 15px 0 20px;
+}
+#careers-advanced-search #search-stats .page-info {
+  margin-right: 35px;
+}
+#careers-advanced-search #search-stats .results-count {
+  margin-left: 35px;
 }
 #careers-advanced-search #search-stats .results-count { float: left; color: #1182e0; }
 #careers-advanced-search #search-stats .page-info { float: right; }
@@ -276,4 +285,27 @@
 }
 #careers-advanced-search #searchForm select {
    display:none;
+}
+#careers-advanced-search #search-results-footer {
+  font-size: .9em;
+  margin: 30px 0 10px;
+  line-height: 1.3em;
+  padding: 0 13px;
+}
+#careers-advanced-search #search-results-footer .left {
+  width: 700px;
+  float: left;
+} 
+#careers-advanced-search #search-results-footer .right {
+  float: right;
+  text-align: right;
+}
+
+#search-diff-language-links {
+  
+}
+#search-diff-language-links li {
+  list-style: none;
+  text-align: left;
+  font-size: .9em;
 }

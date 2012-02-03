@@ -47,10 +47,44 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
 				<?php /*include $basePath . 'includes/structure/breadcrumb.php';*/ ?>
 				<div id="careers-advanced-search">
 				    <h1>Search for Jobs</h1>
-					<?php print $tw->printInputs(); ?>
+					<?php $inputs = $tw->getInputs();  ?>
+				    <form id='searchForm' action = './' method='GET'>
+				      <div id="skin-inputs-wrap">				        <div class="skin-inputs-third first">
+    		              <?php print $inputs[KenexaJobQuestions::DIVISION] ?>
+	    	              <?php print $inputs[KenexaJobQuestions::AREA_OF_INTEREST] ?>
+		                  <?php print $inputs[KenexaJobQuestions::KEYWORD] ?>
+                        </div>
+                        <div class="skin-inputs-third">
+				          <?php print $inputs[KenexaJobQuestions::LOCATION] ?>
+				          <input id ='ajaxSubmit' type='button' value='SUBMIT'>
+				        </div>
+				        <div class="skin-inputs-third">
+				          <div class="inputs-wrap">
+				            <?php print $inputs[KenexaJobQuestions::INDUSTRY] ?>
+				            <?php print $inputs[KenexaJobQuestions::POSITION_TYPE] ?>
+				            <ul id="search-diff-language-links">
+				              <li><a href="https://careers.timewarner.com/1036/ASP/TG/cim_home.asp?partnerid=391&siteid=5145">Chercher des emplois en Fran&ccedil;ais</a></li>
+				              <li><a href="https://careers.timewarner.com/1031/ASP/TG/cim_home.asp?partnerid=391&siteid=5144">Suchen nach Stellenangeboten auf Deutsch</a></li>
+				              <li><a href="https://careers.timewarner.com/1040/ASP/TG/cim_home.asp?partnerid=391&siteid=5243">Cercare dei lavori in Italiano</a></li>
+				              <li><a href="https://careers.timewarner.com/3082/ASP/TG/cim_home.asp?partnerid=391&siteid=5244">Buscar ofertas de empleo en Espa&ntilde;ol </a></li>
+				            </ul>
+                          </div>
+				        </div>
+				      </div>
+				    </form>					
                     <div id="ajax-loader"><img src="<?php print $dir; ?>images/ajax-loader.gif"/></div>
                     <div id='results'>
                       <?php print $tw->displaySearchResults(); ?>
+                    </div>
+                    <div id="search-results-footer">
+                      <div class="left">
+                        If you are experiencing any technical issues with our career site, please contact: <a href="mailto:RecruitAdmin@timewarner.com">RecruitAdmin@timewarner.com</a> .<br/>
+                        Please be sure to provide a detailed explanation of the issue you are encountering.
+                      </div>
+                      <div class="right">
+                        <a href="#" alt="Career Site Help" title="Career Site Help">Career Site Help</a><br/>
+                        <a href="#" alt="Website Accessibility" title="Website Accessibility">Website Accessibility</a>
+                      </div>
                     </div>
 				</div>
 			</div>

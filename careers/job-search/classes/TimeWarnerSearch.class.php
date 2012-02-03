@@ -60,10 +60,9 @@ class TimeWarnerSearch {
   } 
 
 
-  function printInputs() {
+  function getInputs() {
     $inputs = array();
     
-    echo "<form id='searchForm' action = './' method='GET'>";
     $fields = $this->ks->getFields();
     foreach ($fields as $key => $field) {
         $col="";
@@ -133,27 +132,8 @@ class TimeWarnerSearch {
         }
         $inputs[$key] = $col;
     }
-    echo "<div id=\"skin-inputs-wrap\">";
-    echo    "<div class=\"skin-inputs-third first\">".
-            $inputs[KenexaJobQuestions::DIVISION].
-            $inputs[KenexaJobQuestions::AREA_OF_INTEREST].
-            $inputs[KenexaJobQuestions::KEYWORD].
-            "</div>";
-    echo    "<div class=\"skin-inputs-third\">".
-                $inputs[KenexaJobQuestions::LOCATION].
-                "<input id ='ajaxSubmit' type='button' value='SUBMIT'>".
-            "</div>";
-    
-    echo    "<div class=\"skin-inputs-third\">".
-                "<div class=\"inputs-wrap\">".
-                    $inputs[KenexaJobQuestions::INDUSTRY].
-                    $inputs[KenexaJobQuestions::POSITION_TYPE].
-                "</div>".
-            "</div>";
-    echo "</div>";
-    echo "</form>";
 //    echo "<div id='search-history'><strong>Previous searches:</strong><br/></div>";
- 
+    return $inputs; 
 }
 
   function displaySearchResults() {
@@ -197,7 +177,7 @@ class TimeWarnerSearch {
 					for($i=1;$i<=$maxPages;$i++) {
 						$class="";
 						if($i == $this->ks->pageNumber ) $class = " page-link-current";	// additional class for current page.
-						echo "<div class='page-link$class'>[$i] </div>";
+						echo "<div class='page-link$class'>$i </div>";
 					}
 					echo "</div>";		
 				}
