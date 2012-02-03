@@ -205,7 +205,9 @@ class TimeWarnerSearch {
                 if($odd) $class="odd";
                 else $class="";
                 echo "<tr id='result-$num'>";
-                echo "<td class='$class title'>". "<a href='{$job->JobDetailLink}'>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
+
+
+                echo "<td class='$class title'>". "<a href='{$job->JobDetailLink}' onclick='showDetails(this);return false;' class='details-link'>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
                 echo "<td class='$class location'>". $job->Question[KenexaJobData::LOCATION] . "</td>";
                 echo "<td class='$class division'>". $job->Question[KenexaJobData::DIVISION] . "</td>";
                 echo "<td class='$class industry'>". $job->Question[KenexaJobData::INDUSTRY] . "</td>";
@@ -213,10 +215,33 @@ class TimeWarnerSearch {
                 echo "<td class='$class req'>". $job->Question[KenexaJobData::REQUISITION_NO] . "</td>";
                 echo "<td class='$class updated last'>". $job->LastUpdated . "</td>";
                 echo "<tr/>";
+                echo "<tr id='result-$num-details' class='details'>";
+                echo "<td colspan='7' class='details-cell'>";
+                echo $this->Truncate($job->JobDescription,400,false);
+                echo "<div class='view-full'><a href='{$job->JobDetailLink}'>View Full Description</a></div>";
+                echo "</td>";
+                echo "<tr/>";
                 $odd ^= 1;
                 $num ++;
             }
             echo "</table>";
         }
   }
+  
+  function Truncate($string, $length, $stopanywhere=false) {
+    //truncates a string to a certain char length, stopping on a word if not specified otherwise.
+    if (strlen($string) > $length) {
+        //limit hit!
+        $string = substr($string,0,($length -3));
+        if ($stopanywhere) {
+            //stop anywhere
+            $string .= '...';
+        } else{
+            //stop on a word.
+            $string = substr($string,0,strrpos($string,' ')).'...';
+        }
+    }
+    return $string;
+  }
+
 }

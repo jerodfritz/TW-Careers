@@ -1,3 +1,9 @@
+function showDetails(item){
+  $('#'+$(item).parent().parent().attr('id')+'-details td.details-cell').toggle();
+  return false;
+
+}
+
 $(document).ready(function(){
   $("label.infield").inFieldLabels();
 });    

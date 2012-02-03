@@ -158,7 +158,8 @@
 #careers-advanced-search #results-table td.title {
   width: 300px;
   padding: 0 15px 0 35px;
-  background: url(../images/bg_table_rail.jpg) no-repeat 0 0 transparent;
+  xbackground: url(../images/bg_table_rail.jpg) no-repeat 0 0 transparent;
+  border-left: 23px solid #fff;
 }
 #careers-advanced-search #results-table td.location {
   padding-right: 25px;
@@ -181,7 +182,8 @@
 #careers-advanced-search #results-table td.updated,
 #careers-advanced-search #results-table td.last {
   width: 110px;
-  background: url(../images/bg_table_rail.jpg) no-repeat right 0 transparent;
+  xbackground: url(../images/bg_table_rail.jpg) no-repeat right 0 transparent;
+  border-right: 23px solid #fff !important;  
 
   border-right:none;
   white-space:nowrap; /* don't wrap date */
@@ -212,6 +214,33 @@
 #careers-advanced-search #results-table a {
   color:#0079de;
   text-decoration: underline;
+}
+
+#careers-advanced-search #results-table td.details-cell {
+  display: none;
+  border-left: 23px solid #fff;
+  border-right: 23px solid #fff;
+  padding: 15px 35px 20px;
+    background: #f7f7f7; /* Old browsers */
+    background: -moz-linear-gradient(top,  #fafafa 0%, #eaeaea 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#fafafa), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #fafafa 0%,#eaeaea 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #fafafa 0%,#eaeaea 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #fafafa 0%,#eaeaea 100%); /* IE10+ */
+    background: linear-gradient(top,  #fafafa 0%,#eaeaea 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+  font-size: .95em;
+  line-height: 1.3em;
+}
+#careers-advanced-search #results-table td.details-cell .view-full {
+ margin-top: 15px;
+}
+#careers-advanced-search #results-table td.details-cell .view-full a {
+  font-size: 1em;
+  text-decoration: none !important; 
+}
+#careers-advanced-search #results-table td.details-cell .view-full a:hover {
+  text-decoration: underline !important; 
 }
 
 #careers-advanced-search th.sort-on-this {
