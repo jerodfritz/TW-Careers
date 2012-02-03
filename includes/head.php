@@ -22,7 +22,6 @@ EOS;
 		}
 	}
 ?>
-	<meta http-equiv="X-UA-Compatible" content="IE=7" />
 	<link rel="stylesheet" href="<?php echo $baseUrl; ?>css/screen.css" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?php echo $baseUrl; ?>css/print.css" type="text/css" media="print" />
 	<?php 

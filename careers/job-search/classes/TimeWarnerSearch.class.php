@@ -60,7 +60,7 @@ class TimeWarnerSearch {
   function printInputs() {
     $inputs = array();
     
-    echo "<form id='searchForm' action = './' method='POST'>";
+    echo "<form id='searchForm' action = './' method='GET'>";
     $fields = $this->ks->getFields();
     foreach ($fields as $key => $field) {
         $col="";
@@ -174,13 +174,17 @@ class TimeWarnerSearch {
 			
 				// Show the search results stats.
 
-				$resultsPerPage = "????";
+				$resultsPerPage = 50;
 				$page = intval($arr->OtherInformation->PageNumber) ;
 				$total = intval($arr->OtherInformation->TotalRecordsFound);
-				$to = '#';
-				$from = '#';
+				$to = $page * $resultsPerPage;
+				$to = ($to > $total)? $total : $to ;
+				$from = (($page-1) * $resultsPerPage ) + 1;
 				
-				echo sprintf( '<div class="results-count">Showing %s - %s of %s Results</div>', $from,  $to, $total);				
+				if($total > 0) {
+                  echo sprintf( '<div class="results-count">Showing %s - %s of %s Results</div>', $from,  $to, $total);				} else {
+                  echo '<div class="results-count">Your Search returned 0 Results</div>';
+                }
 
 				// If more than one page, show a link for each page.
 				// JS searches for these and adds events to do a paginated search.

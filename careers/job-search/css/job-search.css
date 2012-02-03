@@ -35,7 +35,7 @@
 	display: none;
 	position: fixed;
 	left: 50%;
-	top: 405px;
+	top: 50%;
 }
 #careers-advanced-search .loc-select {
 	width: 120px;
@@ -153,6 +153,10 @@
   color: #676767;
   /* bg colour for even lines  */
   background-color:#fff;
+}
+#careers-advanced-search #results-table td.title {
+  width: 100%;
+  padding: 0 15px 0 35px;
 }
 #careers-advanced-search #results-table td.location {
   padding-right: 25px;

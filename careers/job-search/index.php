@@ -48,8 +48,8 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
 				<div id="careers-advanced-search">
 				    <h1>Search for Jobs</h1>
 					<?php print $tw->printInputs(); ?>
+                    <div id="ajax-loader"><img src="<?php print $dir; ?>images/ajax-loader.gif"/></div>
                     <div id='results'>
-                      <div id="ajax-loader"><img src="<?php print $dir; ?>images/ajax-loader.gif"/></div>
                       <?php print $tw->displaySearchResults(); ?>
                     </div>
 				</div>
