@@ -173,11 +173,19 @@ class TimeWarnerSearch {
 				// JS searches for these and adds events to do a paginated search.
 				if($maxPages > 1) {
 					echo "<div class='page-info'>";
-					echo "<strong>Pages: </strong>";
+					//echo "<strong>Pages: </strong>";
+					if($this->ks->pageNumber > 1) {
+                      $num = $this->ks->pageNumber - 1;
+  					  echo "<div class='page-link$class' num='$num'>Previous</div>";
+                    }
 					for($i=1;$i<=$maxPages;$i++) {
 						$class="";
 						if($i == $this->ks->pageNumber ) $class = " page-link-current";	// additional class for current page.
-						echo "<div class='page-link$class'>$i </div>";
+						echo "<div class='page-link$class' num='$i'>$i</div>";
+					}
+					if($this->ks->pageNumber < $maxPages) {
+					  $num = $this->ks->pageNumber + 1;
+  					  echo "<div class='page-link$class' num='$num'>Next</div>";
 					}
 					echo "</div>";		
 				}

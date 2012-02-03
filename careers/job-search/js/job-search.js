@@ -48,7 +48,7 @@ $(document).ready(function(){
 		// Find the page links (if any) for pagination.
 		$('#results div.page-link').live('click', function(){
 			// Get the desired page number from the dom element.
-			pageNumber = $(this).text().replace(/[^0-9]/g, '');
+			pageNumber = $(this).attr('num').replace(/[^0-9]/g, '');
 			// Trigger the search.
 			$('#ajaxSubmit').trigger('click');
 		});

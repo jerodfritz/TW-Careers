@@ -294,14 +294,11 @@
 	color: #0076E3;
 	cursor:pointer;
 	display:inline;
+	margin-right: 5px;
 }
-#careers-advanced-search #search-stats .page-link-current {
-	font-weight:bold;
-	font-size:14px;
-	color:#ff000;
-}
+#careers-advanced-search #search-stats .page-link-current,
 #careers-advanced-search #search-stats .page-link:hover {
-	font-weight:bold;
+	text-decoration: underline;
 }
 
 .content-width {
