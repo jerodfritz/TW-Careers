@@ -52,8 +52,8 @@ class TimeWarnerSearch {
 	$sortBy = @$_REQUEST['sortby'];
     
 	foreach ($_REQUEST as $key => $value) {	  
-	  if (isset($questionHash[$key])) {		     
-         if ($sortBy && $sortBy == $key) $this->ks->addQuestion($questionHash[$key], $value, true);
+            if (isset($questionHash[$key])) {		     
+            if ($sortBy && $sortBy == $key) $this->ks->addQuestion($questionHash[$key], $value, true);
 		 else $this->ks->addQuestion($questionHash[$key], $value);
 	  }
     }
