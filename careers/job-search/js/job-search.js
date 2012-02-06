@@ -5,22 +5,18 @@ function showDetails(item) {
 
 }
 
-$(function(){
+$(function() {
 	$("label.infield").each(function(index) {
-    $('#' + $(this).attr('for')).inputHint($(this).text());
-  });
-  $("button").hover(
-    function () {
-      $(this).addClass("hover");
-    },
-    function () {
-      $(this).removeClass("hover");
-    }
-  )
+		$('#' + $(this).attr('for')).inputHint($(this).text());
+    $('#' + $(this).attr('for')).attr('default',$(this).text());
+	});
+	$("button").hover(function() {
+		$(this).addClass("hover");
+	}, function() {
+		$(this).removeClass("hover");
+	})
 });
-
-
-$(function(){
+$(function() {
 
 	var sortQuestion = "date";
 	// Default sort field.
@@ -29,7 +25,24 @@ $(function(){
 	var lastSearchParams = "";
 	// The url params string of the last search performed (exluding pagenum parameter).
 	var performInitialSearch = true;
+	var dateSearchType = "posted-after"// The type of date search (either "all-dates" or "posted-after"
 
+	$("#date-input").datepicker({
+		dateFormat : "dd-M-yy", // This format matches date in search results.
+		altField : "#date-value",
+		altFormat : "yy-mm-dd"  // This format is for the search api.
+		//changeMonth: true,      // Allow year and month change via dropdown.
+		//changeYear: true
+	}).attr("readonly", "true");
+	var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000))
+	$("#date-input").datepicker("setDate", d);
+
+	// Date-related radio buttons.
+	// Preselect one of them.
+	$("#skin-inputs-wrap [name=date-select-option]").filter("[value=posted-after]").attr("checked", "checked");
+	$('#skin-inputs-wrap .date-radio').bind('change', function() {
+		dateSearchType = $(this).val();
+	});
 	// Setup non-location multi selects.
 	$("select.kenexa-question", $('#careers-advanced-search')).each(function() {
 		$(this).multiselect({
@@ -185,11 +198,6 @@ $(function(){
 	$('#country-select').trigger("change");
 	$('#country-select').multiselect("refresh");
 
-	// Default to usa.
-	$('#country-select').val("United States");
-	$('#country-select').trigger("change");
-	$('#country-select').multiselect("refresh");
-
 	// Creates a search string based on the location inputs,
 	// in CSV format for the Kenexa query value.
 	var createLocSearchCSV = function() {
@@ -215,7 +223,7 @@ $(function(){
 		}
 		csv = createLocSearchCSV();
 		if(!csv) {
-			alert("Please select a city");
+			alert("Please select a location");
 			return false;
 		}
 		var params = "";
@@ -241,12 +249,31 @@ $(function(){
 					params += $(this).attr('name') + "=TG_SEARCH_ALL&";
 				}
 			} else {
-				params += $(this).attr('name') + '=' + $(this).val() + "&";
+				var value = ($(this).attr('default') == $(this).val()) ? 'TG_SEARCH_ALL' : $(this).val();
+        params += $(this).attr('name') + '=' + value + "&";
 			}
 
 		});
 		params += "sortby=" + sortQuestion;
 
+		// Perform initial search for jobs posted in last seven days.
+		if(performInitialSearch && 0) {
+			performInitialSearch = false;
+			var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000)), // current days less 7 days.
+			currDay = d.getDate().toString(), currMonth = (d.getMonth() + 1).toString(), currYear = d.getFullYear();
+			if(currDay.length < 2)
+				currDay = "0" + currDay;
+			if(currMonth.length < 2)
+				currMonth = "0" + currMonth;
+			//alert(curr_year + "-" + curr_month + "-" + curr_day);
+			params = "date_posted=" + currYear + "-" + currMonth + "-" + currDay + "&division=TG_SEARCH_ALL&area_of_interest=TG_SEARCH_ALL&keyword=&location=united states&industry=TG_SEARCH_ALL&position=TG_SEARCH_ALL&sortby=date&pagenum=1";
+			performInitialSearch = false;
+		}
+		// Only include the date in the search if date search option is "posted-after"
+		if(dateSearchType == "posted-after") {
+			params += "&date_posted=" + $('#date-value').val();
+		} else
+			params += "&date_posted=All";
 		// If the new search is different to the previous search,
 		// Then we must reset the page number to 1, as the new results
 		// will probably NOT have the same number of search pages.
@@ -257,21 +284,6 @@ $(function(){
 		// as the order of pages will change.
 		//
 		// There is probably a better way of handling this.
-
-		// Perform initial search for jobs posted in last seven days.
-		if(performInitialSearch) {
-			performInitialSearch = false;
-			var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000)), // current days less 7 days.
-			curr_day = d.getDate().toString(), curr_month = (d.getMonth() + 1).toString(), curr_year = d.getFullYear();
-			if(curr_day.length < 2)
-				curr_day = "0" + curr_day;
-			if(curr_month.length < 2)
-				curr_month = "0" + curr_month;
-			//alert(curr_year + "-" + curr_month + "-" + curr_day);
-			params = "date_posted=" + curr_year + "-" + curr_month + "-" + curr_day + "&division=TG_SEARCH_ALL&area_of_interest=TG_SEARCH_ALL&keyword=&location=united states&industry=TG_SEARCH_ALL&position=TG_SEARCH_ALL&sortby=date&pagenum=1";
-			performInitialSearch = false;
-		}
-
 		if(lastSearchParams != params)
 			pageNumber = 1;
 		lastSearchParams = params;
@@ -322,17 +334,16 @@ $(function(){
 })(jQuery);
 
 function openWindow(lnk) {
-  var w;
-  var h;
+	var w;
+	var h;
 
-  if (document.all) {
-    w = screen.availWidth;
-    h = screen.availHeight;
-  }
-  else if (document.layers) {
-    w = window.innerWidth;
-    h = window.innerHeight;
-  }	   	
+	if(document.all) {
+		w = screen.availWidth;
+		h = screen.availHeight;
+	} else if(document.layers) {
+		w = window.innerWidth;
+		h = window.innerHeight;
+	}
 
 	var subwindow;
 	lnk = lnk.replace("%23", "#");

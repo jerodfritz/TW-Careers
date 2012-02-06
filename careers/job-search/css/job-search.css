@@ -84,7 +84,7 @@
 
 
 /* Multiselect inputs */
-#careers-advanced-search #skin-inputs-wrap input,
+input#keyword, input#date-input, #ajaxSubmit,
 #careers-advanced-search  .ui-multiselect {
     clear:both;
     margin-bottom:15px;
@@ -117,7 +117,7 @@
 
 }
 
-#careers-advanced-search #skin-inputs-wrap input {
+input#keyword, input#date-input {
   background-color:#fff;
   width:224px;
   padding-top: 2px;
@@ -375,5 +375,46 @@ a.keyword-help-button {
   background: url(../images/question_mark.png) no-repeat 0 0 transparent;
   width: 15px;
   height: 15px;
+}
+/* labels next to the date search radio button options */
+#careers-advanced-search .date-label {   
+    display:inline;
+    position:relative;
+    top:1px;
+    font-weight:normal;
+}
+/* move the date options up a bit */
+#date-options-wrap {
+    position:relative;
+    top:-5px;
+    font-size:12px;
+}
+/* div wraps around date options and labels */
+#date-options-wrap .date-radio-wrap {
+    text-align:left;
+    height:22px;
+    position: relative;
+}
 
+input#date-select-option1, input#date-select-option2 {
+    width:28px;
+    display:inline;
+}
+/* the visible date input */
+input#date-input {
+    position:absolute;left:210px;top:-9px;width:80px;
+}
+/* "date posted"  text */
+#date-posted {	
+	text-align:left;
+	float:left;
+	position:relative;
+	top:15px
+}
+/* wrapper around date radios and labels only */
+#date-radios-wrap {
+	text-align:left;
+	float:left;
+	position:relative;
+	top:2px
 }
