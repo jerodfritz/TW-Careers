@@ -379,4 +379,17 @@ input#date-select-option1, input#date-select-option2 {
 input#date-input {
     position:absolute;left:210px;top:-9px;width:80px;
 }
-    
+/* "date posted"  text */
+#date-posted {	
+	text-align:left;
+	float:left;
+	position:relative;
+	top:15px
+}
+/* wrapper around date radios and labels only */
+#date-radios-wrap {
+	text-align:left;
+	float:left;
+	position:relative;
+	top:2px
+}

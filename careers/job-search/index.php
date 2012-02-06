@@ -56,19 +56,19 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
                                 
                                 <div id="date-options-wrap">
                                 
-                                    <div style="text-align:left;float:left;position:relative;top:14px">Date Posted</div>
-                                    <div style="display:inline;float:left;">
+                                    <div id="date-posted">Date Posted</div>
+                                    <div id="date-radios-wrap">
                                 
-                                    <div class="date-radio-wrap">
-                                        <input class="date-radio" type="radio" id ="date-select-option1" name="date-select-option" value="all-dates" />
-                                        <label for="date-select-option1" class="date-label" >All Posting Dates</label>
-                                    </div>
-                                    <div class="date-radio-wrap">
-                                        <input class="date-radio" type="radio" id ="date-select-option2" name="date-select-option" value="posted-after" />
-                                        <label for="date-select-option2" class="date-label">Include All Jobs Updated After</label>
-                                        <input name ='date-input' id ="date-input"  type='text'  >
-                                        <input type="hidden" id="date-value">
-                                    </div>
+										<div class="date-radio-wrap">
+											<input class="date-radio" type="radio" id ="date-select-option1" name="date-select-option" value="all-dates" />
+											<label for="date-select-option1" class="date-label" >All Posting Dates</label>
+										</div>
+										<div class="date-radio-wrap">
+											<input class="date-radio" type="radio" id ="date-select-option2" name="date-select-option" value="posted-after" />
+											<label for="date-select-option2" class="date-label">Include All Jobs Updated After</label>
+											<input name ='date-input' id ="date-input"  type='text'  >
+											<input type="hidden" id="date-value">
+										</div>
                                     </div>  
                                 </div>
                                         
