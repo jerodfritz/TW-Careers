@@ -77,7 +77,6 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
                             <div class="skin-inputs-third">
                                 <?php print $inputs[KenexaJobQuestions::LOCATION] ?>
                                 <input id ='ajaxSubmit' type='button' value='SUBMIT'>
-								<div id="clear-button" style="clear:both;position:relative;left:80px;bottom:8px;font-size:12px;color:#888">Clear</div>
                                 
                             </div>
                             <div class="skin-inputs-third">
