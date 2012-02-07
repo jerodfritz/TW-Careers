@@ -8,8 +8,9 @@ function showDetails(item) {
 $(function() {
 	$("label.infield").each(function(index) {
 		$('#' + $(this).attr('for')).inputHint($(this).text());
-    $('#' + $(this).attr('for')).attr('default',$(this).text());
+		$('#' + $(this).attr('for')).attr('default',$(this).text());
 	});
+	
 	$("button").hover(function() {
 		$(this).addClass("hover");
 	}, function() {
@@ -18,21 +19,25 @@ $(function() {
   
 });
 $(function() {
-
-	var sortQuestion = "date";
 	// Default sort field.
-	var pageNumber = 1;
+	var sortQuestion = "date";
+	
 	// Default search page number
-	var lastSearchParams = "";
+	var pageNumber = 1;
+	
 	// The url params string of the last search performed (exluding pagenum parameter).
-	var performInitialSearch = true;
-	var dateSearchType = "posted-after"// The type of date search (either "all-dates" or "posted-after"
+	var lastSearchParams = "";
+	
+	// The type of date search (either "all-dates" or "posted-after"
+	var dateSearchType = "posted-after"
+	
+	
 
 	$("#date-input").datepicker({
-		dateFormat : "dd-M-yy", // This format matches date in search results.
+		dateFormat : "dd-M-yy",		// This format matches date in search results.
 		altField : "#date-value",
-		altFormat : "yy-mm-dd"  // This format is for the search api.
-		//changeMonth: true,      // Allow year and month change via dropdown.
+		altFormat : "yy-mm-dd"		// This format is for the search api.
+		//changeMonth: true,		// Allow year and month change via dropdown.
 		//changeYear: true
 	}).attr("readonly", "true");
 	var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000))
@@ -44,6 +49,9 @@ $(function() {
 	$('#skin-inputs-wrap .date-radio').bind('change', function() {
 		dateSearchType = $(this).val();
 	});
+	
+
+	
 	// Setup non-location multi selects.
 	$("select.kenexa-question", $('#careers-advanced-search')).each(function() {
 		$(this).multiselect({
@@ -55,6 +63,17 @@ $(function() {
 	// Setup location multi selects.
 	var $locationWidget = $('<div id="location-selects">' + '<select id="country-select" ></select>' + '<select id="state-select" class="loc-select" size="6" multiple="multiple"></select>' + '<select id="city-select" class="loc-select" size="6" multiple="multiple"></select>' + '</div>');
 	$locationWidget.insertAfter('#location');
+
+	// Reset certain fields on clear button.
+	$('#clear-button').bind('click',function(){		
+		$("#division").multiselect("uncheckAll");
+		$("#area_of_interest").multiselect("uncheckAll");
+		$("#industry").multiselect("uncheckAll");
+		$("#position").multiselect("uncheckAll");
+		$("#keyword").val("").trigger('blur');	// Clear text field and trigger the inputHint function.
+		$("#state-select").multiselect("checkAll");
+		$("#city-select").multiselect("checkAll");
+	})
 
 	// Bind click events to table header for sorting.
 	$('#results-table th.hover-effect').live('click', function() {
@@ -98,7 +117,7 @@ $(function() {
 				$('#state-select').val("NO_STATE").multiselect({
 					multiple : false,
 					header : false,
-					selectedText : "N/A"
+					selectedText : ""
 				}).multiselect("disable");
 				return;
 			}
@@ -107,7 +126,7 @@ $(function() {
 				header : true,
 				selectedText : 'States (# selected)',
 				noneSelectedText : 'States'
-			}).multiselect("enable").multiselect("checkAll")
+			}).multiselect("enable").multiselect("checkAll");
 
 		},
 		// Fills the cities widget based on states.
@@ -257,23 +276,12 @@ $(function() {
 		});
 		params += "sortby=" + sortQuestion;
 
-		// Perform initial search for jobs posted in last seven days.
-		if(performInitialSearch && 0) {
-			var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000)), // current days less 7 days.
-			currDay = d.getDate().toString(), currMonth = (d.getMonth() + 1).toString(), currYear = d.getFullYear();
-			if(currDay.length < 2)
-				currDay = "0" + currDay;
-			if(currMonth.length < 2)
-				currMonth = "0" + currMonth;
-			//alert(curr_year + "-" + curr_month + "-" + curr_day);
-			params = "date_posted=" + currYear + "-" + currMonth + "-" + currDay + "&division=TG_SEARCH_ALL&area_of_interest=TG_SEARCH_ALL&keyword=&location=united states&industry=TG_SEARCH_ALL&position=TG_SEARCH_ALL&sortby=date&pagenum=1";
-			performInitialSearch = false;
-		}
 		// Only include the date in the search if date search option is "posted-after"
 		if(dateSearchType == "posted-after") {
 			params += "&date_posted=" + $('#date-value').val();
 		} else
 			params += "&date_posted=All";
+		
 		// If the new search is different to the previous search,
 		// Then we must reset the page number to 1, as the new results
 		// will probably NOT have the same number of search pages.
@@ -312,7 +320,7 @@ $(function() {
 			}
 		})
 	});
-  
+/*  
   var needCorners = {
     'input#keyword':'input',
     'input#date-input':'input',
@@ -333,7 +341,7 @@ $(function() {
       }
     }
   }
-  
+*/  
   
 	// Initial search.
 	$('#ajaxSubmit').trigger('click');

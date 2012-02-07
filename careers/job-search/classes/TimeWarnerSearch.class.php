@@ -91,7 +91,7 @@ class TimeWarnerSearch {
                     $col .= "<input type=\"hidden\" class='kenexa-question' id=\"$keyId\"  name='$keyId'></input>";
                 }else {
                     $title=$titles[$keyId];
-                    $col.= "<select title='$title' class='kenexa-question multi-select'  name='$keyId' multiple='multiple' >";
+                    $col.= "<select title='$title' class='kenexa-question multi-select'  id=\"$keyId\" name='$keyId' multiple='multiple' >";
                     //$col .= "<option value=''>Any</option>";
                     foreach ($field['options'] as $option) {
                         $selected = '';
@@ -210,7 +210,7 @@ class TimeWarnerSearch {
                 echo "<td class='$class title'>". "<a href='{$job->JobDetailLink}' onclick='showDetails(this);return false;' class='details-link'><span class='arrow'></span>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
                 echo "<td class='$class location'>". $job->Question[KenexaJobData::LOCATION] . "</td>";
                 echo "<td class='$class division'>". $job->Question[KenexaJobData::DIVISION] . "</td>";
-                echo "<td class='$class industry'>". $job->Question[KenexaJobData::INDUSTRY] . "</td>";
+                echo "<td class='$class industry'>". $this->Truncate($job->Question[KenexaJobData::INDUSTRY],45,false) . "</td>";
                 echo "<td class='$class type'>". $job->Question[KenexaJobData::POSITION_TYPE] . "</td>";
                 echo "<td class='$class req'>". $job->Question[KenexaJobData::REQUISITION_NO] . "</td>";
                 echo "<td class='$class updated last'>". $job->LastUpdated . "</td>";
@@ -238,7 +238,7 @@ class TimeWarnerSearch {
             $string .= '...';
         } else{
             //stop on a word.
-            $string = substr($string,0,strrpos($string,' ')).'...';
+            $string = substr($string,0,strrpos($string,' ')).' ...';
         }
     }
     return $string;

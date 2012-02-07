@@ -91,7 +91,7 @@ input#keyword, input#date-input, #ajaxSubmit,
     margin-top:5px;
     display:block;
     font-size:11px;
-    xborder-radius: 15px;
+    border-radius: 15px;
     padding-left:18px;
     padding-right:10px;
     padding-top:5px;
@@ -439,4 +439,14 @@ filter: alpha(opacity=99); /* internet explorer */
 	-khtml-opacity: 0.99;      /* khtml, old safari */
 	-moz-opacity: 0.99;       /* mozilla, netscape */
 	opacity: 0.99;           /* fx, safari, opera */  
+}
+
+#clear-button {	
+	position:relative;
+	left:132px;
+	top:32px;
+	font-size:12px;
+	color:#888;
+	cursor:pointer;
+	display:inline;	
 }

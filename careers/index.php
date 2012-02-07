@@ -19,7 +19,7 @@ $javascripts = array (
   $dir . 'js/script.js',
 );
 
-include '../includes/head.php'; 
+include '../includes/careers-head.php'; 
 ?>
 <body>
     <div id="wrapper">
