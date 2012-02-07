@@ -91,7 +91,7 @@ input#keyword, input#date-input, #ajaxSubmit,
     margin-top:5px;
     display:block;
     font-size:11px;
-    border-radius: 15px;
+    xborder-radius: 15px;
     padding-left:18px;
     padding-right:10px;
     padding-top:5px;
@@ -100,6 +100,15 @@ input#keyword, input#date-input, #ajaxSubmit,
     /*background-color:#ccc;*/
     background-image:none;
 
+}
+.ie-input-border-wrap {
+    margin-bottom:15px;
+    margin-top:5px;
+}
+.ie-input-border-wrap input {
+  margin-bottom:0 !important;
+  margin-top:0 !important;
+  border: 0 !important;
 }
 #careers-advanced-search #skin-inputs-wrap .ui-multiselect,
 #careers-advanced-search #skin-inputs-wrap .ui-state-hover {
@@ -375,6 +384,8 @@ a.keyword-help-button {
   background: url(../images/question_mark.png) no-repeat 0 0 transparent;
   width: 15px;
   height: 15px;
+  margin-top: -35px;
+  margin-right: 20px; 
 }
 /* labels next to the date search radio button options */
 #careers-advanced-search .date-label {   
@@ -417,4 +428,15 @@ input#date-input {
 	float:left;
 	position:relative;
 	top:2px
+}
+#ui-datepicker-div {
+ -ms-filter: "progid:DXImageTransform.Microsoft.Glow(color=#666666,strength=3) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=135,strength=6)";
+  filter: progid:DXImageTransform.Microsoft.Glow(color=#666666,strength=3) progid:DXImageTransform.Microsoft.Shadow(color=#000000,direction=135,strength=6);
+  -moz-box-shadow: 0 5px 20px #333;
+  -webkit-box-shadow: 0 5px 20px #333;  
+  margin-top:-30px;
+filter: alpha(opacity=99); /* internet explorer */
+	-khtml-opacity: 0.99;      /* khtml, old safari */
+	-moz-opacity: 0.99;       /* mozilla, netscape */
+	opacity: 0.99;           /* fx, safari, opera */  
 }

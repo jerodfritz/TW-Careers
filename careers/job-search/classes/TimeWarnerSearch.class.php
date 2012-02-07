@@ -104,7 +104,7 @@ class TimeWarnerSearch {
                             }
                           }
                         }
-                        $col.= "<option $selected>{$option['Code']}</option>";
+                        $col.= "<option $selected>{$option['Description']}</option>";
                     }
                     $col.= "</select>";
                 }

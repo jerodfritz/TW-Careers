@@ -15,6 +15,7 @@ $(function() {
 	}, function() {
 		$(this).removeClass("hover");
 	})
+  
 });
 $(function() {
 
@@ -258,7 +259,6 @@ $(function() {
 
 		// Perform initial search for jobs posted in last seven days.
 		if(performInitialSearch && 0) {
-			performInitialSearch = false;
 			var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000)), // current days less 7 days.
 			currDay = d.getDate().toString(), currMonth = (d.getMonth() + 1).toString(), currYear = d.getFullYear();
 			if(currDay.length < 2)
@@ -308,10 +308,33 @@ $(function() {
 			error : function() {
 				$('#ajax-loader').css('display', 'none');
 				ajaxBusy = false;
-				alert('An error occurred.');
+				//alert('An error occurred.');
 			}
 		})
 	});
+  
+  var needCorners = {
+    'input#keyword':'input',
+    'input#date-input':'input',
+    '#careers-advanced-search  .ui-multiselect':'multiselect'
+  };
+
+  for (var selector in needCorners) {
+    var type = needCorners[selector];
+    if (needCorners.hasOwnProperty(selector)) { 
+      if ( $.browser.msie ) {
+        switch(type){
+          case 'input':
+           $(selector).wrap('<div class="ie-input-border-wrap" />').parent().corner("round 13px"); 
+           break
+        }
+      } else {
+        $(selector).corner('15px');
+      }
+    }
+  }
+  
+  
 	// Initial search.
 	$('#ajaxSubmit').trigger('click');
 

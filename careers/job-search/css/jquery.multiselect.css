@@ -21,7 +21,7 @@ filter: alpha(opacity=99); /* internet explorer */
 	-khtml-opacity: 0.99;      /* khtml, old safari */
 	-moz-opacity: 0.99;       /* mozilla, netscape */
 	opacity: 0.99;           /* fx, safari, opera */  
-  width: 200px !important; 
+  xwidth: 200px !important; 
   display:none; padding:3px; 
   position:absolute; 
   z-index:10000 }

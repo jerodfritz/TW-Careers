@@ -17,6 +17,7 @@ $javascripts = array(
     'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', 
     'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', 
     $dir.'js/jquery.multiselect.min.js',
+    $dir.'js/jquery.corner.js',
     $dir.'js/job-search.js'
   );
 
@@ -55,7 +56,6 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
 		                        <?php print $inputs[KenexaJobQuestions::KEYWORD] ?><a href="javascript:openWindow('http://careers.timewarner.com/1033/ASP/TG/help/TG_help_search_tips.asp?SID=^eS/56Cpxm7RZdiTIPQ7AmBaV/A2cjYE4e35hOUm4MnUBv1/PGoZJWA==&type=search')" title="Help with keyword searching" class='keyword-help-button'><span></span></a>
                                 <div id="date-options-wrap">
                                 
-                                    <div id="date-posted">Date Posted</div>
                                     <div id="date-radios-wrap">
                                 
 										<div class="date-radio-wrap">
