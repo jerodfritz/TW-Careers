@@ -91,7 +91,7 @@ class TimeWarnerSearch {
                     $col .= "<input type=\"hidden\" class='kenexa-question' id=\"$keyId\"  name='$keyId'></input>";
                 }else {
                     $title=$titles[$keyId];
-                    $col.= "<select title='$title' class='kenexa-question multi-select'  name='$keyId' multiple='multiple' >";
+                    $col.= "<select title='$title' class='kenexa-question multi-select'  id=\"$keyId\" name='$keyId' multiple='multiple' >";
                     //$col .= "<option value=''>Any</option>";
                     foreach ($field['options'] as $option) {
                         $selected = '';
