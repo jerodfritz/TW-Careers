@@ -14,12 +14,11 @@ $stylesheets = array(
 );
 
 $javascripts = array(
-    'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js',
-    'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js',
-    $dir . '../js/jquery.infieldlabel.min.js',
-    $dir . 'js/jquery.multiselect.min.js',
-    $dir . 'js/job-search.js'
-);
+    'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', 
+    'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', 
+    $dir.'js/jquery.multiselect.min.js',
+    $dir.'js/job-search.js'
+  );
 
 require_once ('../../includes/head.php');
 require_once ("classes/krumo/class.krumo.php");
@@ -50,10 +49,10 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
                     <form id='searchForm' action = './' method='GET'>
                         <div id="skin-inputs-wrap">
                             <div class="skin-inputs-third first">
-                                <?php print $inputs[KenexaJobQuestions::DIVISION] ?>
-                                <?php print $inputs[KenexaJobQuestions::AREA_OF_INTEREST] ?>
-                                <?php print $inputs[KenexaJobQuestions::KEYWORD] ?>
-                                
+    		                    <?php print $inputs[KenexaJobQuestions::DIVISION] ?>
+	    	                    <?php print $inputs[KenexaJobQuestions::AREA_OF_INTEREST] ?>
+	    	                    <label for='keyword' class='infield'>Keyword / Requisition #</label>
+		                        <?php print $inputs[KenexaJobQuestions::KEYWORD] ?><a href="javascript:openWindow('http://careers.timewarner.com/1033/ASP/TG/help/TG_help_search_tips.asp?SID=^eS/56Cpxm7RZdiTIPQ7AmBaV/A2cjYE4e35hOUm4MnUBv1/PGoZJWA==&type=search')" title="Help with keyword searching" class='keyword-help-button'><span></span></a>
                                 <div id="date-options-wrap">
                                 
                                     <div id="date-posted">Date Posted</div>

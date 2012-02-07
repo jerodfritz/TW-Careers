@@ -114,15 +114,7 @@ class TimeWarnerSearch {
                 if(isset($this->request[$keyId])){
                   $value = "value='".$this->request[$keyId]."'";
                 }
-                if($keyId == 'keyword'){
-                  $col .=  "<div class='infieldwrap'>";
-                  $col .=  "<label for='keyword' class='infield'>Keyword / Requisition #</label>";
-                  $col .= "<input class='kenexa-question' id=\"$keyId\" placeholder='Keyword / Requisition #' name='$keyId' $value></input>";
-                  $col .= "<a href='#' class='keyword-help-button'><span></span></a>";
-                  $col .=  "</div>";
-                } else {
-                  $col .= "<input class='kenexa-question' id=\"$keyId\" name='$keyId' $value></input>";
-                }
+                $col .= "<input class='kenexa-question' id=\"$keyId\" name='$keyId' $value></input>";
                 break;
             case 'textarea':
                 $col .= "<textarea class='kenexa-question' id=\"$keyId\" name='$keyId'></textarea>";
