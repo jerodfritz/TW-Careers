@@ -16,8 +16,17 @@ $(function() {
 	}, function() {
 		$(this).removeClass("hover");
 	})
-  
+  $("a[rel]").overlay({
+		effect: 'apple',
+    onBeforeLoad: function() {
+      // grab wrapper element inside content
+			var wrap = this.getOverlay().find(".contentWrap");
+			// load the page specified in the trigger
+			wrap.load(this.getTrigger().attr("href"));
+		}
+	});  
 });
+
 $(function() {
 	// Default sort field.
 	var sortQuestion = "date";
@@ -29,9 +38,9 @@ $(function() {
 	var lastSearchParams = "";
 
 	// The type of date search (either "all-dates" or "posted-after"
-	var dateSearchType = "posted-after"
+	var dateSearchType = "all-dates"
 
-	var allCountries = "WORLDWIDE";
+	var allCountries = "Country";
 
 	$("#date-input").datepicker({
 		dateFormat : "dd-M-yy",		// This format matches date in search results.
@@ -45,7 +54,7 @@ $(function() {
 
 	// Date-related radio buttons.
 	// Preselect one of them.
-	$("#skin-inputs-wrap [name=date-select-option]").filter("[value=posted-after]").attr("checked", "checked");
+	$("#skin-inputs-wrap [name=date-select-option]").filter("[value="+dateSearchType+"]").attr("checked", "checked");
 	$('#skin-inputs-wrap .date-radio').bind('change', function() {
 		dateSearchType = $(this).val();
 	});
@@ -73,13 +82,14 @@ $(function() {
 		$("#keyword").val("").trigger('blur');	// Clear text field and trigger the inputHint function.
 		$("#state-select").multiselect("checkAll");
 		$("#city-select").multiselect("checkAll");
-		$('#country-select').val("TG_SELECT_ALL").trigger('change').multiselect("refresh");
+		$('#country-select').val(allCountries).trigger('change').multiselect("refresh");
 		// Reset date to seven days in the past.
 		var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000))
 		$("#date-input").datepicker("setDate", d);
 		// Select all dates option.
 		$("#skin-inputs-wrap [name=date-select-option]").filter("[value=posted-after]").removeAttr("checked");
 		$("#skin-inputs-wrap [name=date-select-option]").filter("[value=all-dates]").attr("checked", "checked");
+    dateSearchType = "all-dates";
 
 	})
 
@@ -108,8 +118,8 @@ $(function() {
 			if(country == allCountries) {
 			$('#state-select').html("").multiselect("destroy").multiselect({
 					header : false,
-					selectedText : 'N/A',
-					noneSelectedText : 'N/A'
+					selectedText : '',//'N/A',
+					noneSelectedText : '',//'N/A'
 				}).multiselect("disable");
 				return;
 			}
@@ -151,8 +161,8 @@ $(function() {
 			if(!states) {
 				$('#city-select').html("").multiselect("destroy").multiselect({
 					header : false,
-					selectedText : 'N/A',
-					noneSelectedText : 'N/A'
+					selectedText : '',//'N/A',
+					noneSelectedText : '',//'N/A'
 				}).multiselect("disable");
 				return;
 

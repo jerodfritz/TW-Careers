@@ -112,7 +112,7 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
         </div>
         <?php include $basePath . 'includes/structure/sticky-footer-careers.php'; ?>
     </div>
-    <div id="overlay"><div class="contentWrap"></div></div>
+    <div id="overlay" class="overlay"><div class="contentWrap"></div></div>
     <?php include $basePath . 'includes/careers-scripts.php'; ?>
 </body>
 </html>

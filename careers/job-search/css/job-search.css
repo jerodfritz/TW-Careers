@@ -3,7 +3,7 @@
   text-transform: uppercase;
   color: #494949;
   font-weight: normal;
-  margin: 15px 35px;
+  margin: 15px 0px;
 }
 
 #careers-advanced-search {
@@ -451,15 +451,56 @@ filter: alpha(opacity=99); /* internet explorer */
 	display:inline;	
 }
 
-#overlay {
-  background-image:url(http://static.flowplayer.org/img/overlay/transparent.png);
-  color:#efefef;
-  height:450px;
-  width:500px;
+.overlay {
+	display:none;
+	background-image:url(../images/bg_overlay.png);
+	width:640px;		
+	padding:35px;
+	font-size:11px;
 }
-
-/* container for external content. uses vertical scrollbar, if needed */
+.overlay .close {
+	background-image:url(../images/overlay_close.png);
+	position:absolute; right:5px; top:5px;
+	cursor:pointer;
+	height:35px;
+	width:35px;
+}
 div.contentWrap {
   height:500px;
   overflow-y:auto;
+}
+
+
+#keyword-help { 
+  color: #333;
+  padding: 10px;
+}
+#keyword-help h1 {
+  font-size: 14px;
+}
+
+#keyword-help table tr:hover,td:hover {
+  background: #fff;
+}
+
+#keyword-help p {
+  margin: 1em 0;
+  font-size: 1em;
+}
+
+#keyword-help table {
+  margin: 0 auto;
+  width:605px;
+}
+#keyword-help th {
+    background: #003366;
+    color:#fff;
+}
+
+#keyword-help td {
+
+}
+
+#keyword-help td.bold {
+  font-weight: bold;
 }
