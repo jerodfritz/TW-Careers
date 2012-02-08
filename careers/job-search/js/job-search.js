@@ -31,7 +31,7 @@ $(function() {
 	// The type of date search (either "all-dates" or "posted-after"
 	var dateSearchType = "posted-after"
 	
-	var allCountries = "WORLDWIDE";
+	var allCountries = "Country";
 
 	$("#date-input").datepicker({
 		dateFormat : "dd-M-yy",		// This format matches date in search results.
@@ -101,8 +101,8 @@ $(function() {
 			if(country == allCountries) {
 			$('#state-select').html("").multiselect("destroy").multiselect({
 					header : false,
-					selectedText : 'N/A',
-					noneSelectedText : 'N/A'
+					selectedText : '',//'N/A',
+					noneSelectedText : '',//'N/A'
 				}).multiselect("disable");
 				return;
 			}
@@ -144,8 +144,8 @@ $(function() {
 			if(!states) {
 				$('#city-select').html("").multiselect("destroy").multiselect({
 					header : false,
-					selectedText : 'N/A',
-					noneSelectedText : 'N/A'
+					selectedText : '',//'N/A',
+					noneSelectedText : '',//'N/A'
 				}).multiselect("disable");
 				return;
 
@@ -225,7 +225,7 @@ $(function() {
 	});
 
 	// Default to usa.
-	$('#country-select').val("United States");
+	$('#country-select').val(allCountries);//("United States");
 	$('#country-select').trigger("change");
 	$('#country-select').multiselect("refresh");
 
