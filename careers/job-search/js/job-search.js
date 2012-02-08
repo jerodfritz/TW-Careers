@@ -31,7 +31,7 @@ $(function() {
 	// The type of date search (either "all-dates" or "posted-after"
 	var dateSearchType = "posted-after"
 	
-	
+	var allCountries = "WORLDWIDE";
 
 	$("#date-input").datepicker({
 		dateFormat : "dd-M-yy",		// This format matches date in search results.
@@ -73,6 +73,7 @@ $(function() {
 		$("#keyword").val("").trigger('blur');	// Clear text field and trigger the inputHint function.
 		$("#state-select").multiselect("checkAll");
 		$("#city-select").multiselect("checkAll");
+		$('#country-select').val("TG_SELECT_ALL").trigger('change').multiselect("refresh");
 	})
 
 	// Bind click events to table header for sorting.
@@ -97,6 +98,14 @@ $(function() {
 
 		// Fills the states widget based on country.
 		fillStates = function(country) {
+			if(country == allCountries) {
+			$('#state-select').html("").multiselect("destroy").multiselect({
+					header : false,
+					selectedText : 'N/A',
+					noneSelectedText : 'N/A'
+				}).multiselect("disable");
+				return;
+			}
 			var states = locData[country],
 			//str="<option value='All'>All</option>";
 			str = "";
@@ -137,7 +146,7 @@ $(function() {
 					header : false,
 					selectedText : 'N/A',
 					noneSelectedText : 'N/A'
-				}).multiselect("disable")
+				}).multiselect("disable");
 				return;
 
 			}
@@ -179,16 +188,18 @@ $(function() {
 			}
 		},
 		// Setup initial widgets, defaulting to 1st country.
-		str = "";
+		str = "<option value='" + allCountries + "'>" + allCountries + "</option>" + 
+			  "<option value='United States'>United States</option>";
 		for(var country in locData) {
-			if(currentCountry == undefined)
-				currentCountry = country;
-			str += "<option value='" + country + "'>" + country + "</option>";
+			//if(currentCountry == undefined)
+			//	currentCountry = country;			
+			if(country!= "United States")
+				str += "<option value='" + country + "'>" + country + "</option>";
 		}
 		$('#country-select').html(str);
 		// Fill in starting states and cities.
-		fillStates(currentCountry);
-		fillCities(currentCountry, $("#state-select").val());
+		//fillStates(currentCountry);
+		//fillCities(currentCountry, $("#state-select").val());
 
 		// On country change, fill in states and cities.
 		$('#country-select').bind('change', function(evt) {
@@ -221,6 +232,10 @@ $(function() {
 	// Creates a search string based on the location inputs,
 	// in CSV format for the Kenexa query value.
 	var createLocSearchCSV = function() {
+		if($("#country-select").val() == allCountries) {
+			return "TG_SEARCH_ALL";
+		}
+		
 		var selectedCities = $("#city-select").val(), query = "";
 		if(!selectedCities) {
 			return null;
