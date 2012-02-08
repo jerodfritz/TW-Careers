@@ -119,7 +119,7 @@ $(function() {
 			$('#state-select').html("").multiselect("destroy").multiselect({
 					header : false,
 					selectedText : '',//'N/A',
-					noneSelectedText : '',//'N/A'
+					noneSelectedText : ''//'N/A'
 				}).multiselect("disable");
 				return;
 			}
@@ -162,7 +162,7 @@ $(function() {
 				$('#city-select').html("").multiselect("destroy").multiselect({
 					header : false,
 					selectedText : '',//'N/A',
-					noneSelectedText : '',//'N/A'
+					noneSelectedText : ''//'N/A'
 				}).multiselect("disable");
 				return;
 
