@@ -10,7 +10,7 @@ $(function() {
 		$('#' + $(this).attr('for')).inputHint($(this).text());
 		$('#' + $(this).attr('for')).attr('default',$(this).text());
 	});
-	
+
 	$("button").hover(function() {
 		$(this).addClass("hover");
 	}, function() {
@@ -21,17 +21,17 @@ $(function() {
 $(function() {
 	// Default sort field.
 	var sortQuestion = "date";
-	
+
 	// Default search page number
 	var pageNumber = 1;
-	
+
 	// The url params string of the last search performed (exluding pagenum parameter).
 	var lastSearchParams = "";
-	
+
 	// The type of date search (either "all-dates" or "posted-after"
 	var dateSearchType = "posted-after"
-	
-	var allCountries = "Country";
+
+	var allCountries = "WORLDWIDE";
 
 	$("#date-input").datepicker({
 		dateFormat : "dd-M-yy",		// This format matches date in search results.
@@ -49,9 +49,9 @@ $(function() {
 	$('#skin-inputs-wrap .date-radio').bind('change', function() {
 		dateSearchType = $(this).val();
 	});
-	
 
-	
+
+
 	// Setup non-location multi selects.
 	$("select.kenexa-question", $('#careers-advanced-search')).each(function() {
 		$(this).multiselect({
@@ -74,6 +74,13 @@ $(function() {
 		$("#state-select").multiselect("checkAll");
 		$("#city-select").multiselect("checkAll");
 		$('#country-select').val("TG_SELECT_ALL").trigger('change').multiselect("refresh");
+		// Reset date to seven days in the past.
+		var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000))
+		$("#date-input").datepicker("setDate", d);
+		// Select all dates option.
+		$("#skin-inputs-wrap [name=date-select-option]").filter("[value=posted-after]").removeAttr("checked");
+		$("#skin-inputs-wrap [name=date-select-option]").filter("[value=all-dates]").attr("checked", "checked");
+
 	})
 
 	// Bind click events to table header for sorting.
@@ -101,8 +108,8 @@ $(function() {
 			if(country == allCountries) {
 			$('#state-select').html("").multiselect("destroy").multiselect({
 					header : false,
-					selectedText : '',//'N/A',
-					noneSelectedText : '',//'N/A'
+					selectedText : 'N/A',
+					noneSelectedText : 'N/A'
 				}).multiselect("disable");
 				return;
 			}
@@ -144,8 +151,8 @@ $(function() {
 			if(!states) {
 				$('#city-select').html("").multiselect("destroy").multiselect({
 					header : false,
-					selectedText : '',//'N/A',
-					noneSelectedText : '',//'N/A'
+					selectedText : 'N/A',
+					noneSelectedText : 'N/A'
 				}).multiselect("disable");
 				return;
 
@@ -225,7 +232,7 @@ $(function() {
 	});
 
 	// Default to usa.
-	$('#country-select').val(allCountries);//("United States");
+	$('#country-select').val(allCountries);
 	$('#country-select').trigger("change");
 	$('#country-select').multiselect("refresh");
 
@@ -235,7 +242,7 @@ $(function() {
 		if($("#country-select").val() == allCountries) {
 			return "TG_SEARCH_ALL";
 		}
-		
+
 		var selectedCities = $("#city-select").val(), query = "";
 		if(!selectedCities) {
 			return null;
@@ -296,7 +303,7 @@ $(function() {
 			params += "&date_posted=" + $('#date-value').val();
 		} else
 			params += "&date_posted=All";
-		
+
 		// If the new search is different to the previous search,
 		// Then we must reset the page number to 1, as the new results
 		// will probably NOT have the same number of search pages.
@@ -335,28 +342,6 @@ $(function() {
 			}
 		})
 	});
-/*  
-  var needCorners = {
-    'input#keyword':'input',
-    'input#date-input':'input',
-    '#careers-advanced-search  .ui-multiselect':'multiselect'
-  };
-
-  for (var selector in needCorners) {
-    var type = needCorners[selector];
-    if (needCorners.hasOwnProperty(selector)) { 
-      if ( $.browser.msie ) {
-        switch(type){
-          case 'input':
-           $(selector).wrap('<div class="ie-input-border-wrap" />').parent().corner("round 13px"); 
-           break
-        }
-      } else {
-        $(selector).corner('15px');
-      }
-    }
-  }
-*/  
   
 	// Initial search.
 	$('#ajaxSubmit').trigger('click');

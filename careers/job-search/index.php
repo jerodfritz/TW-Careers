@@ -16,8 +16,8 @@ $stylesheets = array(
 $javascripts = array(
     'http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js', 
     'https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js', 
+    $dir.'js/jquery.tools.min.js',
     $dir.'js/jquery.multiselect.min.js',
-    $dir.'js/jquery.corner.js',
     $dir.'js/job-search.js'
   );
 
@@ -53,7 +53,7 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
     		                    <?php print $inputs[KenexaJobQuestions::DIVISION] ?>
 	    	                    <?php print $inputs[KenexaJobQuestions::AREA_OF_INTEREST] ?>
 	    	                    <label for='keyword' class='infield'>Keyword / Requisition #</label>
-		                        <?php print $inputs[KenexaJobQuestions::KEYWORD] ?><a href="javascript:openWindow('http://careers.timewarner.com/1033/ASP/TG/help/TG_help_search_tips.asp?SID=^eS/56Cpxm7RZdiTIPQ7AmBaV/A2cjYE4e35hOUm4MnUBv1/PGoZJWA==&type=search')" title="Help with keyword searching" class='keyword-help-button'><span></span></a>
+		                        <?php print $inputs[KenexaJobQuestions::KEYWORD] ?><a href="keyword-help/" rel="#overlay" target="_new" title="Help with keyword searching" class='keyword-help-button'><span></span></a>
                                 <div id="date-options-wrap">
                                 
                                     <div id="date-radios-wrap">
@@ -112,6 +112,7 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
         </div>
         <?php include $basePath . 'includes/structure/sticky-footer-careers.php'; ?>
     </div>
+    <div id="overlay"><div class="contentWrap"></div></div>
     <?php include $basePath . 'includes/careers-scripts.php'; ?>
 </body>
 </html>
