@@ -74,6 +74,13 @@ $(function() {
 		$("#state-select").multiselect("checkAll");
 		$("#city-select").multiselect("checkAll");
 		$('#country-select').val("TG_SELECT_ALL").trigger('change').multiselect("refresh");
+		// Reset date to seven days in the past.
+		var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000))
+		$("#date-input").datepicker("setDate", d);
+		// Select all dates option.
+		$("#skin-inputs-wrap [name=date-select-option]").filter("[value=posted-after]").removeAttr("checked");
+		$("#skin-inputs-wrap [name=date-select-option]").filter("[value=all-dates]").attr("checked", "checked");
+
 	})
 
 	// Bind click events to table header for sorting.
@@ -225,7 +232,7 @@ $(function() {
 	});
 
 	// Default to usa.
-	$('#country-select').val("United States");
+	$('#country-select').val(allCountries);
 	$('#country-select').trigger("change");
 	$('#country-select').multiselect("refresh");
 
