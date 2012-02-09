@@ -206,13 +206,7 @@ XML;
         var_dump($xml);
     }
 
-    /* <Question Sortorder="ASC" Sort="No">
-      <Id>11524</Id>
-      <!-- Value><![CDATA[Junior Graphic Designer]]></Value -->
-      <Value>creative</Value>
-      </Question>
-     */
-
+   
     // Adds a question to the search.
     public function addQuestion($questionId, $searchTerm, $sortFlag=false) {		
 		

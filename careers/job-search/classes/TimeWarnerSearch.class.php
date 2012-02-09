@@ -132,9 +132,7 @@ class TimeWarnerSearch {
 }
 
   function displaySearchResults() {
-
     $arr = $this->ks->search();
-
     if ($arr) {
             $questions = array( "title"=>"Posting Job Title",
                                 "location"=>"Location",
@@ -189,7 +187,7 @@ class TimeWarnerSearch {
             echo '<table id="results-table" style="clear:both" ><tr class="header">';
             foreach($questions as $question=>$text) {
                 $class="";
-                if ($question != "req") {
+                if ($question != "req" && $question != "title") {
                     $class="hover-effect"; 
                     if ($sortBy == $question) {
 						$class.= " sort-on-this";
@@ -200,9 +198,6 @@ class TimeWarnerSearch {
                 }
                 echo "<th id='$question' class='$class'>$text<span class='sort-arrow'></span></th>";
             }
-			
-			
-			
 			
             $jobs = $arr->Jobs->Job;
             $odd = 0;
@@ -233,6 +228,8 @@ class TimeWarnerSearch {
                 $num ++;
             }
             echo "</table>";
+        }else {
+            // If we get here, there's either no questions or maybe an error in the search.
         }
   }
   
