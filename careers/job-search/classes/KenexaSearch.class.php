@@ -75,6 +75,12 @@ class KenexaSearch {
 	 */
 	public $datePosted = "All";
 
+	/**
+	 * Search direction ASC or DESC
+	 * @var string
+	 */
+	public $sortDir = "DESC";
+	
 	// String representation of questions XML.
     // Built up from the addQuestion function.
     protected $questions = "";
@@ -209,10 +215,11 @@ XML;
 
     // Adds a question to the search.
     public function addQuestion($questionId, $searchTerm, $sortFlag=false) {		
-		$sort = 'Sortorder="ASC" Sort="No"';
+		
+		$sort = 'Sortorder="'.$this->sortDir.'" Sort="No"';
 		//$sort="";
 		if($sortFlag) {
-			$sort = 'Sortorder="ASC" Sort="Yes"';						
+			$sort = 'Sortorder="'.$this->sortDir.'" Sort="Yes"';				
 		}
 		$this->questions .=
                 "<Question $sort>" .
