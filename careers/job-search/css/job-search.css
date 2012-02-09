@@ -49,7 +49,7 @@
     border:1px solid #aaa;
 }
 
-#careers-advanced-search #skin-inputs-wrap {
+#careers-advanced-search #inputs-wrap {
     width:100%;
     display:table;
     border:2px solid #eee;
@@ -67,18 +67,18 @@
 
 }
 /* Set initial width of selects. Will be copied to multiselect. */
-#careers-advanced-search #skin-inputs-wrap select {
+#careers-advanced-search #inputs-wrap select {
   width:266px;  
 }
 
-#careers-advanced-search .skin-inputs-third {
+#careers-advanced-search .inputs-third {
   display:table-cell;
   padding: 10px 10px 10px 10px;
   text-align: center;
   vertical-align: top;
 }
 /* Apply left margin to left-hand inputs block */
-#careers-advanced-search .skin-inputs-third.first {
+#careers-advanced-search .inputs-third.first {
     padding-left:30px;
 }
 
@@ -111,11 +111,11 @@ input#date-input,
   margin-top:0 !important;
   border: 0 !important;
 }
-#careers-advanced-search #skin-inputs-wrap .ui-multiselect,
-#careers-advanced-search #skin-inputs-wrap .ui-state-hover {
+#careers-advanced-search #inputs-wrap .ui-multiselect,
+#careers-advanced-search #inputs-wrap .ui-state-hover {
   color: #000;
 }
-#careers-advanced-search #skin-inputs-wrap .ui-multiselect {
+#careers-advanced-search #inputs-wrap .ui-multiselect {
     background: #f7f7f7; /* Old browsers */
     background: -moz-linear-gradient(top,  #f7f7f7 0%, #dfdfdf 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#dfdfdf)); /* Chrome,Safari4+ */
@@ -496,8 +496,8 @@ div.content-wrap {
 	display:inline;	
 	margin-right: 10px;
 }
-#careers-advanced-search .skin-inputs-third #ajaxSubmit:hover,
-#careers-advanced-search .skin-inputs-third #ajaxSubmit.hover {
+#careers-advanced-search .inputs-third #ajaxSubmit:hover,
+#careers-advanced-search .inputs-third #ajaxSubmit.hover {
     background: -moz-linear-gradient(top,  #000 0%, #484848 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left 484848, color-stop(0%,#000), color-stop(100%,#484848)); /* Chrome,Safari4+ */
     background: -webkit-linear-gradient(top,  #000 0%,#484848 100%); /* Chrome10+,Safari5.1+ */
@@ -507,7 +507,7 @@ div.content-wrap {
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000', endColorstr='#484848',GradientType=0 ); /* IE6-9 */    
 }
 
-#careers-advanced-search .skin-inputs-third #ajaxSubmit {
+#careers-advanced-search .inputs-third #ajaxSubmit {
     height:24px;
     width:76px; 
     padding:0px 10px;

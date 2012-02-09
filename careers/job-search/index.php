@@ -48,8 +48,8 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
                     <h1>Search for Jobs</h1>
                     <?php $inputs = $tw->getInputs(); ?>
                     <form id='searchForm' action = './' method='GET'>
-                        <div id="skin-inputs-wrap">
-                            <div class="skin-inputs-third first">
+                        <div id="inputs-wrap">
+                            <div class="inputs-third first">
     		                    <?php print $inputs[KenexaJobQuestions::DIVISION] ?>
 	    	                    <?php print $inputs[KenexaJobQuestions::AREA_OF_INTEREST] ?>
 	    	                    <label for='keyword' class='infield'>Keyword / Requisition #</label>
@@ -73,14 +73,14 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
                                         
                                 </div>
                             
-                            <div class="skin-inputs-third">
+                            <div class="inputs-third">
                                 <?php print $inputs[KenexaJobQuestions::LOCATION] ?>
                                 <div id="form-action-buttons">
                                   <div id="clear-button">Clear</div>
                                   <input id ='ajaxSubmit' type='button' value='SUBMIT'>
                                 </div>
                             </div>
-                            <div class="skin-inputs-third">
+                            <div class="inputs-third">
                                 <div class="inputs-wrap">
                                     <?php print $inputs[KenexaJobQuestions::INDUSTRY] ?>
                                     <?php print $inputs[KenexaJobQuestions::POSITION_TYPE] ?>

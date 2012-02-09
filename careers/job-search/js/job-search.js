@@ -31,6 +31,16 @@ $(function() {
 			wrap.load(this.getTrigger().attr("href"));
 		}
 	});  
+  
+   $(document).keypress(function(event) {
+    if ( event.which == 13 ) {
+      event.preventDefault();
+      $('#ajaxSubmit').trigger('click');
+    }
+  });
+  $(":input").focus(function () {
+     console.log(this.id);
+  });  
 });
 
 $(function() {
@@ -66,8 +76,8 @@ $(function() {
 
 	// Date-related radio buttons.
 	// Preselect one of them.
-	$("#skin-inputs-wrap [name=date-select-option]").filter("[value="+dateSearchType+"]").attr("checked", "checked");
-	$('#skin-inputs-wrap .date-radio').bind('change', function() {
+	$("#inputs-wrap [name=date-select-option]").filter("[value="+dateSearchType+"]").attr("checked", "checked");
+	$('#inputs-wrap .date-radio').bind('change', function() {
 		dateSearchType = $(this).val();
 	});
 
@@ -99,8 +109,8 @@ $(function() {
 		var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000))
 		$("#date-input").datepicker("setDate", d);
 		// Select all dates option.
-		$("#skin-inputs-wrap [name=date-select-option]").filter("[value=posted-after]").removeAttr("checked");
-		$("#skin-inputs-wrap [name=date-select-option]").filter("[value=all-dates]").attr("checked", "checked");
+		$("#inputs-wrap [name=date-select-option]").filter("[value=posted-after]").removeAttr("checked");
+		$("#inputs-wrap [name=date-select-option]").filter("[value=all-dates]").attr("checked", "checked");
     dateSearchType = "all-dates";
 
 	})
