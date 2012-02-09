@@ -215,17 +215,17 @@ class TimeWarnerSearch {
                 echo "<tr id='result-$num'>";
 
 
-                echo "<td class='$class title'>". "<a href='{$job->JobDetailLink}' onclick='showDetails(this);return false;' class='details-link'><span class='arrow'></span>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
+                echo "<td class='$class title'>". "<span class='arrow'></span><a href='{$job->JobDetailLink}' onclick='showDetails(this);return false;' class='details-link'>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
                 echo "<td class='$class location'>". $job->Question[KenexaJobData::LOCATION] . "</td>";
                 echo "<td class='$class division'>". $job->Question[KenexaJobData::DIVISION] . "</td>";
-                echo "<td class='$class industry'>". $this->Truncate($job->Question[KenexaJobData::INDUSTRY],45,false) . "</td>";
+                echo "<td class='$class industry' onMouseOver='showTruncated(this);' onMouseOut='hideTruncated(this);' >". $this->Truncate($job->Question[KenexaJobData::INDUSTRY],45,true) . "</td>";
                 echo "<td class='$class type'>". $job->Question[KenexaJobData::POSITION_TYPE] . "</td>";
                 echo "<td class='$class req'>". $job->Question[KenexaJobData::REQUISITION_NO] . "</td>";
                 echo "<td class='$class updated last'>". $job->LastUpdated . "</td>";
                 echo "<tr/>";
                 echo "<tr id='result-$num-details' class='details'>";
                 echo "<td colspan='7' class='details-cell'>";
-                echo $this->Truncate($job->JobDescription,400,false);
+                echo $this->Truncate($job->JobDescription,400, false);
                 echo "<div class='view-full'><a href='{$job->JobDetailLink}'>View Full Description</a></div>";
                 echo "</td>";
                 echo "<tr/>";
@@ -236,20 +236,33 @@ class TimeWarnerSearch {
         }
   }
   
-  function Truncate($string, $length, $stopanywhere=false) {
-    //truncates a string to a certain char length, stopping on a word if not specified otherwise.
+  function Truncate($string, $length, $output_truncated) {
+    $ret = $string;
     if (strlen($string) > $length) {
-        //limit hit!
-        $string = substr($string,0,($length -3));
-        if ($stopanywhere) {
-            //stop anywhere
-            $string .= '...';
-        } else{
-            //stop on a word.
-            $string = substr($string,0,strrpos($string,' ')).' ...';
-        }
+		$visible_string =  $this->TokenTruncate($string,$length);
+		$ret = $visible_string;  
+		$ret .= '<span class="ellipses">...</span>';
+		if( $output_truncated ) {
+  		  $ret .= '<span class="truncated">';
+		  $ret .= substr($string,strlen($visible_string),strlen($string));
+		  $ret .= '</span>';
+		}
     }
-    return $string;
+    return $ret;
+  }
+  
+  function TokenTruncate($string, $your_desired_width) {
+    $parts = preg_split('/([\s\n\r]+)/', $string, null, PREG_SPLIT_DELIM_CAPTURE);
+    $parts_count = count($parts);
+
+    $length = 0;
+    $last_part = 0;
+    for (; $last_part < $parts_count; ++$last_part) {
+    $length += strlen($parts[$last_part]);
+      if ($length > $your_desired_width) { break; }
+    }
+
+    return implode(array_slice($parts, 0, $last_part));
   }
 
 }

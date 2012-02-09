@@ -1,8 +1,16 @@
 function showDetails(item) {
-	$(item).toggleClass('expanded');
+	$(item).parent().toggleClass('expanded');
 	$('#' + $(item).parent().parent().attr('id') + '-details td.details-cell').toggle();
 	return false;
 
+}
+function showTruncated(item) {
+  $(item).find('.ellipses').hide();
+  $(item).find('.truncated').show();
+}
+function hideTruncated(item) {
+  $(item).find('.truncated').hide();
+  $(item).find('.ellipses').show();
 }
 
 $(function() {

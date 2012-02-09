@@ -154,46 +154,57 @@ input#keyword, input#date-input {
   /* bg colour for even lines  */
   background-color:#fff;
 }
+#careers-advanced-search #results-table td .truncated {
+  display: none;
+} 
 #careers-advanced-search #results-table td.title {
-  width: 300px;
-  padding: 0 15px 0 20px;
+  width: 240px;
+  padding: 0;
   xbackground: url(../images/bg_table_rail.jpg) no-repeat 0 0 transparent;
   border-left: 23px solid #fff;
 }
-#careers-advanced-search #results-table td.title a .arrow {
+#careers-advanced-search #results-table td.title a {
+  display: block;
+  float: left;
+  width: 195px;
+}
+#careers-advanced-search #results-table td.title .arrow {
   background: url(../images/collapse_arrows.png) no-repeat 0 0 transparent;
   width: 18px;
   height: 18px;
-  display: inline-block;
+  display: block;
   overflow: hidden;
   float:left;
+  clear: bottom;
   margin-right: 5px;
+  margin-left: 7px;
 }
-#careers-advanced-search #results-table td.title a.expanded .arrow {
+#careers-advanced-search #results-table td.expanded .arrow {
   background-position: 0 -18px;
 }
 
-#careers-advanced-search #results-table td.location {
-  padding-right: 25px;
-  width: 115px;
+#careers-advanced-search #results-table th#location {
+  width: 125px;
 }
-#careers-advanced-search #results-table td.division {
-  width: 90px;
+#careers-advanced-search #results-table th#division {
+  width: 105px;
 }
-#careers-advanced-search #results-table td.industry {
-  width: 160px;
-  padding-right: 25px;
+#careers-advanced-search #results-table th#area_of_interest {
+  width: 200px;
+  xpadding-right: 25px;
 }
-#careers-advanced-search #results-table td.type {
-  width: 90px;
+#careers-advanced-search #results-table th#type {
+  xwidth: 90px;
 }
 
-#careers-advanced-search #results-table td.req {
-  width: 80px;
+#careers-advanced-search #results-table th#req {
+  xwidth: 80px;
+}
+#careers-advanced-search #results-table th#date {
+ xwidth: 110px;
 }
 #careers-advanced-search #results-table td.updated,
 #careers-advanced-search #results-table td.last {
-  width: 110px;
   xbackground: url(../images/bg_table_rail.jpg) no-repeat right 0 transparent;
   border-right: 23px solid #fff !important;  
 
@@ -205,7 +216,7 @@ input#keyword, input#date-input {
   background-color:#dcedfa;
 }
 #careers-advanced-search #results-table th {
-  padding:10px;
+  padding:10px 0 ;
   border-right: 1px solid #BBB;
   color: #494949;
   font-size: 1.1em;
