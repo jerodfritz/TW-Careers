@@ -30,7 +30,9 @@ $(function() {
 $(function() {
 	// Default sort field.
 	var sortQuestion = "date";
-
+	
+	var sortDir="DESC";
+	
 	// Default search page number
 	var pageNumber = 1;
 
@@ -41,6 +43,10 @@ $(function() {
 	var dateSearchType = "all-dates"
 
 	var allCountries = "Country";
+	
+	var ajaxBusy = false;
+	var numSearches = 0;
+	var csv = null;
 
 	$("#date-input").datepicker({
 		dateFormat : "dd-M-yy",		// This format matches date in search results.
@@ -95,10 +101,26 @@ $(function() {
 
 	// Bind click events to table header for sorting.
 	$('#results-table th.hover-effect').live('click', function() {
-		$('#results-table th').removeClass('sort-on-this');
-		$(this).addClass('sort-on-this');
+		if(ajaxBusy) return;
+		if( $(this).hasClass("sort-on-this") ) {
+			if ( $(this).attr('id') != "date") {
+				if ($(this).hasClass("sort-asc") ) {
+					$(this).removeClass('sort-asc').addClass('sort-desc');
+					sortDir = "DESC";
+				}else {
+					$(this).removeClass('sort-desc').addClass('sort-asc');
+					sortDir = "ASC";
+				}
+			}else sortDir = "DESC";	// date sorting is always desc. Not sure how to change to asc.
+				
+		}else {
+			$('#results-table th').removeClass('sort-on-this');
+			$(this).addClass('sort-on-this sort-desc');
+			sortDir = "DESC";
+		}
+		
 		// sort question gets added to the &sortby param on submission.
-		sortQuestion = $(this).attr('id');
+		sortQuestion = $(this).attr('id');		
 		// Search again with new sort parameter.
 		$('#ajaxSubmit').trigger('click');
 	});
@@ -264,9 +286,7 @@ $(function() {
 		// Return query with trailing comma removed.
 		return query.slice(0, -1);
 	}
-	var ajaxBusy = false;
-	var numSearches = 0;
-	var csv = null;
+
 	$('#ajaxSubmit').bind('click', function() {
 		// Fill in the location input from the value of the special location widgets.
 
@@ -306,7 +326,7 @@ $(function() {
 			}
 
 		});
-		params += "sortby=" + sortQuestion;
+		params += "sortby=" + sortQuestion + "&sortdir="+sortDir;
 
 		// Only include the date in the search if date search option is "posted-after"
 		if(dateSearchType == "posted-after") {

@@ -289,13 +289,16 @@ input#keyword, input#date-input {
     text-decoration:none;
 
 }
-#careers-advanced-search th.sort-on-this span.sort-arrow {
+#careers-advanced-search th.sort-on-this.sort-desc span.sort-arrow,  #careers-advanced-search th.sort-on-this.sort-asc span.sort-arrow {
     background: transparent url(custom-theme/images/ui-icons_454545_256x240.png) no-repeat right center;
     margin-left: 3px;
     background-position:-64px 4px;
     width:16px;
     height:16px;
     display: inline-block;
+}
+#careers-advanced-search th.sort-on-this.sort-asc span.sort-arrow {
+	background-position:0px 4px;
 }
 
 #careers-advanced-search th.hover-effect {

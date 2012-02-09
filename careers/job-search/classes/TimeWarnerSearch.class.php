@@ -48,6 +48,9 @@ class TimeWarnerSearch {
 	// Set the search date 
 	if (isset($_REQUEST['date_posted']) ) $this->ks->datePosted = $_REQUEST['date_posted'];
 	
+	// Set the sort direction
+	if (isset($_REQUEST['sortdir']) ) $this->ks->sortDir = $_REQUEST['sortdir'];
+	
 	// Sort column (division, area_of_interest etc.)
 	$sortBy = @$_REQUEST['sortby'];
     
@@ -188,7 +191,12 @@ class TimeWarnerSearch {
                 $class="";
                 if ($question != "req") {
                     $class="hover-effect"; 
-                    if($sortBy == $question) $class.= " sort-on-this";
+                    if ($sortBy == $question) {
+						$class.= " sort-on-this";
+						if ($this->ks->sortDir == "ASC") $class.= " sort-asc";
+						else $class.= " sort-desc";
+						//echo $question."  ".$class;
+					}
                 }
                 echo "<th id='$question' class='$class'>$text<span class='sort-arrow'></span></th>";
             }
