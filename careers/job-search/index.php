@@ -43,7 +43,7 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
         </div>
         <div id="content">
             <div class="content-width">
-                <?php /* include $basePath . 'includes/structure/breadcrumb.php'; */ ?>
+                <?php  include $basePath . 'includes/structure/breadcrumb.php';  ?>
                 <div id="careers-advanced-search">
                     <h1>Search for Jobs</h1>
                     <?php $inputs = $tw->getInputs(); ?>
@@ -75,9 +75,10 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
                             
                             <div class="skin-inputs-third">
                                 <?php print $inputs[KenexaJobQuestions::LOCATION] ?>
-                                <input id ='ajaxSubmit' type='button' value='SUBMIT'>
-								<div id="clear-button">Clear</div>
-                                
+                                <div id="form-action-buttons">
+                                  <div id="clear-button">Clear</div>
+                                  <input id ='ajaxSubmit' type='button' value='SUBMIT'>
+                                </div>
                             </div>
                             <div class="skin-inputs-third">
                                 <div class="inputs-wrap">
@@ -95,7 +96,7 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
                     </form>
                     <div id="ajax-loader"><img src="<?php print $dir; ?>images/ajax-loader.gif"/></div>
                     <div id='results'>
-                        <?php print $tw->displaySearchResults(); ?>
+                    <?php $tw->displaySearchResults(); ?>
                     </div>
                     <div id="search-results-footer">
                         <div class="left">
@@ -112,7 +113,7 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
         </div>
         <?php include $basePath . 'includes/structure/sticky-footer-careers.php'; ?>
     </div>
-    <div id="overlay" class="overlay"><div class="contentWrap"></div></div>
+    <div id="overlay" class="overlay"><div class="content-wrap"></div></div>
     <?php include $basePath . 'includes/careers-scripts.php'; ?>
 </body>
 </html>

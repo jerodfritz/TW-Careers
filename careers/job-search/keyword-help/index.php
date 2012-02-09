@@ -30,12 +30,12 @@ For example, if you are performing a boolean search in French, you cannot type "
 
 <table width="100%" align="center" border="0" cellpadding="6" cellspacing="1">
 <tbody><tr>
-	<th>Search trick (Boolean operator)</th>
+	<th class="trick">Search trick (Boolean operator)</th>
 	<th>What it does</th>
 	<th>Example</th>
 </tr>
 <tr valign="middle">
-	<td class="bold">AND</td>
+	<td class="bold trick">AND</td>
 	<td>Finds multiple words or phrases.</td>
 	<td><span class="bold">java AND basic</span><br>Will find 
 	jobs with both of those exact words 
@@ -44,7 +44,7 @@ For example, if you are performing a boolean search in French, you cannot type "
 	search terms, such as javascript). This operator is not case-sensitive.</td>
 </tr>
 <tr valign="middle" class="odd">
-	<td class="bold">OR</td>
+	<td class="bold trick">OR</td>
 	<td>Finds either one word or the other.</td>
 	<td><span class="bold">java OR basic</span><br>Finds either 
 	exact word separately, but could find both words in some instances.  
@@ -52,14 +52,14 @@ For example, if you are performing a boolean search in French, you cannot type "
 	the search terms, such as javascript). This operator is not case-sensitive.</td>
 </tr>
 <tr valign="middle">
-	<td class="bold">AND NOT</td>
+	<td class="bold trick">AND NOT</td>
 	<td>Finds the first word on a page that does not include the second word.</td>
 	<td><span class="bold">java AND NOT basic</span><br>Will only return a job description with the word "java" but without the word "basic".  
 	(Use wildcard to consider other forms of 
 	the search terms, such as javascript). This operator is not case-sensitive.</td>
 </tr>
 <tr valign="middle" class="odd">
-	<td class="bold">Wildcards<br>*</td>
+	<td class="bold trick">Wildcards<br>*</td>
 	<td>Finds words that start with or end with your search string.</td>
 	<td><span class="bold">tele*</span><br>Will find "telecom", "telecommute", "telecommunications", and "telephone".  Do NOT use the asterisk to specify the first character of a string.  
 	<br>
@@ -68,7 +68,7 @@ For example, if you are performing a boolean search in French, you cannot type "
 	multi-lingual, multilingual, etc.</td>
 </tr>
 <tr valign="middle">
-	<td class="bold">(  )</td>
+	<td class="bold trick">(  )</td>
 	<td>Groups words or phrases. Other search terms can appear inside parentheses.</td>
 	<td><span class="bold">(java AND basic) AND NOT engineer</span><br>Will find a page with the words "java" and "basic", but not "engineer". Do NOT use ( ) around single words.</td>
 </tr>

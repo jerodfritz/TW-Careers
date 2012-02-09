@@ -19,9 +19,7 @@ $(function() {
   $("a[rel]").overlay({
 		effect: 'apple',
     onBeforeLoad: function() {
-      // grab wrapper element inside content
 			var wrap = this.getOverlay().find(".contentWrap");
-			// load the page specified in the trigger
 			wrap.load(this.getTrigger().attr("href"));
 		}
 	});  
@@ -354,7 +352,7 @@ $(function() {
 	});
   
 	// Initial search.
-	$('#ajaxSubmit').trigger('click');
+	//$('#ajaxSubmit').trigger('click');
 
 }); 
 
@@ -373,40 +371,3 @@ $(function() {
 		$(this).blur();
 	};
 })(jQuery);
-
-function openWindow(lnk) {
-	var w;
-	var h;
-
-	if(document.all) {
-		w = screen.availWidth;
-		h = screen.availHeight;
-	} else if(document.layers) {
-		w = window.innerWidth;
-		h = window.innerHeight;
-	}
-
-	var subwindow;
-	lnk = lnk.replace("%23", "#");
-	var popW = 498, popH = 525;
-	var topPos = (h - popH) / 3, leftPos = (w - popW) / 3;
-	var nowms = (new Date()).getTime();
-
-	if(!subwindow || subwindow.closed) {
-		subwindow = window.open(lnk, nowms, 'height=' + popH + ',width=' + popW + 'screenY=' + topPos + ',screenX=' + leftPos + ',top=' + topPos + ',left=' + leftPos + ',menubar=no,toolbar=no,resizable=yes,scrollbars=yes,alwaysRaised');
-		if(!subwindow.opener) {
-			subwindow.opener = window;
-		}
-		subwindow.focus();
-	} else {
-		subwindow.focus();
-		window.open(lnk, nowms);
-	}
-
-	try {
-		if( typeof (top.popUpListenerKenexa) != 'undefined') {
-			top.popUpListenerKenexa(subwindow);
-		}
-	} catch (e) {
-	}
-}
