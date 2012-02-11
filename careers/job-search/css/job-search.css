@@ -25,11 +25,13 @@
 	color: #900;
 }
 #careers-advanced-search label {
-	width: 120px;
+	width: 180px;
 	display: inline-block;
-	text-align: right;
+	text-align: left;
 	padding-right: 10px;
 	margin-bottom: 5px;
+        margin-left:10px;
+        /*padding-left:10px;*/
 }
 #careers-advanced-search #ajax-loader {
 	display: none;
@@ -73,15 +75,22 @@
 
 #careers-advanced-search .inputs-third {
   display:table-cell;
-  padding: 10px 10px 10px 10px;
-  text-align: center;
+  padding: 10px 00px 10px 0px;
+  text-align: left;/*center;*/
   vertical-align: top;
+  width:296px;
+  float:left;
+  padding-left:30px;
 }
 /* Apply left margin to left-hand inputs block */
 #careers-advanced-search .inputs-third.first {
-    padding-left:30px;
+    /*padding-left:40px;
+    width:280px;*/
 }
-
+#careers-advanced-search .inputs-third.second {
+    /*padding-left:28px;*/
+    width:290px;
+}
 
 /* Multiselect inputs */
 input#keyword, 
@@ -129,10 +138,11 @@ input#date-input,
 
 input#keyword, input#date-input {
   background-color:#fff;
-  width:224px;
+  width:210px;
   padding-top: 2px;
   padding-bottom:2px;
   height:20px;
+  
 }
 
 #careers-advanced-search .ui-multiselect-menu {
@@ -393,7 +403,7 @@ a.keyword-help-button {
 }
 
 input#date-select-option1, input#date-select-option2 {
-    width:28px;
+    /*width:28px;*/
     display:inline;
 }
 /* the visible date input */
