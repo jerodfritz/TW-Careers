@@ -178,6 +178,7 @@ input#keyword, input#date-input {
   clear: bottom;
   margin-right: 5px;
   margin-left: 7px;
+  cursor: pointer;
 }
 #careers-advanced-search #results-table td.expanded .arrow {
   background-position: 0 -18px;
@@ -185,16 +186,20 @@ input#keyword, input#date-input {
 
 #careers-advanced-search #results-table th#location {
   width: 125px;
+  cursor: pointer;
 }
 #careers-advanced-search #results-table th#division {
   width: 105px;
+  cursor: pointer;
 }
 #careers-advanced-search #results-table th#area_of_interest {
-  width: 200px;
+  width: 220px;
   xpadding-right: 25px;
+  cursor: pointer;  
 }
 #careers-advanced-search #results-table th#type {
   xwidth: 90px;
+  cursor: pointer;  
 }
 
 #careers-advanced-search #results-table th#req {
@@ -207,7 +212,7 @@ input#keyword, input#date-input {
 #careers-advanced-search #results-table td.last {
   xbackground: url(../images/bg_table_rail.jpg) no-repeat right 0 transparent;
   border-right: 23px solid #fff !important;  
-
+  cursor: pointer;
   border-right:none;
   white-space:nowrap; /* don't wrap date */
 }

@@ -33,7 +33,7 @@ filter: alpha(opacity=99); /* internet explorer */
 .ui-multiselect-single .ui-multiselect-checkboxes label input { float: none; }
 .ui-multiselect-single .ui-multiselect-checkboxes label.ui-state-hover {color: #e6e6e6; background: #6f6f6f url() 50% bottom }
 .ui-multiselect-single .ui-multiselect-checkboxes label span {  float:none !important;}
-.ui-multiselect-checkboxes label span { display: block; float: left; width: 150px;line-height: 1.4em;}
+.ui-multiselect-checkboxes label span { display: block; float: left; width: 210px;line-height: 1.4em;}
 .ui-multiselect-checkboxes li { clear:both; font-size:0.9em; padding-right:3px }
 .ui-multiselect-checkboxes li.ui-multiselect-optgroup-label { text-align:center; font-weight:bold; border-bottom:1px solid }
 .ui-multiselect-checkboxes li.ui-multiselect-optgroup-label a { display:block; padding:3px; margin:1px 0; text-decoration:none }
