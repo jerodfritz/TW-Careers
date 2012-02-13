@@ -39,7 +39,7 @@ $(function() {
         }
     });
     $(":input").focus(function () {
-        console.log(this.id);
+        //console.log(this.id);
     });  
 });
 
