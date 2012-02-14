@@ -64,14 +64,14 @@ include '../includes/careers-head.php';
                    </div>
                  </div>
                  <div class="content-width"><div class="bottom-boxes"> <!-- begin boxes -->
-                   <button id="third-width-box-first" class="third-width-box third-width-box-first" href="http://www.timewarner.com/careers/working-with-us/why-time-warner/">
+                   <button id="third-width-box-first" class="third-width-box third-width-box-first" href="working-with-us/why-time-warner/">
                      <div class="wrapper"><div class="inner">
                        <div class="blue-highlight">Content. Company. Innovations.</div>
                        Learn more about why Time Warner is an<br/>
                        employer of choice.
                      </div></div>
                    </button>
-                   <button id="third-width-box-center" class="third-width-box third-width-box-center" href="http://www.timewarner.com/careers/working-with-us/stay-connected/">
+                   <button id="third-width-box-center" class="third-width-box third-width-box-center" href="working-with-us/stay-connected/">
                      <div class="wrapper"><div class="inner">
                        Stay up to date on the latest recruitment<br/>
                        activities and featured job opportunities.

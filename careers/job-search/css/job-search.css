@@ -410,7 +410,7 @@ input#date-inputxx {
   font-size: .9em;
 }
 
-a.keyword-help-button {
+.keyword-help-button {
   display: inline-block;
   float: right;
   background: url(../images/question_mark.png) no-repeat 0 0 transparent;
