@@ -54,7 +54,6 @@ EOS;
 		</style>
 	<![endif]-->
 	
-	<script type="text/javascript" src="<?php echo $baseUrl; ?>js/swfobject.js"></script>
 	<?php 
 	if (isset($javascripts)) {
 	  foreach($javascripts as $script){

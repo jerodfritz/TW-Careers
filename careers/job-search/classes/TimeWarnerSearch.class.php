@@ -208,8 +208,6 @@ class TimeWarnerSearch {
                 if($odd) $class="odd";
                 else $class="";
                 echo "<tr id='result-$num'>";
-
-
                 echo "<td class='$class title'>". "<span onclick='showDetails(this);return false;' class='arrow'></span><a href='{$job->JobDetailLink}' onclick='showDetails(this);return false;' class='details-link'>".$job->Question[KenexaJobData::JOB_TITLE] . "</a></td>";
                 echo "<td class='$class location'>". $job->Question[KenexaJobData::LOCATION] . "</td>";
                 echo "<td class='$class division'>". $job->Question[KenexaJobData::DIVISION] . "</td>";
@@ -217,16 +215,18 @@ class TimeWarnerSearch {
                 echo "<td class='$class type'>". $job->Question[KenexaJobData::POSITION_TYPE] . "</td>";
                 echo "<td class='$class req'>". $job->Question[KenexaJobData::REQUISITION_NO] . "</td>";
                 echo "<td class='$class updated last'>". $job->LastUpdated . "</td>";
-                echo "<tr/>";
+                echo "</tr>";
                 echo "<tr id='result-$num-details' class='details'>";
                 echo "<td colspan='7' class='details-cell'>";
                 echo $this->Truncate($job->JobDescription,400, false);
                 echo "<div class='view-full'><a href='{$job->JobDetailLink}'>View Full Description</a></div>";
                 echo "</td>";
-                echo "<tr/>";
+                echo "</tr>";
                 $odd ^= 1;
                 $num ++;
             }
+            echo "<tr class='details details-visible'><td colspan='7' class='details-cell'><div style='width:100%;'></div></td></tr>";
+
             echo "</table>";
         }else {
             // If we get here, there's either no questions or maybe an error in the search.
@@ -237,7 +237,7 @@ class TimeWarnerSearch {
     $ret = $string;
     if (strlen($string) > $length) {
 		$visible_string =  $this->TokenTruncate($string,$length);
-		$ret = $visible_string;  
+		$ret = $this->CloseTags($visible_string);
 		$ret .= '<span class="ellipses">...</span>';
 		if( $output_truncated ) {
   		  $ret .= '<span class="truncated">';
@@ -262,4 +262,21 @@ class TimeWarnerSearch {
     return implode(array_slice($parts, 0, $last_part));
   }
 
+  function CloseTags($html) {
+    preg_match_all('#<([a-z]+)(?: .*)?(?<![/|/ ])>#iU', $html, $result);
+    $openedtags = $result[1];   #put all closed tags into an array
+    preg_match_all('#</([a-z]+)>#iU', $html, $result);
+    $closedtags = $result[1];
+    $len_opened = count($openedtags);
+    if (count($closedtags) == $len_opened) {
+      return $html;
+    }
+    $openedtags = array_reverse($openedtags);
+    for ($i=0; $i < $len_opened; $i++) {
+      if (!in_array($openedtags[$i], $closedtags)){
+        $html .= '</'.$openedtags[$i].'>';
+      } else {
+        unset($closedtags[array_search($openedtags[$i], $closedtags)]);    }
+    }  return $html;
+  } 
 }

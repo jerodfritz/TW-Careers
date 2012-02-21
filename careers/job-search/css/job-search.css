@@ -298,11 +298,16 @@ input#date-inputxx {
     background: -o-linear-gradient(top,  #fafafa 0%,#eaeaea 100%); /* Opera 11.10+ */
     background: -ms-linear-gradient(top,  #fafafa 0%,#eaeaea 100%); /* IE10+ */
     background: linear-gradient(top,  #fafafa 0%,#eaeaea 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+    xfilter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fafafa', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
   font-size: .95em;
   line-height: 1.3em;
 }
+#careers-advanced-search #results-table .details-visible td.details-cell {
+  display: block;
+  background:#fff;
+  padding:0;
 
+}
 #careers-advanced-search #results-table td.details-cell .view-full {
  margin-top: 15px;
 }
@@ -318,16 +323,18 @@ input#date-inputxx {
     text-decoration:none;
 
 }
+#careers-advanced-search span.sort-arrow {
+    width:17px;
+    height:12px;
+    display: inline-block;
+}
 #careers-advanced-search th.sort-on-this.sort-desc span.sort-arrow,  #careers-advanced-search th.sort-on-this.sort-asc span.sort-arrow {
     background: transparent url(custom-theme/images/ui-icons_454545_256x240.png) no-repeat right center;
     margin-left: 3px;
-    background-position:-64px 4px;
-    width:16px;
-    height:16px;
-    display: inline-block;
+    background-position:-64px 0px;
 }
 #careers-advanced-search th.sort-on-this.sort-asc span.sort-arrow {
-	background-position:0px 4px;
+	background-position:0px 0px;
 }
 
 #careers-advanced-search th.hover-effect {
