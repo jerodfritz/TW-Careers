@@ -319,8 +319,16 @@ $(function() {
 		$('.kenexa-question', $('#searchForm')).each(function() {
 
 			if($(this).hasClass('multi-select')) {
-				var arr = $(this).val();
-				var str = "";
+				// var arr = $(this).val();
+                                // Pulling out .val() doesn't appear to work on ie6/7;
+                                // However, the following does work to get the values on all browsers.
+                                // Nb. The value attribute is not set in ie6/7, but we can use
+                                // title  instead, as it contains the same.
+				var arr = $(this).multiselect("getChecked").map(function(){
+                                    return $(this).attr('title');
+                                }).get();
+                                
+                                var str = "";
 				if(arr && arr.length) {
 					params += $(this).attr('name') + '=';
 					for(var i = 0; i < arr.length; i++) {
