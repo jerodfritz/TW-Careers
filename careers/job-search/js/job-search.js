@@ -27,7 +27,7 @@ $(function() {
   $("a[rel]").overlay({
 		effect: 'apple',
     onBeforeLoad: function() {
-			var wrap = this.getOverlay().find(".contentWrap");
+			var wrap = this.getOverlay().find(".content-wrap");
 			wrap.load(this.getTrigger().attr("href"));
 		}
 	});  
