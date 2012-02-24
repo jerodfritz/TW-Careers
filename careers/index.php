@@ -77,7 +77,7 @@ include '../includes/careers-head.php';
                        activities and featured job opportunities.
                      </div></div>
                    </button>
-                   <button id="third-width-box-last" class="third-width-box third-width-box-last">
+                   <div id="third-width-box-last" class="third-width-box third-width-box-last">
                      <div class="wrapper"><div class="inner">
                        <img src="<?php print $dir ?>images/buttons/arrow.png" class="connect-button" title="Stay Connected Bullet Arrow" alt="Stay Connected Bullet Arrow" />
                        <a href="http://www.facebook.com/TimeWarner" target="_blank" title="Connect Facebook" ><img src="<?php print $dir ?>images/buttons/facebook.png" class="connect-button" title="Connect Facebook" alt="Connect Facebook" /></a>
@@ -85,7 +85,7 @@ include '../includes/careers-head.php';
                        <a href="https://twitter.com/twxcorp" target="_blank" title="Connect Twitter" ><img src="<?php print $dir ?>images/buttons/twitter.png" class="connect-button" title="Connect Twitter" alt="Connect Twitter" /></a>
                        <a href="http://www.linkedin.com/company/time-warner-inc." target="_blank" title="Connect LinkedIn" ><img src="<?php print $dir ?>images/buttons/linkedin.png" class="connect-button" title="Connect LinkedIn" alt="Connect LinkedIn" /></a>
                      </div></div>
-                   </button>
+                   </div>
                  </div>
             </div></div> <!-- end boxes -->
         </div>
