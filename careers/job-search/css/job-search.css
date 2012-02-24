@@ -262,6 +262,10 @@ input#date-inputxx {
 #careers-advanced-search #results table td.odd {
   background-color:#dcedfa;
 }
+
+#careers-advanced-search #results-table {
+  background: url(../images/bg_table_header.jpg) no-repeat center 0 transparent;
+}
 #careers-advanced-search #results-table th {
   padding:10px 0 ;
   border-right: 1px solid #BBB;
@@ -271,14 +275,12 @@ input#date-inputxx {
 }
 
 #careers-advanced-search #results-table tr.header {
-  background: url(../images/bg_table_header.jpg) repeat-x 0 0 transparent;
-  height: 39px;
+  background: transparent;
+  height: 41px;
 }
 #careers-advanced-search #results-table th#title {
-  background: url(../images/bg_table_header_left.jpg) no-repeat 0 0 transparent;
 }
 #careers-advanced-search #results-table th#date {
-  background: url(../images/bg_table_header_right.jpg) no-repeat right 0 transparent;
   border-right: 0;  
 }
 #careers-advanced-search #results-table a {

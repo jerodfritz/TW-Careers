@@ -109,6 +109,7 @@ $(function() {
 		$("#inputs-wrap [name=date-select-option]").filter("[value=posted-after]").removeAttr("checked");
 		$("#inputs-wrap [name=date-select-option]").filter("[value=all-dates]").attr("checked", "checked");
     dateSearchType = "all-dates";
+    $("#results").text('');
 
 	})
 
