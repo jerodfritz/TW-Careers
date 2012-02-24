@@ -19,6 +19,7 @@
       else $ks->addQuestion($questionHash[$key], $value);
     }
   }
+  $ks->hotJobs = (isset($_REQUEST['hotjobs']) ) ? true : false;
 
   $arr = $ks->search();
   if ($arr->OtherInformation->TotalRecordsFound > 0) {
