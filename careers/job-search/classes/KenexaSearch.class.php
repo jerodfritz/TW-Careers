@@ -78,11 +78,20 @@ class KenexaSearch {
 	 * @var string
 	 */
 	public $sortDir = "DESC";
-	
+
+	/**
+	 * Hot Jobs search true or false
+	 * @var boolean
+	 */
+    public $hotJobs = false;
+    	
 	// String representation of questions XML.
     // Built up from the addQuestion function.
     protected $questions = "";
 
+
+
+    
     public $fields;
     
     public function __construct($fields = null) {
@@ -175,7 +184,9 @@ class KenexaSearch {
         // Insert the questions into the request.
         $soapRequest = str_replace("<Questions>", "<Questions>" . $this->questions, $soapRequest);
 		$soapRequest = str_replace("<PageNumber>", "<PageNumber>" . $this->pageNumber, $soapRequest);
-		
+		if($this->hotJobs){
+  		  $soapRequest = str_replace("<HotJobs>", "<HotJobs>Yes", $soapRequest);
+		}
 		if($this->datePosted != "All") $soapRequest = str_replace("<DatePosted/>", "<DatePosted><Date>" . $this->datePosted."</Date></DatePosted>", $soapRequest);
 		$soapRequest = str_replace("<DatePosted/>", "" , $soapRequest);
 
