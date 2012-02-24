@@ -94,8 +94,8 @@ class KenexaSearch {
     
     public $fields;
     
-    public function __construct($optionsXML) {
-    	  
+    public function __construct($optionsXML = null) {
+      if($optionsXML){  
 	    $options = simplexml_load_string(file_get_contents($optionsXML));
 	    $json = json_encode($options);
 	    $options = json_decode($json,TRUE);
@@ -121,7 +121,8 @@ class KenexaSearch {
 	    }
   
 
-      $this->fields = $fields;
+        $this->fields = $fields;
+      }
     }
 
     /**	 
