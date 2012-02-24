@@ -226,29 +226,31 @@ input#date-inputxx {
   background-position: 0 -18px;
 }
 
+#careers-advanced-search #results-table th#title {
+  width: 28%;
+}
 #careers-advanced-search #results-table th#location {
-  width: 125px;
+  width: 14%;
   cursor: pointer;
 }
-#careers-advanced-search #results-table th#division {
-  width: 105px;
+#ca980reers-advanced-search #results-table th#division {
+  width: 10%;
   cursor: pointer;
 }
 #careers-advanced-search #results-table th#area_of_interest {
-  width: 220px;
-  xpadding-right: 25px;
+  width: 16%;
   cursor: pointer;  
 }
-#careers-advanced-search #results-table th#type {
-  xwidth: 90px;
+#careers-advanced-search #results-table th#position {
+  width: 10%;
   cursor: pointer;  
 }
 
 #careers-advanced-search #results-table th#req {
-  xwidth: 80px;
+    width: 10%;
 }
 #careers-advanced-search #results-table th#date {
- xwidth: 110px;
+   width: 13%;
 }
 #careers-advanced-search #results-table td.updated,
 #careers-advanced-search #results-table td.last {
@@ -256,7 +258,13 @@ input#date-inputxx {
   border-right: 23px solid #fff !important;  
   cursor: pointer;
   border-right:none;
-  white-space:nowrap; /* don't wrap date */
+  white-space:nowrap;
+  xwidth: 70px !important;
+  
+}
+#careers-advanced-search #results-table td.type {
+  xwidth: 80px;
+  white-space:nowrap;
 }
 /* bg colour for odd lines  */
 #careers-advanced-search #results table td.odd {
@@ -308,6 +316,9 @@ input#date-inputxx {
   display: block;
   background:#fff;
   padding:0;
+  color:#fff;
+  height: 5px;
+  overflow:hidden;
 
 }
 #careers-advanced-search #results-table td.details-cell .view-full {
@@ -404,6 +415,7 @@ input#date-inputxx {
 #careers-advanced-search #search-results-footer .left {
   width: 700px;
   float: left;
+  clear:both;
 } 
 #careers-advanced-search #search-results-footer .right {
   float: right;
