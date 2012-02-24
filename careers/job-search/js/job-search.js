@@ -301,9 +301,10 @@ $(function() {
 		return query.slice(0, -1);
 	}
 
-	$('#ajaxSubmit').bind('click', function() {
+	$('#ajaxSubmit').bind('click', function(event) {
 		// Fill in the location input from the value of the special location widgets.
-
+    event.preventDefault();
+  
 		if(ajaxBusy) {
 			return;
 		}

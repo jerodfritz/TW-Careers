@@ -561,36 +561,60 @@ div.content-wrap {
 	display:inline;	
 	margin-right: 10px;
 }
-#careers-advanced-search .inputs-third #ajaxSubmit:hover,
-#careers-advanced-search .inputs-third #ajaxSubmit.hover {
-    background: -moz-linear-gradient(top,  #000 0%, #484848 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left 484848, color-stop(0%,#000), color-stop(100%,#484848)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #000 0%,#484848 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #000 0%,#484848 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #000 0%,#484848 100%); /* IE10+ */
-    background: linear-gradient(top,  #000 0%,#484848 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000', endColorstr='#484848',GradientType=0 ); /* IE6-9 */    
-}
-
-#careers-advanced-search .inputs-third #ajaxSubmit {
-    height:24px;
-    width:76px; 
-    padding:0px 10px;
-    font-size:10px;
-    font-weight:bold;
-    color:#fff;
-    border:none;
-    border-radius: 15px;
-    background: #000; /* Old browsers */
-    background: -moz-linear-gradient(top,  #484848 0%, #000 100%); /* FF3.6+ */
-    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#484848), color-stop(100%,#000)); /* Chrome,Safari4+ */
-    background: -webkit-linear-gradient(top,  #484848 0%,#000 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-linear-gradient(top,  #484848 0%,#000 100%); /* Opera 11.10+ */
-    background: -ms-linear-gradient(top,  #484848 0%,#000 100%); /* IE10+ */
-    background: linear-gradient(top,  #484848 0%,#000 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#484848', endColorstr='#000',GradientType=0 ); /* IE6-9 */    
-}
 
 #sticky-footer { 
   z-index: 1;
 }
+
+#form-action-buttons  #ajaxSubmit {
+    
+}
+
+#ajaxSubmit { 
+	position: relative;
+	border: 0; 
+	cursor: pointer;
+	overflow: visible; /* removes extra side padding in IE */
+	padding: 0 15px 0 0; 
+	font-size:2em; 
+	text-align: center;
+	background-position: right -46px;	
+	background-color: transparent; 
+	height: 23px;
+
+}
+
+#ajaxSubmit::-moz-focus-inner {
+	border: none;  /* overrides extra padding in Firefox */
+}
+
+#ajaxSubmit span { 
+	position: relative;
+	display: block; 
+	white-space: nowrap;	
+	padding: 0px 0 0 15px; 
+	height:23px; 
+	font-size: 12px;
+	line-height: 22px; 
+	background-position: left top;
+}
+#ajaxSubmit:hover, 
+#ajaxSubmit.hover {
+	background-position: right -69px !important; 
+}
+	
+#ajaxSubmit:hover span, 
+#ajaxSubmit.hover span {
+	background-position: 0 -23px !important;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+	/* Safari and Google Chrome only - fix margins */
+	#ajaxSubmit span {
+		margin-top: -1px;
+	}
+}
+
+#ajaxSubmit { background-image: url(../../images/buttons/black.png); }
+#ajaxSubmit span { background-image: url(../../images/buttons/black.png); color:#e8e8e8; }
+	
