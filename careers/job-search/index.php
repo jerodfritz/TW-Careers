@@ -25,8 +25,8 @@ require_once ('../../includes/careers-head.php');
 require_once ("classes/krumo/class.krumo.php");
 require_once ("classes/TimeWarnerSearch.class.php");
 
-
 $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
+
 ?>
 
 <script type="text/javascript">

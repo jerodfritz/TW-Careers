@@ -12,32 +12,8 @@ class TimeWarnerSearch {
   private $request = null;
   
   public function __construct($optionsXML) {
-  
-    $options = simplexml_load_string(file_get_contents($optionsXML));
-    $json = json_encode($options);
-    $options = json_decode($json,TRUE);
-    $fields = array();
-    foreach($options as $name => $option){
-  	  $obj = array();
-  	  $obj['Name'] = $name;
-	  $obj['Type'] = $option['@attributes']['type'];
-	  $obj['options'] = array();
-	  if(isset($option['Options'])){
-	  	foreach ($option['Options'] as $o) {
-		    $opt = array();		   
-		    $val = split("\|",$o);
-		    $desc = split('=',$val[1]);		    
-		    $opt['Description'] = $desc[0];
-		    $val = split("\|",$o);
-		    $code = split('=',$val[3]);		    
-		    $opt['Code'] = $code[0];
-		    $obj['options'][]  = $opt;
-		}
-  	  }
-	  $fields[$option['@attributes']['questionNumber']] = $obj;
-    }
-  
-    $this->ks = new KenexaSearch($fields);
+
+    $this->ks = new KenexaSearch($optionsXML);
     $questionHash = KenexaJobQuestions::getQuestionsHash();
 	
 	$this->request = $_REQUEST;
