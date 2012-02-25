@@ -94,8 +94,8 @@
         // Setup tiles.
         setup: function(params,$wrap) {
             var self = this;
-            this.isTouch = 
-                function () {  
+            this.isTouch = 'ontouchstart' in window;
+/*                function () {  
                   try {  
                     document.createEvent("TouchEvent");  
                     return true;  
@@ -103,7 +103,7 @@
                     return false;  
                   }  
                 }();
-               
+ */              
             this.interval = null;
             this.mouseX = this.mouseY = 0;
             this.params = params;
