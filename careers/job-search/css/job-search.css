@@ -104,12 +104,15 @@ input#date-input,
     border-radius: 15px;
     padding-left:18px;
     padding-right:10px;
-    padding-top:5px;
-    padding-bottom:3px;
+    padding-top:4px;
+    padding-bottom:4px;
     border:1px solid #aaa;
     /*background-color:#ccc;*/
     background-image:none;
-
+}
+input#keyword {
+  *padding-top: 3px; /* IE7 and below */
+  *padding-bottom: 5px; /* IE7 and below */
 }
 
 
@@ -132,7 +135,10 @@ input#date-input {
 	padding-bottom:2px;
 	height:22px;	/*26 - 2 -2*/
 	width:76px;	/*90 - 2 - 12*/
-    position:absolute;left:210px;top:-9px;
+    position:absolute;
+    left:210px;
+    top:-9px;
+    *top: -4px ; /* IE7 and below */
 }
 
 
@@ -438,13 +444,15 @@ input#date-inputxx {
   width: 15px;
   height: 15px;
   margin-top: -35px;
+  *margin-top: -36px; /* IE7 and below */
   margin-right: 20px; 
 }
 /* labels next to the date search radio button options */
 #careers-advanced-search .date-label {   
-    display:inline;
+    display:inline-block;
     position:relative;
-    top:1px;
+    top:3px;
+    *top: -1px;
     font-weight:normal;
 }
 /* move the date options up a bit */
@@ -552,7 +560,8 @@ div.content-wrap {
 #form-action-buttons {
   text-align:right;
   margin-top: 33px;
-  margin-right: 32px;
+  *margin-top: 38px; /* IE7 and below */
+  margin-right: 25px;
 }
 #clear-button {	
 	font-size:12px;
