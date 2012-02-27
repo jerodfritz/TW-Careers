@@ -77,7 +77,7 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
                                 <?php print $inputs[KenexaJobQuestions::LOCATION] ?>
                                 <div id="form-action-buttons">
                                   <div id="clear-button">Clear</div>
-                                  <button class="black" id='ajaxSubmit'><span>SUBMIT</span></button>
+                                  <button class="black" id='ajaxSubmit'><span>Submit</span></button>
                                 </div>
                             </div>
                             <div class="inputs-third third">

@@ -217,7 +217,7 @@ input#date-inputxx {
   width: 195px;
 }
 #careers-advanced-search #results-table td.title .arrow {
-  background: url(../images/collapse_arrows.png) no-repeat 0 0 transparent;
+  background: url(../images/collapsearrows.png) no-repeat 0 0 transparent;
   width: 18px;
   height: 18px;
   display: block;
@@ -440,7 +440,7 @@ input#date-inputxx {
 .keyword-help-button {
   display: inline-block;
   float: right;
-  background: url(../images/question_mark.png) no-repeat 0 0 transparent;
+  background: url(../images/questionmark.png) no-repeat 0 0 transparent;
   width: 15px;
   height: 15px;
   margin-top: -35px;

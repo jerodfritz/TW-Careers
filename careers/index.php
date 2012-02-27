@@ -71,7 +71,7 @@ include '../includes/careers-head.php';
                        employer of choice.
                      </div></div>
                    </button>
-                   <button id="third-width-box-center" class="third-width-box third-width-box-center" href="working-with-us/stay-connected/">
+                   <button id="third-width-box-center" class="third-width-box third-width-box-center" href="areas-of-operation/job-spotlight/">
                      <div class="wrapper"><div class="inner">
                        Stay up to date on the latest recruitment<br/>
                        activities and featured job opportunities.
@@ -79,7 +79,7 @@ include '../includes/careers-head.php';
                    </button>
                    <div id="third-width-box-last" class="third-width-box third-width-box-last">
                      <div class="wrapper"><div class="inner">
-                       <img src="<?php print $dir ?>images/buttons/arrow.png" class="connect-button" title="Stay Connected Bullet Arrow" alt="Stay Connected Bullet Arrow" />
+                       <a href="working-with-us/stay-connected/" target="_blank" title="Stay Connected" ><img src="<?php print $dir ?>images/buttons/arrow.png" class="connect-button" title="Stay Connected Bullet Arrow" alt="Stay Connected Bullet Arrow" /></a>
                        <a href="http://www.facebook.com/TimeWarner" target="_blank" title="Connect Facebook" ><img src="<?php print $dir ?>images/buttons/facebook.png" class="connect-button" title="Connect Facebook" alt="Connect Facebook" /></a>
                        <a href="http://www.youtube.com/user/TimeWarnerCable" target="_blank" title="Connect YouTube" ><img src="<?php print $dir ?>images/buttons/youtube.png" class="connect-button" title="Connect YouTube" alt="Connect YouTube" /></a>
                        <a href="https://twitter.com/twxcorp" target="_blank" title="Connect Twitter" ><img src="<?php print $dir ?>images/buttons/twitter.png" class="connect-button" title="Connect Twitter" alt="Connect Twitter" /></a>
