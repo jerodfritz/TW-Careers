@@ -1,3 +1,13 @@
+function getParameterByName(name){
+  name = name.replace(/[\[]/, "\\\[").replace(/[\]]/, "\\\]");
+  var regexS = "[\\?&]" + name + "=([^&#]*)";
+  var regex = new RegExp(regexS);
+  var results = regex.exec(window.location.search);
+  if(results == null)
+    return false;
+  else
+    return decodeURIComponent(results[1].replace(/\+/g, " "));
+}
 function showDetails(item) {
 	$(item).parent().toggleClass('expanded');
 	$('#' + $(item).parent().parent().attr('id') + '-details td.details-cell').toggle();
@@ -145,6 +155,36 @@ $(function() {
 		// Trigger the search.
 		$('#ajaxSubmit').trigger('click');
 	});
+  
+  
+  var passed_location = getParameterByName('location');;
+  
+  if(passed_location){
+    var passed_locations = passed_location.split(',');
+    var passed_country = (passed_locations[0].split('-').length >2)? $.trim(passed_locations[0].split('-')[2]) : $.trim(passed_locations[0].split('-')[1]);
+    var passed_states = [];
+    var passed_cities = [];
+    for(var i in passed_locations){
+      var split = passed_locations[i].split('-');
+      if(split.length>2){
+        var passed_state = $.trim(split[0]);
+        var passed_city = $.trim(split[1]);
+        if($.inArray(passed_city,passed_cities)==-1){
+          passed_cities.push(passed_city);
+        }
+        if($.inArray(passed_state,passed_states)==-1){
+          passed_states.push(passed_state);
+        }
+          
+      } else {
+        var passed_city = $.trim(split[0]);
+        if($.inArray(passed_city,passed_cities)==-1){
+          passed_cities.push(passed_city);
+        }
+      }
+    }  
+  }
+  
 	var createLocationSelects = function() {
 		// Current selected country.
 		var currentCountry,
@@ -241,17 +281,23 @@ $(function() {
 			}
 		},
 		// Setup initial widgets, defaulting to 1st country.
-		str = "<option value='" + allCountries + "'>" + allCountries + "</option>" + 
-			  "<option value='United States'>United States</option>";
+		str = "<option value='" + allCountries + "'>" + allCountries + "</option>";
+    var selected = '';
+    if(passed_location){
+      selected = (passed_country == "United States")?' selected':'';
+    } 
+    str += "<option value='United States'" + selected + ">United States</option>";
 		for(var country in locData) {
-			//if(currentCountry == undefined)
-			//	currentCountry = country;			
-			if(country!= "United States")
-				str += "<option value='" + country + "'>" + country + "</option>";
+			if(passed_location){
+        var selected = (passed_country == country)?' selected':'';
+      }
+			if(country!= "United States"){  
+				str += "<option value='" + country + "'" + selected + ">" + country + "</option>";
+      }
 		}
 		$('#country-select').html(str);
-		// Fill in starting states and cities.
-		//fillStates(currentCountry);
+		
+    // Fill in starting states and cities.
 		//fillCities(currentCountry, $("#state-select").val());
 
 		// On country change, fill in states and cities.
@@ -266,6 +312,30 @@ $(function() {
 		});
 		$('#city-select').bind('change', function(evt) {
 		});
+    
+    if(passed_location){
+      $('#country-select').trigger("change");
+      $('#country-select').multiselect("refresh");
+      console.log(passed_states);
+      console.log(passed_cities);
+      $("#state-select").multiselect("widget").find(":checkbox").each(function(){ 
+        if($.inArray($(this).attr('title'),passed_states)==-1){
+          this.click(); 
+        }
+      });
+      $('#state-select').trigger("change");
+      fillCities(passed_country,passed_states);
+      $("#city-select").multiselect("widget").find(":checkbox").each(function(){ 
+        if($.inArray($(this).attr('title'),passed_cities)==-1){
+          this.click();
+        }
+      });
+		} else {
+      $('#country-select').val(allCountries);
+      $('#country-select').trigger("change");
+      $('#country-select').multiselect("refresh");
+    }
+    
 	}();
 
 	$('#country-select').multiselect({
@@ -276,11 +346,6 @@ $(function() {
 			// return value for selected text display.
 		}
 	});
-
-	// Default to usa.
-	$('#country-select').val(allCountries);
-	$('#country-select').trigger("change");
-	$('#country-select').multiselect("refresh");
 
 	// Creates a search string based on the location inputs,
 	// in CSV format for the Kenexa query value.
