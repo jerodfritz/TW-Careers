@@ -31,6 +31,8 @@ General
 	-moz-user-select: none;
 	-o-user-select: none;
 	user-select: none;
+	height: 388px;
+	overflow: hidden;
 }
 .content-width {
   width: 980px;

@@ -316,8 +316,6 @@ $(function() {
     if(passed_location){
       $('#country-select').trigger("change");
       $('#country-select').multiselect("refresh");
-      console.log(passed_states);
-      console.log(passed_cities);
       $("#state-select").multiselect("widget").find(":checkbox").each(function(){ 
         if($.inArray($(this).attr('title'),passed_states)==-1){
           this.click(); 
