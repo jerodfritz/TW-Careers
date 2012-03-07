@@ -77,7 +77,7 @@ class TimeWarnerSearch {
                         if(isset($this->request[$keyId])){
                           $params = split(",",$this->request[$keyId]);
                           foreach($params as $param){
-                            if($option['Code'] == $param){
+                            if(trim($option['Code']) == trim($param) || trim($option['Description']) == trim($param)){
                               $selected = "selected";
                               break;
                             }
@@ -103,7 +103,9 @@ class TimeWarnerSearch {
         }
         $inputs[$key] = $col;
     }
-//    echo "<div id='search-history'><strong>Previous searches:</strong><br/></div>";
+    if(isset($_GET['history'])){
+      echo "<div id='search-history'><strong>Previous searches:</strong><br/></div>";
+    }
     return $inputs; 
 }
 
@@ -160,7 +162,7 @@ class TimeWarnerSearch {
 			echo '<table id="results-table" style="clear:both" ><tr class="header">';
 			foreach($questions as $question=>$text) {
 				$class="";
-				if ($question != "req" && $question != "title") {
+				if ($question != "req"){ // && $question != "title") {
 					$class="hover-effect"; 
 					if ($sortBy == $question) {
 						$class.= " sort-on-this";

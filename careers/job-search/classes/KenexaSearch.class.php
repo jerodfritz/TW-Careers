@@ -216,7 +216,6 @@ class KenexaSearch {
 		}
 		if($this->datePosted != "All") $soapRequest = str_replace("<DatePosted/>", "<DatePosted><Date>" . $this->datePosted."</Date></DatePosted>", $soapRequest);
 		$soapRequest = str_replace("<DatePosted/>", "" , $soapRequest);
-
         $result = $kenexa->route(array('inputXml' => $soapRequest));
         $xml = simplexml_load_string($result->routeResult);
         return $xml->Unit->Packet->Payload->ResultSet;

@@ -1,8 +1,0 @@
-AuthUserFile /home/timewarner/.htpasswd
-AuthGroupFile /dev/null
-AuthName "TW Dev Site"
-AuthType Basic
-
-<Limit GET POST>
-require valid-user
-</Limit>

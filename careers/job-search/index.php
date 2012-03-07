@@ -53,6 +53,7 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
     		                    <?php print $inputs[KenexaJobQuestions::DIVISION] ?>
 	    	                    <?php print $inputs[KenexaJobQuestions::AREA_OF_INTEREST] ?>
 	    	                    <label for='keyword' class='infield'>Keyword / Requisition #</label>
+		                        <?php //print $inputs[KenexaJobQuestions::TITLE] ?>
 		                        <?php print $inputs[KenexaJobQuestions::KEYWORD] ?><a href="keyword-help/" rel="#overlay" target="_new" title="Help with keyword searching" class='keyword-help-button'><span></span></a>
                                 <div id="date-options-wrap">
                                 
