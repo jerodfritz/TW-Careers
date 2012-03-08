@@ -193,7 +193,7 @@ class TimeWarnerSearch {
 				echo "<tr id='result-$num-details' class='details'>";
 				echo "<td colspan='7' class='details-cell'>";
 				echo $this->Truncate($job->JobDescription,400, false);
-				echo "<div class='view-full'><a href='{$job->JobDetailLink}'>View Full Description</a></div>";
+				echo "<div class='view-full'><a href='{$job->JobDetailLink}' target='_blank' title='View Full Description'>View Full Description</a></div>";
 				echo "</td>";
 				echo "</tr>";
 				$odd ^= 1;
