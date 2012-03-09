@@ -164,9 +164,11 @@ $(function() {
     var passed_country = (passed_locations[0].split('-').length >2)? $.trim(passed_locations[0].split('-')[2]) : $.trim(passed_locations[0].split('-')[1]);
     var passed_states = [];
     var passed_cities = [];
+    var passed_city_only = true;
     for(var i in passed_locations){
       var split = passed_locations[i].split('-');
       if(split.length>2){
+        passed_city_only = false;
         var passed_state = $.trim(split[0]);
         var passed_city = $.trim(split[1]);
         if($.inArray(passed_city,passed_cities)==-1){
@@ -177,6 +179,7 @@ $(function() {
         }
           
       } else {
+        
         var passed_city = $.trim(split[0]);
         if($.inArray(passed_city,passed_cities)==-1){
           passed_cities.push(passed_city);
@@ -316,13 +319,18 @@ $(function() {
     if(passed_location){
       $('#country-select').trigger("change");
       $('#country-select').multiselect("refresh");
-      $("#state-select").multiselect("widget").find(":checkbox").each(function(){ 
-        if($.inArray($(this).attr('title'),passed_states)==-1){
-          this.click(); 
-        }
-      });
-      $('#state-select').trigger("change");
-      fillCities(passed_country,passed_states);
+      if(!passed_city_only) {
+        $("#state-select").multiselect("widget").find(":checkbox").each(function(){ 
+          if($.inArray($(this).attr('title'),passed_states)==-1){
+            this.click(); 
+          }
+        });
+        $('#state-select').trigger("change");
+        fillCities(passed_country,passed_states);
+      } else {
+        fillStates(passed_country);
+      }
+      
       $("#city-select").multiselect("widget").find(":checkbox").each(function(){ 
         if($.inArray($(this).attr('title'),passed_cities)==-1){
           this.click();
