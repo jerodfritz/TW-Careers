@@ -193,7 +193,7 @@ class TimeWarnerSearch {
 				echo "<tr id='result-$num-details' class='details'>";
 				echo "<td colspan='7' class='details-cell'>";
 				//echo $this->Truncate($job->JobDescription,400, false);
-				echo $this->TruncateHtml($job->JobDescription, 400, ' <span class="ellipses">...</span>', false, true);
+				echo $this->TruncateHtml(html_entity_decode($job->JobDescription), 410, ' <span class="ellipses">...</span>', false, true);
 				echo "<div class='view-full'><a href='{$job->JobDetailLink}' target='_blank' title='View Full Description'>View Full Description</a></div>";
 				echo "</td>";
 				echo "</tr>";
