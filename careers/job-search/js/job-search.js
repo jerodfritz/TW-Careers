@@ -78,7 +78,10 @@ $(function() {
 		//changeMonth: true,		// Allow year and month change via dropdown.
 		//changeYear: true
 	}).attr("readonly", "true");
-	var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000))
+	//var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000))
+  var d = new Date();
+  d.setMonth(0);
+  d.setDate(1);
 	$("#date-input").datepicker("setDate", d);
 
 	// Date-related radio buttons.
