@@ -105,8 +105,8 @@ $tw = new TimeWarnerSearch(dirname(__FILE__) . '/options/options.xml');
                             Please be sure to provide a detailed explanation of the issue you are encountering.
                         </div>
                         <div class="right">
-                            <a href="#" alt="Career Site Help" title="Career Site Help">Career Site Help</a><br/>
-                            <a href="#" alt="Website Accessibility" title="Website Accessibility">Website Accessibility</a>
+                            <a href="https://careers.timewarner.com/1033/ASP/TG/help/TG_help.asp?partnerid=391&siteid=36" alt="Career Site Help" title="Career Site Help" target="_new">Career Site Help</a><br/>
+                            <a href="/legal-and-privacy/index.php#accessibility" alt="Website Accessibility" title="Website Accessibility">Website Accessibility</a>
                         </div>
                     </div>
                 </div>
