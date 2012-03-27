@@ -116,7 +116,11 @@ $(function() {
 		$("#city-select").multiselect("checkAll");
 		$('#country-select').val(allCountries).trigger('change').multiselect("refresh");
 		// Reset date to seven days in the past.
-		var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000))
+		//var d = new Date(new Date().getTime() - (7 * 24 * 60 * 60 * 1000))
+    var d = new Date();
+    d.setMonth(0);
+    d.setDate(1);
+
 		$("#date-input").datepicker("setDate", d);
 		// Select all dates option.
 		$("#inputs-wrap [name=date-select-option]").filter("[value=posted-after]").removeAttr("checked");
