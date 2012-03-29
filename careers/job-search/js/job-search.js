@@ -159,12 +159,13 @@ $(function() {
 	$('#results div.page-link').live('click', function() {
 		// Get the desired page number from the dom element.
 		pageNumber = $(this).attr('num').replace(/[^0-9]/g, '');
+		
 		// Trigger the search.
 		$('#ajaxSubmit').trigger('click');
 	});
   
   
-  var passed_location = getParameterByName('location');;
+  var passed_location = getParameterByName('location');
   
   if(passed_location){
     var passed_locations = passed_location.split(',');
@@ -434,7 +435,15 @@ $(function() {
 			params += "&date_posted=" + $('#date-value').val();
 		} else
 			params += "&date_posted=All";
-
+		
+		// Set initial lastsearch to be same as new search if no searches performed yet.
+		// This prevents pageNumber reset happening on first search.
+		// Fixes this bug:
+		// "If we arrive at the search page with a search parameter we noticed that when you click to advanced to the next page it requires two
+		// clicks in order to advance to the next 50 search results."
+		
+		if(lastSearchParams=="") lastSearchParams=params;
+		
 		// If the new search is different to the previous search,
 		// Then we must reset the page number to 1, as the new results
 		// will probably NOT have the same number of search pages.
