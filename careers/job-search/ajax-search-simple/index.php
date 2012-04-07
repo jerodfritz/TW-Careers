@@ -5,18 +5,23 @@
   $questionHash = KenexaJobQuestions::getQuestionsHash();
 
   // Set the desired page number.
-  if (isset($_REQUEST['pagenum']) ) $ks->pageNumber = $_REQUEST['pagenum'];
+  if (isset($_REQUEST['pagenum']) ) {
+      $ks->pageNumber =  intval($_REQUEST['pagenum']);
+      if(!$ks->pageNumber) exit;    // Should be a valid int >1.
+      
+  }
   // Set the search date 
-  if (isset($_REQUEST['date_posted']) ) $ks->datePosted = $_REQUEST['date_posted'];
+  if (isset($_REQUEST['date_posted']) ) $ks->datePosted = htmlspecialchars($_REQUEST['date_posted']);
   // Set the sort direction
-  if (isset($_REQUEST['sortdir']) ) $ks->sortDir = $_REQUEST['sortdir'];
+  if (isset($_REQUEST['sortdir']) ) $ks->sortDir = htmlspecialchars($_REQUEST['sortdir']);
   // Sort column (division, area_of_interest etc.)
-  $limit = (isset($_REQUEST['limit']) ) ? $_REQUEST['limit'] : 2;
+  $limit = (isset($_REQUEST['limit']) ) ? htmlspecialchars($_REQUEST['limit']) : 2;
   $sortBy = @$_REQUEST['sortby'];
-  foreach ($_REQUEST as $key => $value) {	  
+  foreach ($_REQUEST as $key => $value) {	
+    $value = htmlspecialchars($value);  
     if (isset($questionHash[$key])) {		     
-    if ($sortBy && $sortBy == $key) $ks->addQuestion($questionHash[$key], $value, true);
-      else $ks->addQuestion($questionHash[$key], $value);
+        if ($sortBy && $sortBy == $key) $ks->addQuestion($questionHash[$key], $value, true);
+        else $ks->addQuestion($questionHash[$key], $value);
     }
   }
   $ks->hotJobs = (isset($_REQUEST['hotjobs']) ) ? true : false;
