@@ -27,17 +27,17 @@ class TimeWarnerSearch {
         }
         // Set the search date 
         if (isset($_REQUEST['date_posted']))
-            $this->ks->datePosted = htmlspecialchars($_REQUEST['date_posted']);
+            $this->ks->datePosted = htmlspecialchars($_REQUEST['date_posted'],ENT_QUOTES);
 
         // Set the sort direction
         if (isset($_REQUEST['sortdir']))
-            htmlspecialchars($this->ks->sortDir = $_REQUEST['sortdir']);
+            htmlspecialchars($this->ks->sortDir = $_REQUEST['sortdir'],ENT_QUOTES);
 
         // Sort column (division, area_of_interest etc.)
-        $sortBy = @htmlspecialchars($_REQUEST['sortby']);
+        $sortBy = @htmlspecialchars($_REQUEST['sortby'],ENT_QUOTES);
 
         foreach ($_REQUEST as $key => $value) {
-            $value = htmlspecialchars($value);
+            $value = htmlspecialchars($value,ENT_QUOTES);
 
             if (isset($questionHash[$key])) {
                 if ($sortBy && $sortBy == $key)
@@ -84,7 +84,7 @@ class TimeWarnerSearch {
                         foreach ($field['options'] as $option) {
                             $selected = '';
                             if (isset($this->request[$keyId])) {
-                                $value = htmlspecialchars($this->request[$keyId]);
+                                $value = htmlspecialchars($this->request[$keyId],ENT_QUOTES);
                                 $params = split(",", $value);
                                 foreach ($params as $param) {
                                     if ($option['Code'] == $param) {
@@ -101,7 +101,7 @@ class TimeWarnerSearch {
                 case 'text':
                     $value = '';
                     if (isset($this->request[$keyId])) {
-                        $value = htmlspecialchars($this->request[$keyId]);
+                        $value = htmlspecialchars($this->request[$keyId],ENT_QUOTES);
                         $value = "value='" . $value . "'";
                     }
                     $col .= "<input class='kenexa-question' id=\"$keyId\" name='$keyId' $value></input>";
@@ -130,7 +130,7 @@ class TimeWarnerSearch {
                 "date" => "Date");
             $sortBy = "date";
             if (isset($_REQUEST['sortby']))
-                $sortBy = htmlspecialchars($_REQUEST['sortby']);
+                $sortBy = htmlspecialchars($_REQUEST['sortby'],ENT_QUOTES);
 
             $maxPages = intval($arr->OtherInformation->MaxPages);
 
